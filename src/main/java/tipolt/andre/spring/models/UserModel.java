@@ -1,6 +1,8 @@
 package tipolt.andre.spring.models;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,6 +32,9 @@ public class UserModel implements UserDetails{
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private Set<OrderModel> listOrders = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
