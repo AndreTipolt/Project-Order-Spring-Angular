@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import tipolt.andre.spring.dtos.LoginDTO;
 import tipolt.andre.spring.models.UserModel;
-import tipolt.andre.spring.security.TokenService;
+import tipolt.andre.spring.services.TokenService;
 
 @RestController
 public class AuthController {
