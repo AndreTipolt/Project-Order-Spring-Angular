@@ -1,15 +1,14 @@
 package tipolt.andre.spring.services;
 
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tipolt.andre.spring.models.CategoryModel;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.CategoryRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
+import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoryService {
@@ -21,6 +20,9 @@ public class CategoryService {
     private ProductRepository productRepository;
 
     public List<ProductModel> findCategoryById(String categoryId){
+
+        categoryRepository.findById(categoryId).orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
+
         List<ProductModel> listProductsByCategory = productRepository.findByCategoryId(categoryId);
         return listProductsByCategory;
     }

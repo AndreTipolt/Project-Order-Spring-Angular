@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
+import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.services.exceptions.InvalidJWTException;
 
 @ControllerAdvice
@@ -18,6 +19,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
 
         StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Invalid JWT", e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ResponseEntity<StandardError> categoryNotFoud(ObjectNotFoundException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Object Not Found", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }

@@ -16,6 +16,7 @@ import tipolt.andre.spring.repositories.OrderItemRepository;
 import tipolt.andre.spring.repositories.OrderRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
 import tipolt.andre.spring.repositories.UserRepository;
+import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class OrderService {
@@ -39,7 +40,7 @@ public class OrderService {
     public void save(OrderDTO orderDTO) {
 
         UserModel userExists = userRepository.findById(orderDTO.getUserId())
-                .orElseThrow(() -> new RuntimeException("Sem usuario"));
+                .orElseThrow(() -> new ObjectNotFoundException("User not Found"));
 
         OrderModel orderModel = new OrderModel();
         orderModel.setMoment(Instant.now());
