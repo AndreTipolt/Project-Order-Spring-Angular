@@ -1,6 +1,7 @@
 package tipolt.andre.spring.services;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,27 +49,29 @@ public class OrderService {
 
         OrderModel order = orderRepository.save(orderModel);
 
-        // List<ProductModel> listProducts = new ArrayList<>();
-
-        // for(String idProduct : orderDTO.getListProductId()){
-            
-        //     ProductModel product = productRepository.findById(idProduct)
-        //         .orElseThrow(() -> new RuntimeException("Id do produto invalido"));
-            
-        //     listProducts.add(product);
-        // }
-
-        ProductModel product = productRepository.findById(orderDTO.getProductId()).orElseThrow(() -> new RuntimeException("Produto naoe encontrado"));
-        OrderItemModel orderItem = new OrderItemModel();
         OrderItemPK orderItemPK = new OrderItemPK();
 
         orderItemPK.setOrder(order);
-        orderItemPK.setProduct(product);
 
+        List<OrderItemModel> listOrderItem = new ArrayList<>();
 
-        orderItem.setId(orderItemPK);
-        orderItem.setQuantity(orderDTO.getQuantity());
+        for(String productId : orderDTO.getListProductId()){
 
-        orderItemRepository.save(orderItem);
+            ProductModel product = productRepository.findById(productId)
+                .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
+
+            OrderItemModel orderItem = new OrderItemModel();
+
+            orderItemPK.setProduct(product);
+            orderItem.setId(orderItemPK);
+            orderItem.setQuantity(3);
+
+            listOrderItem.add(orderItem);            
+        }
+
+        for(OrderItemModel orderItem : listOrderItem){
+            System.out.println("conta ai paizao");
+            orderItemRepository.save(orderItem);
+        }
     }
 }

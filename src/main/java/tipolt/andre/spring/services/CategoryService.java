@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tipolt.andre.spring.models.CategoryModel;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.CategoryRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
@@ -25,5 +26,9 @@ public class CategoryService {
 
         List<ProductModel> listProductsByCategory = productRepository.findByCategoryId(categoryId);
         return listProductsByCategory;
+    }
+
+    public List<CategoryModel> findAll(){
+        return categoryRepository.findAll();
     }
 }

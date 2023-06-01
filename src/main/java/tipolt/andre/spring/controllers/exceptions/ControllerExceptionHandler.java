@@ -1,15 +1,13 @@
 package tipolt.andre.spring.controllers.exceptions;
 
-import java.time.Instant;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
-import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.services.exceptions.InvalidJWTException;
+import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {

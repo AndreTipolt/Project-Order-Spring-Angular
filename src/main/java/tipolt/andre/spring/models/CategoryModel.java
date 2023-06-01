@@ -24,7 +24,6 @@ public class CategoryModel {
 
     private String name;
     
-    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private Set<ProductModel> listProducts = new HashSet<>();
 }
