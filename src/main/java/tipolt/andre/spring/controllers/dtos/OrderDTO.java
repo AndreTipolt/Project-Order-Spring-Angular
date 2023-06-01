@@ -1,6 +1,5 @@
 package tipolt.andre.spring.controllers.dtos;
 
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OrderDTO {
     
-    private List<String> ListProductId;
+    private String productId;
 
-    private String idUser;
+    private String userId;
+
+    private Integer quantity;
 }
+;

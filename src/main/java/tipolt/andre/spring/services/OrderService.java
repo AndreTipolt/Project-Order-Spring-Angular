@@ -4,7 +4,6 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +39,7 @@ public class OrderService {
 
     public void save(OrderDTO orderDTO) {
 
-        UserModel userExists = userRepository.findById(orderDTO.getIdUser())
+        UserModel userExists = userRepository.findById(orderDTO.getUserId())
                 .orElseThrow(() -> new RuntimeException("Sem usuario"));
 
         OrderModel orderModel = new OrderModel();
@@ -49,25 +48,27 @@ public class OrderService {
 
         OrderModel order = orderRepository.save(orderModel);
 
-        List<ProductModel> listProducts = new ArrayList<>();
+        // List<ProductModel> listProducts = new ArrayList<>();
 
-        for(String idProduct : orderDTO.getListProductId()){
+        // for(String idProduct : orderDTO.getListProductId()){
             
-            ProductModel product = productRepository.findById(idProduct)
-                .orElseThrow(() -> new RuntimeException("Id do produto invalido"));
+        //     ProductModel product = productRepository.findById(idProduct)
+        //         .orElseThrow(() -> new RuntimeException("Id do produto invalido"));
             
-            listProducts.add(product);
-        }
+        //     listProducts.add(product);
+        // }
+
+        ProductModel product = productRepository.findById(orderDTO.getProductId()).orElseThrow(() -> new RuntimeException("Produto naoe encontrado"));
         OrderItemModel orderItem = new OrderItemModel();
         OrderItemPK orderItemPK = new OrderItemPK();
 
         orderItemPK.setOrder(order);
+        orderItemPK.setProduct(product);
 
 
         orderItem.setId(orderItemPK);
-        orderItem.setQuantity(3);
+        orderItem.setQuantity(orderDTO.getQuantity());
 
-
-
+        orderItemRepository.save(orderItem);
     }
 }

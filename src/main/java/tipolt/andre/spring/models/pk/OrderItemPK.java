@@ -1,5 +1,7 @@
 package tipolt.andre.spring.models.pk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,6 +23,7 @@ public class OrderItemPK {
     @JoinColumn(name = "product_id")
     private ProductModel product;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "order_id")
     private OrderModel order;
