@@ -70,7 +70,7 @@ public class OrderService {
         }
 
         for (OrderItemModel orderItem : listOrderItem) {
-            OrderItemModel orderItemSaved = orderItemRepository.save(orderItem);
+            orderItemRepository.save(orderItem);
         }
     }
 }
