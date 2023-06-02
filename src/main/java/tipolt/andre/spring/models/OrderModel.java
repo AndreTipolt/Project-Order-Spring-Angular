@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import tipolt.andre.spring.models.enums.StatusOrder;
 
 @Entity
 @Table(name = "tb_order")
@@ -35,4 +36,6 @@ public class OrderModel implements Serializable{
 
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItemModel> listOrderItems = new HashSet<>();
+
+    private StatusOrder status;
 }

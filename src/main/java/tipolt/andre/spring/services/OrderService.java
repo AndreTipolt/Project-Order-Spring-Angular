@@ -12,6 +12,7 @@ import tipolt.andre.spring.models.OrderItemModel;
 import tipolt.andre.spring.models.OrderModel;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.models.UserModel;
+import tipolt.andre.spring.models.enums.StatusOrder;
 import tipolt.andre.spring.models.pk.OrderItemPK;
 import tipolt.andre.spring.repositories.OrderItemRepository;
 import tipolt.andre.spring.repositories.OrderRepository;
@@ -46,6 +47,7 @@ public class OrderService {
         OrderModel orderModel = new OrderModel();
         orderModel.setMoment(Instant.now());
         orderModel.setUser(userExists);
+        orderModel.setStatus(StatusOrder.WAIT_PAYMENT);
 
         OrderModel order = orderRepository.save(orderModel);
 
