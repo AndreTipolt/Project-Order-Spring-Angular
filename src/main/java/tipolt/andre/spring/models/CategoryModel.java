@@ -1,9 +1,7 @@
 package tipolt.andre.spring.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,5 +23,5 @@ public class CategoryModel {
     private String name;
     
     @OneToMany(mappedBy = "category")
-    private Set<ProductModel> listProducts = new HashSet<>();
+    private List<ProductModel> listProducts = new ArrayList<>();
 }

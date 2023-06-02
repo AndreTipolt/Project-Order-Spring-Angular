@@ -28,6 +28,7 @@ public class ProductModel {
 
     private Double price;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryModel category;
