@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
+import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class FilterToken extends OncePerRequestFilter{
@@ -36,7 +37,7 @@ public class FilterToken extends OncePerRequestFilter{
 
             String subject = tokenService.getSubject(token);
 
-            UserModel user = this.userRepository.findByEmail(subject).orElseThrow(() -> new ServletException());
+            UserModel user = this.userRepository.findByEmail(subject).orElseThrow(() -> new ObjectNotFoundException("User not Found"));
 
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 

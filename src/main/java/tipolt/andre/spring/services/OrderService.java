@@ -49,16 +49,16 @@ public class OrderService {
 
         OrderModel order = orderRepository.save(orderModel);
 
-        OrderItemPK orderItemPK = new OrderItemPK();
-
-        orderItemPK.setOrder(order);
-
         List<OrderItemModel> listOrderItem = new ArrayList<>();
 
-        for(String productId : orderDTO.getListProductId()){
+        for (String productId : orderDTO.getListProductId()) {
 
             ProductModel product = productRepository.findById(productId)
-                .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
+                    .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
+
+            OrderItemPK orderItemPK = new OrderItemPK();
+
+            orderItemPK.setOrder(order);
 
             OrderItemModel orderItem = new OrderItemModel();
 
@@ -66,12 +66,11 @@ public class OrderService {
             orderItem.setId(orderItemPK);
             orderItem.setQuantity(3);
 
-            listOrderItem.add(orderItem);            
+            listOrderItem.add(orderItem);
         }
 
-        for(OrderItemModel orderItem : listOrderItem){
-            System.out.println("conta ai paizao");
-            orderItemRepository.save(orderItem);
+        for (OrderItemModel orderItem : listOrderItem) {
+            OrderItemModel orderItemSaved = orderItemRepository.save(orderItem);
         }
     }
 }
