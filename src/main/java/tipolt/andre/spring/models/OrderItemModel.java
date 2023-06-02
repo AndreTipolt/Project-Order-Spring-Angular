@@ -15,4 +15,9 @@ public class OrderItemModel {
     private OrderItemPK id  = new OrderItemPK();
 
     private Integer quantity;
+
+
+    public Double subTotal(){
+        return this.quantity * this.getId().getProduct().getPrice();
+    }
 }
