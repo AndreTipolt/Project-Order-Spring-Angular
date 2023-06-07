@@ -7,7 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tipolt.andre.spring.controllers.dtos.OrderDTO;
+import tipolt.andre.spring.dtos.OrderDTO;
+import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.OrderItemModel;
 import tipolt.andre.spring.models.OrderModel;
 import tipolt.andre.spring.models.ProductModel;
@@ -18,7 +19,6 @@ import tipolt.andre.spring.repositories.OrderItemRepository;
 import tipolt.andre.spring.repositories.OrderRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
 import tipolt.andre.spring.repositories.UserRepository;
-import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class OrderService {

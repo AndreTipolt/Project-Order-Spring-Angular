@@ -1,4 +1,4 @@
-package tipolt.andre.spring.services.exceptions;
+package tipolt.andre.spring.exceptions;
 
 public class InvalidJWTException extends RuntimeException{
     

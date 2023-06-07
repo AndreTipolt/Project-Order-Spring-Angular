@@ -1,4 +1,4 @@
-package tipolt.andre.spring.controllers.dtos;
+package tipolt.andre.spring.dtos;
 
 
 import java.util.List;

@@ -12,9 +12,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
-import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class FilterToken extends OncePerRequestFilter{

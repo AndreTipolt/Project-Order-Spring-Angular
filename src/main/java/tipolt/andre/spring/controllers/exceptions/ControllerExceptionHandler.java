@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
-import tipolt.andre.spring.services.exceptions.InvalidJWTException;
-import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
+import tipolt.andre.spring.exceptions.InvalidJWTException;
+import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {

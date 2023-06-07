@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-import tipolt.andre.spring.controllers.dtos.OrderDTO;
+import tipolt.andre.spring.dtos.OrderDTO;
 import tipolt.andre.spring.models.OrderModel;
 import tipolt.andre.spring.services.OrderService;
 

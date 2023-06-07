@@ -11,8 +11,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 
+import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.models.UserModel;
-import tipolt.andre.spring.services.exceptions.InvalidJWTException;
 
 @Service
 public class TokenService {

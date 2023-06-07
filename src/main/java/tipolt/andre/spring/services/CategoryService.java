@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.CategoryModel;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.CategoryRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
-import tipolt.andre.spring.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoryService {
