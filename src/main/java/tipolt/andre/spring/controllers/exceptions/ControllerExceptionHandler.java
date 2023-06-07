@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import jakarta.servlet.http.HttpServletRequest;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
+import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -26,6 +27,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
         StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Object Not Found", e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+    
+    @ExceptionHandler(PasswordNotCoincideException.class)
+    public ResponseEntity<StandardError> passwordNotCoincide(PasswordNotCoincideException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Password Exception", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }

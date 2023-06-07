@@ -4,9 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+import tipolt.andre.spring.dtos.UserDTO;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.services.UserService;
 
@@ -20,5 +24,10 @@ public class UserController {
     @GetMapping
     public List<UserModel> findAll(){
         return userService.findAll();
+    }
+
+    @PostMapping
+    public void saveUser(@RequestBody @Valid UserDTO userDTO){
+        userService.saveUser(userDTO);
     }
 }
