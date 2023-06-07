@@ -26,7 +26,7 @@ public class WebSecurityConfig {
     //         (authorizeHttpRequest) -> {
     //             authorizeHttpRequest.requestMatchers(HttpMethod.POST, "/login").permitAll();
     //             authorizeHttpRequest.requestMatchers(HttpMethod.GET, "/login").permitAll();
-    //             authorizeHttpRequest.anyRequest().permitAll();
+    //             authorizeHttpRequest.anyRequest().authenticate();
     //         }
     //     )
     //     .build();
