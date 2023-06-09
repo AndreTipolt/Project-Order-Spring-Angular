@@ -25,10 +25,7 @@ public class UserService {
     }
 
     public void saveUser(UserDTO userDTO){
-        System.out.println(userDTO.getPassword()); // felipe
-        System.out.println(userDTO.getConfirmPassword()); // felipe
-        System.out.println(userDTO.getConfirmPassword() == userDTO.getPassword()); // falso
-        if(userDTO.getPassword() != userDTO.getConfirmPassword()){
+        if(!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
             throw new PasswordNotCoincideException("Password not Coincide");
         }
 
