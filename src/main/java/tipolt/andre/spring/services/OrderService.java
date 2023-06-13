@@ -66,7 +66,7 @@ public class OrderService {
 
             orderItemPK.setProduct(product);
             orderItem.setId(orderItemPK);
-            orderItem.setQuantity(3);
+            orderItem.setQuantity(1);
 
             listOrderItem.add(orderItem);
         }
