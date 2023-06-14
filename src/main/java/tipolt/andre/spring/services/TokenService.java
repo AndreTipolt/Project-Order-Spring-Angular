@@ -32,10 +32,10 @@ public class TokenService {
         try {
             return JWT.require(Algorithm.HMAC256(SecretJWT)).build().verify(token).getSubject();
         } catch (JWTDecodeException e) {
-            throw new InvalidJWTException("Token Invalido");
+            throw new InvalidJWTException("Invalid Token");
         }
         catch (SignatureVerificationException a){
-            throw new InvalidJWTException("Token Invalido");
+            throw new InvalidJWTException("Invalid Token");
         }
     }
 }
