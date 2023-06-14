@@ -3,22 +3,22 @@ package tipolt.andre.spring.services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.ProductRepository;
 
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
+@Transactional
 public class ProductServiceTests {
     
-    @InjectMocks
+    @Autowired
     private ProductService productService;
 
-    @Mock
+    @Autowired
     private ProductRepository productRepository;
 
     private String existingId;
@@ -32,20 +32,23 @@ public class ProductServiceTests {
         this.notExistingId = "0";
     }
 
-    // @Test
-    // public void findProductShouldReturnProductWhenIdExists() {
+    @Test
+    public void findProductShouldReturnProductWhenIdExists() {
 
-    //     ProductModel product = productService.findProductById(existingId);
+        ProductModel product = productService.findProductById(existingId);
 
-    //     Assertions.assertNotNull(product);
-    // }
+        Assertions.assertNotNull(product);
+
+        // Mockito.verify(productService).findProductById(existingId);
+    }
 
     @Test
     public void findProductShouldThrowObjectNotFoundExceptionWhenIdDoesNotExists() {
 
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {
-            ProductModel product = productService.findProductById(notExistingId);
+            productService.findProductById(notExistingId);
         });
-
+        
+        // Mockito.verify(productRepository).findById(notExistingId);
     }
 }

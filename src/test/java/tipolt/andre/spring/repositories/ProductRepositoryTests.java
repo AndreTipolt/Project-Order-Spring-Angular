@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import tipolt.andre.spring.models.ProductModel;
@@ -13,7 +13,7 @@ import tipolt.andre.spring.models.ProductModel;
 @DataJpaTest
 public class ProductRepositoryTests {
 
-    @Autowired
+    @Mock
     private ProductRepository productRepository;
 
     private String existingId;
