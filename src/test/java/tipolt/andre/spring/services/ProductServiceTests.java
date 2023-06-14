@@ -28,14 +28,14 @@ public class ProductServiceTests {
 
     @BeforeEach
     public void setUp() {
-        this.existingId = "7fcc0e2a-3210-4eca-a229-56a36bdb5964";
-        this.notExistingId = "a";
+        this.existingId = "1";
+        this.notExistingId = "0";
     }
 
     // @Test
     // public void findProductShouldReturnProductWhenIdExists() {
 
-    //     ProductModel product = productService.findProductById("7fcc0e2a-3210-4eca-a229-56a36bdb5964");
+    //     ProductModel product = productService.findProductById(existingId);
 
     //     Assertions.assertNotNull(product);
     // }
