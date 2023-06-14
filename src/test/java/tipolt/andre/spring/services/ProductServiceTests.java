@@ -1,12 +1,17 @@
 package tipolt.andre.spring.services;
 
+import static org.mockito.ArgumentMatchers.any;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.web.util.matcher.RequestMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
+import tipolt.andre.spring.dtos.ProductDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.ProductRepository;
@@ -35,9 +40,11 @@ public class ProductServiceTests {
     @Test
     public void findProductShouldReturnProductWhenIdExists() {
 
-        ProductModel product = productService.findProductById(existingId);
+        Assertions.assertDoesNotThrow(() -> {
+            ProductModel product = productService.findProductById(existingId);
 
-        Assertions.assertNotNull(product);
+            Assertions.assertNotNull(product);
+        });
 
         // Mockito.verify(productService).findProductById(existingId);
     }
@@ -50,5 +57,22 @@ public class ProductServiceTests {
         });
         
         // Mockito.verify(productRepository).findById(notExistingId);
+    }
+
+    @Test
+    public void saveProductShouldReturnObjectNotFoundExceptionWhenCategoryIdDoesNotExist() {
+        
+        String notExistingCategoryId = "0";
+
+        ProductDTO product = new ProductDTO();
+
+        product.setName(ArgumentMatchers.anyString());
+        product.setPrice(ArgumentMatchers.anyDouble());
+        product.setCategoryId(notExistingCategoryId);
+
+        Assertions.assertThrows(ObjectNotFoundException.class, () -> {
+
+            productService.saveProduct(product);
+        });
     }
 }
