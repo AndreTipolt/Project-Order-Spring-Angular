@@ -54,4 +54,26 @@ public class ProductService {
 
         productRepository.save(product);
     }
+
+    public void updateProduct(ProductDTO productDTO, String productId){
+
+        ProductModel product = this.findProductById(productId);
+
+        ProductModel productModel = this.update(productDTO, product);
+
+        productRepository.save(productModel);
+    }
+
+    private ProductModel update(ProductDTO productDTO, ProductModel product){
+
+        product.setName(productDTO.getName());
+        product.setPrice(productDTO.getPrice());
+
+        CategoryModel category = categoryRepository.findById(productDTO.getCategoryId())
+                                        .orElseThrow(() -> new ObjectNotFoundException("Invalid Category Id"));
+
+        product.setCategory(category);
+
+        return product;
+    }
 }
