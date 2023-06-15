@@ -12,13 +12,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ProductDTO {
     
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Name Field")
     private String name;
 
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Price Field")
     private Double price;
 
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Category Field")
     private String categoryId;
 
 

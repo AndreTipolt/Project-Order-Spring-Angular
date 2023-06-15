@@ -17,12 +17,12 @@ import lombok.Setter;
 public class OrderDTO {
 
 
-    @NotEmpty(message = "Fill all fields")
+    @NotEmpty(message = "Fill Products Field")
     private List<String> listProductId;
 
-    @NotNull(message = "Fill all fields")
+    @NotNull(message = "Fill User Field")
     private String userId;
 
-    @NotNull(message = "Fill all fields")
+    @NotNull(message = "Fill Quantity Fields")
     private Integer quantity;
 }

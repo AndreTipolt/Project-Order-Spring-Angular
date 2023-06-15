@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class LoginDTO {
     
-    @NotBlank
+    @NotBlank(message = "Fill Email Field")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Fill Password Field")
     private String password;
 }

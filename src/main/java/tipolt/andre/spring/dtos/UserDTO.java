@@ -6,23 +6,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tipolt.andre.spring.services.validation.UserInsertValid;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@UserInsertValid
 public class UserDTO {
     
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Name Field")
     private String name;
 
-    @NotNull(message = "Fill All Fields")
     @Email(message = "Invalid Email")
     private String email;
 
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Password Field")
     private String password;
 
-    @NotNull(message = "Fill All Fields")
+    @NotNull(message = "Fill Confirm Password Field")
     private String confirmPassword;
 }

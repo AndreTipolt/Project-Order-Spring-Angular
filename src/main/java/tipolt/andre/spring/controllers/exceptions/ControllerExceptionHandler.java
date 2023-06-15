@@ -2,6 +2,7 @@ package tipolt.andre.spring.controllers.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,11 +43,20 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<StandardError> methodArgumentNotValid(MethodArgumentNotValidException e, HttpServletRequest request){
+    public ResponseEntity<ValidationError> methodArgumentNotValid(MethodArgumentNotValidException e, HttpServletRequest request){
         HttpStatus httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
 
-        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Argument Exception", e.getBindingResult().getFieldError().getDefaultMessage(), request.getRequestURI());
+        ValidationError err = new ValidationError();
+        err.setTimeStamp(System.currentTimeMillis());
+        err.setStatus(httpStatus.value());
+        err.setMessage("Validation Exception");
+        err.setError(e.getMessage());
+        err.setPath(request.getRequestURI());
 
+        for(FieldError f : e.getBindingResult().getFieldErrors()){
+            err.addError(f.getField(), f.getDefaultMessage());
+        }
+        
         return ResponseEntity.status(httpStatus).body(err);
     }
 
