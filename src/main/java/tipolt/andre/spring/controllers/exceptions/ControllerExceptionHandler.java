@@ -2,6 +2,7 @@ package tipolt.andre.spring.controllers.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -39,4 +40,14 @@ public class ControllerExceptionHandler {
 
         return ResponseEntity.status(httpStatus).body(err);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<StandardError> methodArgumentNotValid(MethodArgumentNotValidException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Argument Exception", e.getBindingResult().getFieldError().getDefaultMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
 }
