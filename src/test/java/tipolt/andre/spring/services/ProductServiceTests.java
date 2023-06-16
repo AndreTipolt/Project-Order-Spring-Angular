@@ -1,15 +1,10 @@
 package tipolt.andre.spring.services;
 
-import static org.mockito.Mockito.times;
-
-import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import tipolt.andre.spring.ApplicationTestConfig;
