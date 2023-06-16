@@ -11,3 +11,8 @@ INSERT INTO tb_product(id, name, price, category_id) VALUES ('1','Televisão 40 
 INSERT INTO tb_product(id, name, price, category_id) VALUES ('2','Mouse Gamer', 199.99, '1');
 
 INSERT INTO tb_product(id, name, price, category_id) VALUES ('3','Geladeira 2 Portas Frost Free', 2499.99, '2');
+
+INSERT INTO tb_order(id, moment, client_id, status) VALUES ('1','2023-06-02 15:39:41.577911-03', '1', '1')
+
+INSERT INTO tb_order_item(product_id, order_id, quantity) VALUES ('2', '1', 2);
+INSERT INTO tb_order_item(product_id, order_id, quantity) VALUES ('3', '1', 2);
