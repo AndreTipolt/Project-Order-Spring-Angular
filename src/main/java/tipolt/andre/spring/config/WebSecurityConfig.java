@@ -39,8 +39,10 @@ public class WebSecurityConfig {
         .permitAll()
         .requestMatchers(HttpMethod.GET, "/login")
         .permitAll()
+        .requestMatchers(HttpMethod.POST, "/users")
+        .permitAll()
         .anyRequest()
-        .authenticated()
+        .permitAll()
         .and().addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class)
         .build();
 
