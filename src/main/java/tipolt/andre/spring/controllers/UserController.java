@@ -3,6 +3,7 @@ package tipolt.andre.spring.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void saveUser(@RequestBody @Valid UserDTO userDTO){
+    public ResponseEntity<Void> saveUser(@RequestBody @Valid UserDTO userDTO){
         userService.saveUser(userDTO);
+        return ResponseEntity.status(201).body(null);
     }
 }

@@ -18,6 +18,7 @@ public class UserDTO {
     @NotNull(message = "Fill Name Field")
     private String name;
 
+    @NotNull(message = "Fill Email Field")
     @Email(message = "Invalid Email")
     private String email;
 
