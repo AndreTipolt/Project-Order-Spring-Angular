@@ -26,7 +26,7 @@ public class WebSecurityConfig {
     //         (authorizeHttpRequest) -> {
     //             authorizeHttpRequest.requestMatchers(HttpMethod.POST, "/login").permitAll();
     //             authorizeHttpRequest.requestMatchers(HttpMethod.GET, "/login").permitAll();
-    //             authorizeHttpRequest.anyRequest().authenticate();
+    //             authorizeHttpRequest.anyRequest().authenticated();
     //         }
     //     )
     //     .build();
@@ -45,8 +45,8 @@ public class WebSecurityConfig {
         .permitAll()
         .and().addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class)
         .build();
-
     }
+
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
