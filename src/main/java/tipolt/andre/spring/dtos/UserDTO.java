@@ -1,30 +1,28 @@
 package tipolt.andre.spring.dtos;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tipolt.andre.spring.services.validation.UserInsertValid;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@UserInsertValid
 public class UserDTO {
     
-    @NotNull(message = "Fill Name Field")
+    @NotBlank(message = "Fill Name Field")
     private String name;
 
-    @NotNull(message = "Fill Email Field")
+    @NotBlank(message = "Fill Email Field")
     @Email(message = "Invalid Email")
     private String email;
 
-    @NotNull(message = "Fill Password Field")
+    @NotBlank(message = "Fill Password Field")
     private String password;
 
-    @NotNull(message = "Fill Confirm Password Field")
+    @NotBlank(message = "Fill Confirm Password Field")
     private String confirmPassword;
 }
