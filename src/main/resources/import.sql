@@ -1,6 +1,7 @@
 
 
 INSERT INTO tb_user(id, name, email, password) VALUES ('1','André Tipolt Lopes', 'andretipoltlopes@gmail.com', '$2a$10$KG1rXZc1PsexHQRvKV8f8OJFJk.wEYfK6kaOVcj/XRiLWrNayeVma');
+INSERT INTO tb_user(id, name, email, password) VALUES ('2','Luana Rodrigues', 'luanarodrigues@gmail.com', '$2a$10$h0iCED8NViQgCFilPrWTs.dJRQW/PinDhPkyAgb7rbk4VxTa2l80.');
 
 
 INSERT INTO tb_category(id, name) VALUES ('1', 'Tecnologia');
