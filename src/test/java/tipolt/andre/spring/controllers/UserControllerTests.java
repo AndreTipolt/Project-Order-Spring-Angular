@@ -15,8 +15,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import tipolt.andre.spring.ApplicationTestConfig;
-import tipolt.andre.spring.controllers.factories.UserFactory;
-import tipolt.andre.spring.dtos.UserDTO;
+import tipolt.andre.spring.dtos.UserInsertDTO;
+import tipolt.andre.spring.factories.UserFactory;
 import tipolt.andre.spring.repositories.UserRepository;
 import tipolt.andre.spring.services.UserService;
 
@@ -48,7 +48,7 @@ public class UserControllerTests extends ApplicationTestConfig {
     @DisplayName("Save User should return unprocessable entity when someone field is missing")
     public void saveUserShouldReturnUnprocessableEntityWhenSomeoneFieldIsMissing() throws Exception {
 
-        UserDTO userWithoutEmailField = UserFactory.createUserDTOWithoutEmailField();
+        UserInsertDTO userWithoutEmailField = UserFactory.createUserInsertDTOWithoutFieldEmail();
 
         String jsonBody = objectMapper.writeValueAsString(userWithoutEmailField);
 
@@ -64,7 +64,7 @@ public class UserControllerTests extends ApplicationTestConfig {
     @DisplayName("Save User Should return bad request when passwords not coincides")
     public void saveUserShouldReturnBadRequestWhenPasswordsNotCoincides() throws Exception {
 
-        UserDTO userWithDiffPasswords = UserFactory.createUserWithDiffPasswords();
+        UserInsertDTO userWithDiffPasswords = UserFactory.createUserInsertDTOWithDiffPasswords();
 
         String jsonBody = objectMapper.writeValueAsString(userWithDiffPasswords);
 
@@ -73,14 +73,16 @@ public class UserControllerTests extends ApplicationTestConfig {
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
-        result.andExpect(status().isUnprocessableEntity());
+        result.andExpect(status().isBadRequest());
     }
 
     @Test
     @DisplayName("Save User should return created when content is valid")
     public void saveUserShouldReturnCreatedWhenContentIsValid() throws Exception {
 
-        UserDTO userDTO = UserFactory.createUserDTO();
+        UserInsertDTO userDTO = UserFactory.createUserInsertDTOValid();
+
+        userDTO.setEmail("validemail@email.com"); // It's for don't throw email exception
 
         String jsonBody = objectMapper.writeValueAsString(userDTO);
 
@@ -96,7 +98,7 @@ public class UserControllerTests extends ApplicationTestConfig {
     @DisplayName("save user should return unprocessable entity when email already exists")
     public void saveUserShouldReturnUnprocessableEntityWhenEmailAlreadyExists() throws Exception {
 
-        UserDTO userWithEmailFieldAlreadyExists = UserFactory.createUserWithEmailFieldAlreadyExists();
+        UserInsertDTO userWithEmailFieldAlreadyExists = UserFactory.createUserInserDTOWithEmailFieldThatAlreadyExists();
 
         String jsonBody = objectMapper.writeValueAsString(userWithEmailFieldAlreadyExists);
 

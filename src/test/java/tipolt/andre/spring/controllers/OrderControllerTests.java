@@ -15,8 +15,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import tipolt.andre.spring.ApplicationTestConfig;
-import tipolt.andre.spring.controllers.factories.OrderFactory;
 import tipolt.andre.spring.dtos.OrderDTO;
+import tipolt.andre.spring.factories.OrderFactory;
 import tipolt.andre.spring.repositories.OrderRepository;
 import tipolt.andre.spring.services.OrderService;
 

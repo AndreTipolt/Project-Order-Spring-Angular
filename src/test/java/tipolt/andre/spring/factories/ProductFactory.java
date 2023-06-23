@@ -1,4 +1,4 @@
-package tipolt.andre.spring.controllers.factories;
+package tipolt.andre.spring.factories;
 
 import tipolt.andre.spring.dtos.ProductDTO;
 

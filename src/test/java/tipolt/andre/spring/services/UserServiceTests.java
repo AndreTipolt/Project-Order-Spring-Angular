@@ -14,9 +14,9 @@ import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
+import tipolt.andre.spring.factories.UserFactory;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
-import tipolt.andre.spring.services.factories.UserServiceFactory;
 
 public class UserServiceTests extends ApplicationTestConfig{
     
@@ -50,7 +50,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @DisplayName("Save User Should Throw PasswordNotCoincideException when password does not coincides")
     public void saveUserShouldThrowPasswordNotCoincideExceptionWhenPasswordDoesNotCoincides() {
 
-        UserInsertDTO userDTOWithDiffPasswords = UserServiceFactory.createUserInsertDTOWithDiffPasswords();
+        UserInsertDTO userDTOWithDiffPasswords = UserFactory.createUserInsertDTOWithDiffPasswords();
 
         Assertions.assertThrows(PasswordNotCoincideException.class, () -> {
 
@@ -62,7 +62,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @DisplayName("Save User should save user when userInsertDTO is valid")
     public void saveUserShouldSaveUserWhenUserInsertDTOIsValid() {
 
-        UserInsertDTO validUserDTO = UserServiceFactory.createUserInsertDTOValid();
+        UserInsertDTO validUserDTO = UserFactory.createUserInsertDTOValid();
 
         validUserDTO.setEmail("emailvalid@gmail.com"); // It's for don't throw email already exiests
 
@@ -75,7 +75,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @DisplayName("Update User should throw PasswordNotCoincideException when passwords does not coincides")
     public void updateUseSholdThrowPasswordNotCoincideExceptionWhenPasswordsDoesNotCoincides() {
 
-        UserUpdateDTO userDTOWithDiffPasswords = UserServiceFactory.createUserUpdateDTOWithDiffPasswords();
+        UserUpdateDTO userDTOWithDiffPasswords = UserFactory.createUserUpdateDTOWithDiffPasswords();
 
         Assertions.assertThrows(PasswordNotCoincideException.class, () -> {
 
@@ -87,7 +87,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @DisplayName("Update User should throw ObjectNotFoundException when user id does not exists")
     public void updateUseSholdThrowObjectNotFoundExceptionWhenUserIdDoesNotExists() {
 
-        UserUpdateDTO validUserUpdateDTO = UserServiceFactory.createUserUpdateDTOValid();
+        UserUpdateDTO validUserUpdateDTO = UserFactory.createUserUpdateDTOValid();
 
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {
 
@@ -99,7 +99,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @DisplayName("Update User should save user when userUpdateDTO is valid")
     public void updateUserShouldUpdateUserWhenUserUpdateDTOIsValid() {
 
-        UserUpdateDTO validUserUpdateDTO = UserServiceFactory.createUserUpdateDTOValid();
+        UserUpdateDTO validUserUpdateDTO = UserFactory.createUserUpdateDTOValid();
 
         Assertions.assertDoesNotThrow(() -> {
             userService.updateUser(existingId, validUserUpdateDTO);
