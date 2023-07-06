@@ -2,9 +2,11 @@ package tipolt.andre.spring.models.pk;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ import tipolt.andre.spring.models.ProductModel;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItemPK {
+public class OrderItemPK implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "product_id")

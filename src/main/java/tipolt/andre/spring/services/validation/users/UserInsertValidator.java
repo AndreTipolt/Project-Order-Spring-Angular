@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import tipolt.andre.spring.controllers.exceptions.FieldMessage;
 import tipolt.andre.spring.dtos.UserDTO;
 import tipolt.andre.spring.models.UserModel;

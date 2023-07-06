@@ -7,7 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;

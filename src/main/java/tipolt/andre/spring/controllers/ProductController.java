@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import tipolt.andre.spring.dtos.ProductDTO;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.services.ProductService;
