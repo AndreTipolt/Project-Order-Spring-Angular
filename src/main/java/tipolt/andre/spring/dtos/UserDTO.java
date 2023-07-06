@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO {
-    
+
     @NotBlank(message = "Fill Name Field")
     private String name;
 

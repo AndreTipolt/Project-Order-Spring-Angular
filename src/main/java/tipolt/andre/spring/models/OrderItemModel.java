@@ -10,14 +10,13 @@ import tipolt.andre.spring.models.pk.OrderItemPK;
 @Table(name = "tb_order_item")
 @Data
 public class OrderItemModel {
-    
+
     @EmbeddedId
-    private OrderItemPK id  = new OrderItemPK();
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
 
-
-    public Double subTotal(){
+    public Double subTotal() {
         return this.quantity * this.getId().getProduct().getPrice();
     }
 }

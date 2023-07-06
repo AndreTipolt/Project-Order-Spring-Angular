@@ -14,9 +14,9 @@ import tipolt.andre.spring.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserInsertValidator implements ConstraintValidator<UserInsertValid, UserDTO> {
-	
-    @Autowired
-    private UserRepository userRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
 	public void initialize(UserInsertValid ann) {
@@ -24,14 +24,14 @@ public class UserInsertValidator implements ConstraintValidator<UserInsertValid,
 
 	@Override
 	public boolean isValid(UserDTO dto, ConstraintValidatorContext context) {
-		
+
 		List<FieldMessage> list = new ArrayList<>();
 
-        Optional<UserModel> user = userRepository.findByEmail(dto.getEmail());
+		Optional<UserModel> user = userRepository.findByEmail(dto.getEmail());
 
-        if(user.isPresent()){
-            list.add(new FieldMessage("email", "Email already exists"));
-        }
+		if (user.isPresent()) {
+			list.add(new FieldMessage("email", "Email already exists"));
+		}
 
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();

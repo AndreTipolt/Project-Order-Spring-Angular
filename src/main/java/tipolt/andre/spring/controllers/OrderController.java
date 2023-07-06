@@ -24,16 +24,16 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping
-    public List<OrderModel> findAll(){
+    public List<OrderModel> findAll() {
         return orderService.findAll();
     }
 
     @PostMapping
-    public ResponseEntity<Void> saveOrder(@RequestBody @Valid OrderDTO orderDTO){
+    public ResponseEntity<Void> saveOrder(@RequestBody @Valid OrderDTO orderDTO) {
 
         orderService.save(orderDTO);
 
         return ResponseEntity.status(201).body(null);
     }
-    
+
 }

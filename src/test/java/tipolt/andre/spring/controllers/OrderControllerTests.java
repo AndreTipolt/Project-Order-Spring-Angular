@@ -93,7 +93,7 @@ public class OrderControllerTests extends ApplicationTestConfig {
 
     @Test
     @DisplayName("Save Order should return created when orderDTO is valid")
-    public void saveOrderShouldReturnCreatedWhenOrderDTOIsValid() throws Exception{
+    public void saveOrderShouldReturnCreatedWhenOrderDTOIsValid() throws Exception {
 
         OrderDTO orderDTO = OrderFactory.createOrderDTO();
 

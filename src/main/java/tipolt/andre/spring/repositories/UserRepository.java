@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import tipolt.andre.spring.models.UserModel;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, String>{
-    
+public interface UserRepository extends JpaRepository<UserModel, String> {
+
     Optional<UserModel> findByEmail(String email);
 }

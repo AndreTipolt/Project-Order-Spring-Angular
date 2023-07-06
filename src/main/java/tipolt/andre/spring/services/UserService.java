@@ -15,19 +15,19 @@ import tipolt.andre.spring.repositories.UserRepository;
 
 @Service
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public List<UserModel> findAll(){
+    public List<UserModel> findAll() {
         return userRepository.findAll();
     }
 
-    public void saveUser(UserInsertDTO userDTO){
-        if(!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
+    public void saveUser(UserInsertDTO userDTO) {
+        if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
             throw new PasswordNotCoincideException("Password not Coincide");
         }
 
@@ -42,7 +42,7 @@ public class UserService {
         userRepository.save(newUser);
     }
 
-    public UserModel findUserById(String userId){
+    public UserModel findUserById(String userId) {
 
         return userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException("User Not Found"));
     }
@@ -51,7 +51,7 @@ public class UserService {
 
         UserModel user = this.findUserById(userId);
 
-        if(!userUpdateDTO.getPassword().equals(userUpdateDTO.getConfirmPassword())){
+        if (!userUpdateDTO.getPassword().equals(userUpdateDTO.getConfirmPassword())) {
             throw new PasswordNotCoincideException("Password not coincides");
         }
         updateUserDtoToUserDatabase(user, userUpdateDTO);
@@ -59,7 +59,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    private void updateUserDtoToUserDatabase(UserModel userModel, UserUpdateDTO userUpdateDTO){
+    private void updateUserDtoToUserDatabase(UserModel userModel, UserUpdateDTO userUpdateDTO) {
         userModel.setEmail(userUpdateDTO.getEmail());
         userModel.setName(userUpdateDTO.getName());
         userModel.setPassword(passwordEncoder.encode(userUpdateDTO.getPassword()));

@@ -12,7 +12,7 @@ import tipolt.andre.spring.models.ProductModel;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryProductDTO {
-    
+
     private ProductModel product;
 
     private CategoryModel category;

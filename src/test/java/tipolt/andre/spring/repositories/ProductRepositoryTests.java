@@ -36,11 +36,10 @@ public class ProductRepositoryTests {
 
     @Test
     public void findByIdShouldReturnEmptyWhenIdDoesNotExists() {
-        
+
         Optional<ProductModel> product = productRepository.findById(notExistingId);
 
         Assertions.assertTrue(product.isEmpty());
     }
 
-    
 }

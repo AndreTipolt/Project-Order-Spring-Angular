@@ -1,6 +1,5 @@
 package tipolt.andre.spring.dtos;
 
-
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
@@ -15,7 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDTO {
-
 
     @NotEmpty(message = "Fill Products Field")
     private List<String> listProductId;

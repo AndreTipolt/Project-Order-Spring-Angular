@@ -18,8 +18,8 @@ import tipolt.andre.spring.factories.UserFactory;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
 
-public class UserServiceTests extends ApplicationTestConfig{
-    
+public class UserServiceTests extends ApplicationTestConfig {
+
     @Autowired
     private UserService userService;
 
@@ -28,7 +28,6 @@ public class UserServiceTests extends ApplicationTestConfig{
 
     private String existingId;
     private String nonExistingId;
-
 
     @BeforeEach
     public void setUp() {
@@ -39,7 +38,7 @@ public class UserServiceTests extends ApplicationTestConfig{
     @Test
     @DisplayName("Find All Users should return list of users")
     public void findAllUsersShouldReturnsListOfUsers() {
-        
+
         List<UserModel> listUser = userService.findAll();
 
         Assertions.assertFalse(listUser.isEmpty());

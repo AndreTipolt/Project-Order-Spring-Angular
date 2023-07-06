@@ -15,18 +15,17 @@ import tipolt.andre.spring.services.CategoryService;
 @RestController
 @RequestMapping(value = "/categories")
 public class CategoryController {
-    
+
     @Autowired
     private CategoryService categoryService;
 
-
     @GetMapping(value = "/{categoryId}")
-    public List<ProductModel> findCategoryById(@PathVariable String categoryId){
+    public List<ProductModel> findCategoryById(@PathVariable String categoryId) {
         return categoryService.findCategoryById(categoryId);
     }
 
     @GetMapping
-    public List<CategoryModel> findAll(){
+    public List<CategoryModel> findAll() {
         return categoryService.findAll();
     }
 }

@@ -9,10 +9,10 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="tb_role")
+@Table(name = "tb_role")
 @Data
 public class RoleModel {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;

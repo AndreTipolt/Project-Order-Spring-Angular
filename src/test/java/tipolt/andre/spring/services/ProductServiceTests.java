@@ -14,8 +14,8 @@ import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.repositories.ProductRepository;
 
 @DisplayName("ProductServiceTests")
-public class ProductServiceTests extends ApplicationTestConfig{
-    
+public class ProductServiceTests extends ApplicationTestConfig {
+
     @Autowired
     private ProductService productService;
 
@@ -25,10 +25,8 @@ public class ProductServiceTests extends ApplicationTestConfig{
     private String existingId;
     private String notExistingId;
 
-    
-
     @BeforeEach
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         this.existingId = "1";
         this.notExistingId = "0";
     }
@@ -38,7 +36,6 @@ public class ProductServiceTests extends ApplicationTestConfig{
 
         Assertions.assertDoesNotThrow(() -> {
             ProductModel product = productService.findProductById(existingId);
-
 
             Assertions.assertNotNull(product);
         });
@@ -52,13 +49,13 @@ public class ProductServiceTests extends ApplicationTestConfig{
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {
             productService.findProductById(notExistingId);
         });
-        
+
         // Mockito.verify(productRepository).findById(notExistingId);
     }
 
     @Test
     public void saveProductShouldReturnObjectNotFoundExceptionWhenCategoryIdDoesNotExist() {
-        
+
         String notExistingCategoryId = "0";
 
         ProductDTO product = new ProductDTO();

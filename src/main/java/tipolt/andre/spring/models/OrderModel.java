@@ -24,8 +24,8 @@ import tipolt.andre.spring.models.enums.StatusOrder;
 @Entity
 @Table(name = "tb_order")
 @Data
-public class OrderModel implements Serializable{
-    
+public class OrderModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
@@ -45,11 +45,10 @@ public class OrderModel implements Serializable{
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private PaymentModel payment;
 
-
-    public Double getTotal(){
+    public Double getTotal() {
         Double sumTotal = 0.0;
 
-        for(OrderItemModel orderItem : listOrderItems){
+        for (OrderItemModel orderItem : listOrderItems) {
             sumTotal += orderItem.subTotal();
         }
         return sumTotal;

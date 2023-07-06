@@ -13,14 +13,14 @@ import tipolt.andre.spring.repositories.ProductRepository;
 
 @Service
 public class CategoryService {
-    
+
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductModel> findCategoryById(String categoryId){
+    public List<ProductModel> findCategoryById(String categoryId) {
 
         categoryRepository.findById(categoryId).orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
 
@@ -28,7 +28,7 @@ public class CategoryService {
         return listProductsByCategory;
     }
 
-    public List<CategoryModel> findAll(){
+    public List<CategoryModel> findAll() {
         return categoryRepository.findAll();
     }
 }

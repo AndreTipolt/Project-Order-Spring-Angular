@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-    
+
     @NotNull(message = "Fill Name Field")
     private String name;
 
@@ -20,6 +20,5 @@ public class ProductDTO {
 
     @NotNull(message = "Fill Category Field")
     private String categoryId;
-
 
 }

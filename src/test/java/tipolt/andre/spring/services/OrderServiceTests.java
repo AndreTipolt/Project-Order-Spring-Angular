@@ -14,8 +14,8 @@ import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.OrderModel;
 import tipolt.andre.spring.repositories.OrderRepository;
 
-public class OrderServiceTests extends ApplicationTestConfig{
-    
+public class OrderServiceTests extends ApplicationTestConfig {
+
     @Autowired
     private OrderService orderService;
 
@@ -25,7 +25,7 @@ public class OrderServiceTests extends ApplicationTestConfig{
     @Test
     @DisplayName("Find all should return all orders")
     public void findAllShouldReturnAllOrders() {
-        
+
         List<OrderModel> listOrders = orderService.findAll();
 
         Assertions.assertFalse(listOrders.isEmpty());
@@ -41,7 +41,7 @@ public class OrderServiceTests extends ApplicationTestConfig{
             orderService.save(orderDTOWithUserIdNotExisting);
         });
     }
-    
+
     @Test
     @DisplayName("Save Order Should Throw ObjectNotFoundException When productID does not exists")
     public void saveOrderShouldThrowObjectNotFoundExceptionWhenProductIdDoesNotExists() {

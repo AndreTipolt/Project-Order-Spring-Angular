@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class LoginDTO {
-    
+
     @NotBlank(message = "Fill Email Field")
     private String email;
 

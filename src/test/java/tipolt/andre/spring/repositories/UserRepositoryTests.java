@@ -12,7 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tipolt.andre.spring.models.UserModel;
 
 @DataJpaTest
-public class UserRepositoryTests{
+public class UserRepositoryTests {
 
     @Autowired
     private UserRepository userRepository;
@@ -21,14 +21,14 @@ public class UserRepositoryTests{
     private String notExistingId;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         this.existingId = "1";
         this.notExistingId = "0";
     }
 
     @Test
     @DisplayName("Find Email Should Return Optional User When Email Exists")
-    public void findEmailShouldReturnOptionalUserWhenEmailExists(){
+    public void findEmailShouldReturnOptionalUserWhenEmailExists() {
 
         String existingEmail = "andretipoltlopes@gmail.com";
         Optional<UserModel> user = userRepository.findByEmail(existingEmail);
@@ -38,7 +38,7 @@ public class UserRepositoryTests{
 
     @Test
     @DisplayName("Find By Email Should Return Empty Optional When Email Does Not Exists")
-    public void findbyEmailShouldReturnEmptyOptionalWhenEmailDoesNotExists(){
+    public void findbyEmailShouldReturnEmptyOptionalWhenEmailDoesNotExists() {
 
         String notExistingEmail = "emailnotexists@notexists.com";
 
@@ -50,18 +50,16 @@ public class UserRepositoryTests{
 
     @Test
     @DisplayName("Find by id should return optional user when id exists")
-    public void findByIdShouldReturnsOptionalUserWhenIdExists(){
+    public void findByIdShouldReturnsOptionalUserWhenIdExists() {
 
         Optional<UserModel> user = userRepository.findById(existingId);
 
         Assertions.assertTrue(user.isPresent());
     }
 
-
-
     @Test
     @DisplayName("Find by id should return empty optional user when id does not exists")
-    public void findByIdShouldReturnEmptyOptionalWhenIdDoesNotExists(){
+    public void findByIdShouldReturnEmptyOptionalWhenIdDoesNotExists() {
 
         Optional<UserModel> user = userRepository.findById(notExistingId);
 

@@ -110,7 +110,8 @@ public class UserControllerTests extends ApplicationTestConfig {
     @DisplayName("save user should return unprocessable entity when email already exists")
     public void saveUserShouldReturnUnprocessableEntityWhenEmailAlreadyExists() throws Exception {
 
-        UserInsertDTO userWithEmailFieldAlreadyExists = UserFactory.createUserInsertDTOWithEmailFieldThatAlreadyExists();
+        UserInsertDTO userWithEmailFieldAlreadyExists = UserFactory
+                .createUserInsertDTOWithEmailFieldThatAlreadyExists();
 
         String jsonBody = objectMapper.writeValueAsString(userWithEmailFieldAlreadyExists);
 
@@ -141,7 +142,7 @@ public class UserControllerTests extends ApplicationTestConfig {
     @Test
     @DisplayName("Update User should return bad request when passwords not coincides")
     public void updateUserShouldReturnPasswordNotCoincideExceptionWhenPasswordsNotCoincides() throws Exception {
-        
+
         UserUpdateDTO userUpdateDTOWithDiffPasswords = UserFactory.createUserUpdateDTOWithDiffPasswords();
 
         String jsonBody = objectMapper.writeValueAsString(userUpdateDTOWithDiffPasswords);
@@ -156,7 +157,8 @@ public class UserControllerTests extends ApplicationTestConfig {
 
     @Test
     @DisplayName("Update User Should return unprocessable entity when user id try change email that not belongs himself")
-    public void updateUserShouldReturnUnprocessableEntityWhenUserIdTruyChangeEmailThatNotBelongsHimself() throws Exception {
+    public void updateUserShouldReturnUnprocessableEntityWhenUserIdTruyChangeEmailThatNotBelongsHimself()
+            throws Exception {
 
         UserUpdateDTO userUpdateDTOWithEmailNotBelongsUser = UserFactory.createUserUpdateWithEmailNotBelongsUserId();
 
@@ -175,7 +177,8 @@ public class UserControllerTests extends ApplicationTestConfig {
     public void updateUserShouldReturnNoContentWhenUserUpdateDTOIsValid() throws Exception {
         UserUpdateDTO userUpdateDTOWithEmailNotBelongsUser = UserFactory.createUserUpdateDTOValid();
 
-        userUpdateDTOWithEmailNotBelongsUser.setEmail("emailneverused@gmail.com"); // It's for doesn't throw email already exists
+        userUpdateDTOWithEmailNotBelongsUser.setEmail("emailneverused@gmail.com"); // It's for doesn't throw email
+                                                                                   // already exists
         String jsonBody = objectMapper.writeValueAsString(userUpdateDTOWithEmailNotBelongsUser);
 
         ResultActions result = mockMvc.perform(put("/users/{id}", existingId)

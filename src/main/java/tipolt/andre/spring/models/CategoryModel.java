@@ -15,14 +15,14 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_category")
 @Data
-public class CategoryModel{
-    
+public class CategoryModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String name;
-    
+
     @OneToMany(mappedBy = "category")
     private List<ProductModel> listProducts = new ArrayList<>();
 }

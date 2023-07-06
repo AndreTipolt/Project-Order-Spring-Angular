@@ -5,9 +5,8 @@ import java.util.List;
 import tipolt.andre.spring.dtos.OrderDTO;
 
 public class OrderFactory {
-    
 
-    public static OrderDTO createOrderDTO(){
+    public static OrderDTO createOrderDTO() {
 
         OrderDTO orderDTO = new OrderDTO(List.of("1"), "1", 1);
 
@@ -21,14 +20,14 @@ public class OrderFactory {
         return orderDTO;
     }
 
-    public static OrderDTO createOrderDTOWithInvalidProductID(){
+    public static OrderDTO createOrderDTOWithInvalidProductID() {
         String nonExistingProductID = "0";
 
         OrderDTO orderDTO = new OrderDTO(List.of(nonExistingProductID), "1", 1);
         return orderDTO;
     }
 
-    public static OrderDTO createOrderDTOWithoutUserIdField(){
+    public static OrderDTO createOrderDTOWithoutUserIdField() {
         OrderDTO orderDTO = new OrderDTO();
 
         orderDTO.setQuantity(1);

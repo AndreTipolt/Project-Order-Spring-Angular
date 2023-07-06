@@ -37,14 +37,15 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductModel findProductById(String productId) {
-        return productRepository.findById(productId).orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
     }
 
     @Transactional
-    public void saveProduct(ProductDTO newProduct){
+    public void saveProduct(ProductDTO newProduct) {
 
         CategoryModel category = categoryRepository.findById(newProduct.getCategoryId())
-                                    .orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
+                .orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
 
         ProductModel product = new ProductModel();
 
@@ -55,7 +56,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void updateProduct(ProductDTO productDTO, String productId){
+    public void updateProduct(ProductDTO productDTO, String productId) {
 
         ProductModel product = this.findProductById(productId);
 
@@ -64,13 +65,13 @@ public class ProductService {
         productRepository.save(productModel);
     }
 
-    private ProductModel update(ProductDTO productDTO, ProductModel product){
+    private ProductModel update(ProductDTO productDTO, ProductModel product) {
 
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
 
         CategoryModel category = categoryRepository.findById(productDTO.getCategoryId())
-                                        .orElseThrow(() -> new ObjectNotFoundException("Invalid Category Id"));
+                .orElseThrow(() -> new ObjectNotFoundException("Invalid Category Id"));
 
         product.setCategory(category);
 

@@ -7,6 +7,6 @@ import tipolt.andre.spring.models.OrderItemModel;
 import tipolt.andre.spring.models.pk.OrderItemPK;
 
 @Repository
-public interface OrderItemRepository extends JpaRepository<OrderItemModel, OrderItemPK>{
-    
+public interface OrderItemRepository extends JpaRepository<OrderItemModel, OrderItemPK> {
+
 }

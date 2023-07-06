@@ -18,7 +18,7 @@ import lombok.Data;
 @Table(name = "tb_payment")
 @Data
 public class PaymentModel {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;

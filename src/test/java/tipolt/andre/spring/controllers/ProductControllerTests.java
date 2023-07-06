@@ -64,7 +64,7 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
     public void findByIdShouldReturnNotFoundWhenIdDoesNotExists() throws Exception {
 
         ResultActions result = mockMvc.perform(get("/products/{id}", nonExistingId)
-                                                .accept(MediaType.APPLICATION_JSON));
+                .accept(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isNotFound());
     }
@@ -143,14 +143,14 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
     @DisplayName("save product should return created when all fields are filled")
     public void saveProductShouldReturnCreatedWhenAllFieldsAreeFilled() throws Exception {
         ProductDTO productDTO = ProductFactory.createProductDTO();
-    
+
         String jsonBody = objectMapper.writeValueAsString(productDTO);
 
         ResultActions result = mockMvc.perform(post("/products")
                 .content(jsonBody)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
-        
+
         result.andExpect(status().isCreated());
     }
 
