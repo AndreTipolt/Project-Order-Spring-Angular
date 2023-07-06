@@ -4,6 +4,11 @@ INSERT INTO tb_user(id, name, email, password) VALUES ('1','André Tipolt Lopes'
 INSERT INTO tb_user(id, name, email, password) VALUES ('2','Luana Rodrigues', 'luanarodrigues@gmail.com', '$2a$10$h0iCED8NViQgCFilPrWTs.dJRQW/PinDhPkyAgb7rbk4VxTa2l80.');
 
 
+INSERT INTO tb_role(id, authority) VALUES ('1', 'OPERATOR');
+INSERT INTO tb_role(id, authority) VALUES ('2', 'ADMIN');
+
+INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '2');
+
 INSERT INTO tb_category(id, name) VALUES ('1', 'Tecnologia');
 INSERT INTO tb_category(id, name) VALUES ('2', 'Aparelhos Domésticos');
 
