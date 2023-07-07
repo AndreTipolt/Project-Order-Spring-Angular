@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_user", schema = "targetSchemaName")
 @Data
 public class UserModel implements UserDetails{
 
