@@ -1,7 +1,11 @@
 package tipolt.andre.spring.dtos;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +29,7 @@ public class UserDTO {
 
     @NotBlank(message = "Fill Confirm Password Field")
     private String confirmPassword;
+
+    @NotEmpty(message = "Fill roles Field")
+    private List<Long> roles;
 }

@@ -10,8 +10,13 @@ import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
+import tipolt.andre.spring.models.RoleModel;
 import tipolt.andre.spring.models.UserModel;
+import tipolt.andre.spring.models.UserRoleModel;
+import tipolt.andre.spring.models.pk.UserRolePK;
+import tipolt.andre.spring.repositories.RoleRepository;
 import tipolt.andre.spring.repositories.UserRepository;
+import tipolt.andre.spring.repositories.UserRoleRepository;
 
 @Service
 public class UserService {
@@ -21,6 +26,12 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserRoleRepository userRoleRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     public List<UserModel> findAll() {
         return userRepository.findAll();
@@ -39,7 +50,22 @@ public class UserService {
         newUser.setEmail(userDTO.getEmail());
         newUser.setPassword(newPassword);
 
-        userRepository.save(newUser);
+        UserModel createdUser = userRepository.save(newUser);
+
+        for(Long roleId : userDTO.getRoles()){
+
+            RoleModel role = roleRepository.findById(roleId)
+                                           .orElseThrow(() -> new ObjectNotFoundException("Role Id not Found"));
+            
+            UserRolePK userRolePK = new UserRolePK();
+            userRolePK.setRole(role);
+            userRolePK.setUser(createdUser);
+
+            UserRoleModel userRoleModel = new UserRoleModel();
+            userRoleModel.setId(userRolePK);
+
+            userRoleRepository.save(userRoleModel);
+        }
     }
 
     public UserModel findUserById(String userId) {
