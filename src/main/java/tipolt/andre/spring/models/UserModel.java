@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class UserModel implements UserDetails{
     @OneToMany(mappedBy = "user")
     private List<OrderModel> listOrders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "id.user")
+    @OneToMany(mappedBy = "id.user", fetch = FetchType.EAGER)
     private Set<UserRoleModel> roles = new HashSet<>();
 
     @JsonIgnore
