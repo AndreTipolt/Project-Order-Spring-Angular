@@ -2,17 +2,15 @@ package tipolt.andre.spring.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 import lombok.Data;
 
@@ -46,17 +43,13 @@ public class UserModel implements UserDetails{
     @OneToMany(mappedBy = "user")
     private List<OrderModel> listOrders = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tb_user_role", 
-    joinColumns = @JoinColumn(name="user_id"),
-    inverseJoinColumns = @JoinColumn(name="role_id")
-    )
-    private List<RoleModel> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "id.user")
+    private Set<UserRoleModel> roles = new HashSet<>();
 
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream().map((role) -> new SimpleGrantedAuthority(role.getAuthority())).toList();
+        return roles.stream().map((role) -> new SimpleGrantedAuthority(role.getRole().getAuthority())).toList();
     }
 
     @JsonIgnore
