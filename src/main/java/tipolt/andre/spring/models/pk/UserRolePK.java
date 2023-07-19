@@ -6,6 +6,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import tipolt.andre.spring.models.RoleModel;
 import tipolt.andre.spring.models.UserModel;
@@ -14,6 +16,7 @@ import tipolt.andre.spring.models.UserModel;
 @Data
 public class UserRolePK implements Serializable{
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
