@@ -82,4 +82,15 @@ public class UserModel implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
+    public boolean hasRole(String roleName){
+
+        for(UserRoleModel role : roles ){
+
+            if(role.getRole().getAuthority().equals(roleName)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

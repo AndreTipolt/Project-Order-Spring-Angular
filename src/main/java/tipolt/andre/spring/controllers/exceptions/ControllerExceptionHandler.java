@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
+import tipolt.andre.spring.services.exceptions.ForbiddenException;
+import tipolt.andre.spring.services.exceptions.UnauthorizedException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -57,6 +59,24 @@ public class ControllerExceptionHandler {
             err.addError(f.getField(), f.getDefaultMessage());
         }
         
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<OAuthCustomError> forbidden(ForbiddenException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.FORBIDDEN;
+
+        OAuthCustomError err = new OAuthCustomError("Forbidden", e.getMessage());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<OAuthCustomError> unathorized(UnauthorizedException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
+
+        OAuthCustomError err = new OAuthCustomError("Unathorized", e.getMessage());
+
         return ResponseEntity.status(httpStatus).body(err);
     }
 

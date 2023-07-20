@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tipolt.andre.spring.dtos.OrderDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
@@ -35,8 +38,9 @@ public class OrderService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<OrderModel> findAll() {
-        return orderRepository.findAll();
+    @Transactional(readOnly = true)
+    public Page<OrderModel> findAll(Pageable pageable) {
+        return orderRepository.findAll(pageable);
     }
 
     public void save(OrderDTO orderDTO) {
@@ -74,5 +78,12 @@ public class OrderService {
         for (OrderItemModel orderItem : listOrderItem) {
             orderItemRepository.save(orderItem);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Page<OrderModel> findAllSelfOrders(Pageable pageable){
+
+
+
     }
 }

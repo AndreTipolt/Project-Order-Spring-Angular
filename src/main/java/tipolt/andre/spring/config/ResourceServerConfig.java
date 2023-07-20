@@ -22,11 +22,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private Environment env;
 
-    private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
+    private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", "/products/**" };
 
-    private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/categories/**" };
+    private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/categories/**", "/myorders/**" };
 
-    private static final String[] ADMIN = { "/users/**" };
+    private static final String[] ADMIN = { "/users/**", "/orders/**" };
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
