@@ -38,13 +38,4 @@ public class OrderController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/myorders")
-    public ResponseEntity<OrderModel> findAllSelfOrders(Pageable pageable){
-
-        Page<OrderModel> pageOrders = orderService.findAllSelfOrders(pageable);
-
-        return ResponseEntity.ok().body(pageOrders);
-
-    }
-
 }

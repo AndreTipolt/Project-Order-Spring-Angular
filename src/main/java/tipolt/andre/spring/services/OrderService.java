@@ -79,11 +79,4 @@ public class OrderService {
             orderItemRepository.save(orderItem);
         }
     }
-
-    @Transactional(readOnly = true)
-    public Page<OrderModel> findAllSelfOrders(Pageable pageable){
-
-
-
-    }
 }
