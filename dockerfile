@@ -5,4 +5,3 @@ WORKDIR /app
 COPY . /app
 
 RUN ./mvnw clean package -DskipTests
-
