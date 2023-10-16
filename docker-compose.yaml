@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  spring-app:
+    container_name: spring-app
+    build: .
+    ports:
+      - 8080:8080
