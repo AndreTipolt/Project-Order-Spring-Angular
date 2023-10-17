@@ -1,8 +1,30 @@
 version: '3.9'
 
+networks:
+  application-spring:
+    driver: bridge
+
 services:
   spring-app:
     container_name: spring-app
     build: .
     ports:
       - 8080:8080
+    networks:
+      - application-spring
+    depends_on:
+      - postgres-sql
+
+  postgres-sql:
+    container_name: postgres-sql
+    image: postgres
+    volumes:
+      - ./database/postgres-data:/var/lib/postgresql/data
+    networks: 
+      - application-spring
+    ports:
+      - "2222:5432"
+    environment:
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
