@@ -17,8 +17,8 @@ services:
       # - mysql-sql
     links:
       - postgres_sql
-    environment:
-      - URL_DATABASE=jdbc:postgresql://postgres_sql:5432/postgres
+    env_file:
+      - env/.env
 
   postgres_sql:
     container_name: postgres_sql
@@ -29,11 +29,9 @@ services:
       - application_spring
     ports:
       - "2222:5432"
-    environment:
-      POSTGRES_PASSWORD: "1234"
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
     restart: always
+    env_file:
+      - env/.env
 
   # mysql-sql:
   #   container_name: mysql-sql
@@ -49,48 +47,3 @@ services:
   #     - "3310:3306"
   #   networks:
   #     - application-spring
-
-  # version: “3”
-
-# services:
-# versatile-development:
-# container_name: versatile
-# build:
-# context: .
-# dockerfile: Dockerfile
-# environment:
-# - POSTGRES_HOST=postgresql
-# - DB_CONNECTION=pgsql
-# - DB_HOST=postgresql
-# - DB_PORT=5431
-# - DB_DATABASE=versatile
-# - DB_USERNAME=postgres
-# - DB_PASSWORD=postgres
-# - REDIS_HOST=redis
-# - REDIS_PORT=6379
-# ports:
-# - 3000:8081
-# links:
-# - postgresql
-# - redis
-
-# postgresql:
-# image: postgres:11.7
-# network_mode: bridge
-# container_name: postgresql
-# environment:
-# - POSTGRES_DB=versatile
-# - POSTGRES_USER=postgres
-# - POSTGRES_PASSWORD=postgres
-# volumes:
-# - postgres-data:/var/lib/postgresql/data
-# ports:
-# - 3001:5432
-
-# redis:
-# image: redis:latest
-# container_name: redis
-# ports:
-# - 3002:6379
-
-# volumes:
