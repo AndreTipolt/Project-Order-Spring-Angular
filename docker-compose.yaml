@@ -1,30 +1,96 @@
 version: '3.9'
 
 networks:
-  application-spring:
+  application_spring:
     driver: bridge
 
 services:
-  spring-app:
-    container_name: spring-app
+  spring_app:
+    container_name: spring_app
     build: .
     ports:
       - 8080:8080
     networks:
-      - application-spring
+      - application_spring
     depends_on:
-      - postgres-sql
+      - postgres_sql
+      # - mysql-sql
+    links:
+      - postgres_sql
+    environment:
+      - URL_DATABASE=jdbc:postgresql://postgres_sql:5432/postgres
 
-  postgres-sql:
-    container_name: postgres-sql
+  postgres_sql:
+    container_name: postgres_sql
     image: postgres
     volumes:
       - ./database/postgres-data:/var/lib/postgresql/data
     networks: 
-      - application-spring
+      - application_spring
     ports:
       - "2222:5432"
     environment:
       POSTGRES_PASSWORD: "1234"
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+    restart: always
+
+  # mysql-sql:
+  #   container_name: mysql-sql
+  #   image: mysql:8.0
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   environment:
+  #     MYSQL_USER: mysql
+  #     MYSQL_DATABASE: mysql
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - "3310:3306"
+  #   networks:
+  #     - application-spring
+
+  # version: “3”
+
+# services:
+# versatile-development:
+# container_name: versatile
+# build:
+# context: .
+# dockerfile: Dockerfile
+# environment:
+# - POSTGRES_HOST=postgresql
+# - DB_CONNECTION=pgsql
+# - DB_HOST=postgresql
+# - DB_PORT=5431
+# - DB_DATABASE=versatile
+# - DB_USERNAME=postgres
+# - DB_PASSWORD=postgres
+# - REDIS_HOST=redis
+# - REDIS_PORT=6379
+# ports:
+# - 3000:8081
+# links:
+# - postgresql
+# - redis
+
+# postgresql:
+# image: postgres:11.7
+# network_mode: bridge
+# container_name: postgresql
+# environment:
+# - POSTGRES_DB=versatile
+# - POSTGRES_USER=postgres
+# - POSTGRES_PASSWORD=postgres
+# volumes:
+# - postgres-data:/var/lib/postgresql/data
+# ports:
+# - 3001:5432
+
+# redis:
+# image: redis:latest
+# container_name: redis
+# ports:
+# - 3002:6379
+
+# volumes:
