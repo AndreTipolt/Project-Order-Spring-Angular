@@ -28,7 +28,7 @@ public class OrderModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private Instant moment;
 

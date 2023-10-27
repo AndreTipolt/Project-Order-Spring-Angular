@@ -32,7 +32,6 @@ public class OrderRepositoryTests {
     public void findAllShouldReturnAllOrders() {
 
         List<OrderModel> listOrders = orderRepository.findAll();
-
         Assertions.assertFalse(listOrders.isEmpty());
     }
 

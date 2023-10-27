@@ -1,5 +1,7 @@
 package tipolt.andre.spring.factories;
 
+import java.util.List;
+
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 
@@ -11,6 +13,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
     }
