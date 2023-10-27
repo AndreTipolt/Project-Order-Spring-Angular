@@ -24,6 +24,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("notCoincidePassword");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
     }
@@ -32,17 +33,19 @@ public class UserFactory {
         UserInsertDTO userInsertDTO = new UserInsertDTO();
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
+        userInsertDTO.setEmail(null);
         userInsertDTO.setConfirmPassword("password123");
-
+        userInsertDTO.setRoles(List.of("1"));
         return userInsertDTO;
     }
 
     public static UserInsertDTO createUserInsertDTOWithEmailFieldThatAlreadyExists() {
         UserInsertDTO userInsertDTO = new UserInsertDTO();
         userInsertDTO.setName("foo");
-        userInsertDTO.setEmail("luanarodrigues@gmail.com");
+        userInsertDTO.setEmail("andretipoltlopes@gmail.com");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
     }
@@ -53,6 +56,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("notCoincidePassword");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
     }
@@ -63,6 +67,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
     }
@@ -74,7 +79,20 @@ public class UserFactory {
         userInsertDTO.setEmail("luanarodrigues@gmail.com");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
+        userInsertDTO.setRoles(List.of("1"));
 
         return userInsertDTO;
+    }
+
+    public static UserUpdateDTO createUserUpdateDTOWhenIdUserDoesNotExist(){
+
+        UserUpdateDTO userUpdateDTOValid = new UserUpdateDTO();
+        userUpdateDTOValid.setEmail("emailvalid@gmail.com");
+        userUpdateDTOValid.setName("Random name");
+        userUpdateDTOValid.setPassword("randomPassword");
+        userUpdateDTOValid.setConfirmPassword("randomPassword");
+        userUpdateDTOValid.setRoles(List.of("1"));
+        return userUpdateDTOValid;
+        
     }
 }
