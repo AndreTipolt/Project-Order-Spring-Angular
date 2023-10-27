@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tipolt.andre.spring.ApplicationTestConfig;
 import tipolt.andre.spring.dtos.OrderDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
-import tipolt.andre.spring.models.OrderModel;
 import tipolt.andre.spring.repositories.OrderRepository;
 
 public class OrderServiceTests extends ApplicationTestConfig {

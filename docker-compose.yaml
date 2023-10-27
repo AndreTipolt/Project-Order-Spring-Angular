@@ -1,30 +1,49 @@
 version: '3.9'
 
 networks:
-  application-spring:
+  application_spring:
     driver: bridge
 
 services:
-  spring-app:
-    container_name: spring-app
+  spring_app:
+    container_name: spring_app
     build: .
     ports:
       - 8080:8080
     networks:
-      - application-spring
+      - application_spring
     depends_on:
-      - postgres-sql
+      - postgres_sql
+      # - mysql-sql
+    links:
+      - postgres_sql
+    env_file:
+      - env/.env
 
-  postgres-sql:
-    container_name: postgres-sql
+  postgres_sql:
+    container_name: postgres_sql
     image: postgres
     volumes:
       - ./database/postgres-data:/var/lib/postgresql/data
     networks: 
-      - application-spring
+      - application_spring
     ports:
       - "2222:5432"
-    environment:
-      POSTGRES_PASSWORD: "1234"
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
+    restart: always
+    env_file:
+      - env/.env
+
+  # mysql-sql:
+  #   container_name: mysql-sql
+  #   image: mysql:8.0
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   environment:
+  #     MYSQL_USER: mysql
+  #     MYSQL_DATABASE: mysql
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - "3310:3306"
+  #   networks:
+  #     - application-spring
