@@ -121,6 +121,16 @@
 
 	<profiles>
 		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>test</spring.profiles.active>
+			</properties>
+		</profile>
+		
+		<profile>
 			<id>dev</id> <!--List profiles mvn help:active-profiles -->
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -129,13 +139,14 @@
 				<spring.profiles.active>dev</spring.profiles.active>
 			</properties>
 		</profile>
+
 		<profile>
-			<id>test</id>
+			<id>prod</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<spring.profiles.active>test</spring.profiles.active>
+				<spring.profiles.active>prod</spring.profiles.active>
 			</properties>
 		</profile>
 	</profiles>
