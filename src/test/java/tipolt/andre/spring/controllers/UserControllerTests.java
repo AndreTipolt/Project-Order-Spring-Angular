@@ -1,18 +1,26 @@
 package tipolt.andre.spring.controllers;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -40,10 +48,24 @@ public class UserControllerTests extends ApplicationTestConfig {
     private String existingId;
     private String nonExistingId;
 
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String clientSecret;
+
+    private String username;
+    private String password;
+
+    private String acessToken;
+
     @BeforeEach
-    public void setUp() {
+    void setUp() throws Exception {
         this.existingId = "1";
         this.nonExistingId = "0";
+        this.username = "andretipoltlopes@gmail.com";
+        this.password = "andre1234";
+        this.acessToken = obtainAccessToken(username, password);
     }
 
     @Test
@@ -51,6 +73,7 @@ public class UserControllerTests extends ApplicationTestConfig {
     public void findAllShouldReturnListOfUsers() throws Exception {
 
         ResultActions result = mockMvc.perform(get("/users")
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isOk());
@@ -66,6 +89,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(post("/users")
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -82,6 +106,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(post("/users")
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -100,6 +125,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(post("/users")
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -117,6 +143,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(post("/users")
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -127,12 +154,13 @@ public class UserControllerTests extends ApplicationTestConfig {
     @DisplayName("Update User should return not found when user id does not exists")
     public void updateUserShouldReturnObjectNotFoundExceptionWhenUserIdDoesNotExists() throws Exception {
 
-        UserUpdateDTO userUpdateDTOValid = UserFactory.createUserUpdateDTOValid();
+        UserUpdateDTO userUpdateDTOValid = UserFactory.createUserUpdateDTOWhenIdUserDoesNotExist();
 
         String jsonBody = objectMapper.writeValueAsString(userUpdateDTOValid);
 
         ResultActions result = mockMvc.perform(put("/users/{id}", nonExistingId)
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -149,6 +177,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(put("/users/{id}", existingId)
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -166,6 +195,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         ResultActions result = mockMvc.perform(put("/users/{id}", existingId)
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
@@ -181,11 +211,31 @@ public class UserControllerTests extends ApplicationTestConfig {
                                                                                    // already exists
         String jsonBody = objectMapper.writeValueAsString(userUpdateDTOWithEmailNotBelongsUser);
 
-        ResultActions result = mockMvc.perform(put("/users/{id}", existingId)
+        ResultActions result = mockMvc.perform(put("/users/{id}", "3")
                 .content(jsonBody)
+                .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isNoContent());
     }
+
+    private String obtainAccessToken(String username, String password) throws Exception {
+
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "password");
+		params.add("client_id", clientId);
+		params.add("username", username);
+		params.add("password", password);
+
+		ResultActions result = mockMvc
+				.perform(post("/oauth/token").params(params).with(httpBasic(clientId, clientSecret))
+						.accept("application/json;charset=UTF-8"))
+				.andExpect(status().isOk()).andExpect(content().contentType("application/json;charset=UTF-8"));
+
+		String resultString = result.andReturn().getResponse().getContentAsString();
+
+		JacksonJsonParser jsonParser = new JacksonJsonParser();
+		return jsonParser.parseMap(resultString).get("access_token").toString();
+	}	
 }
