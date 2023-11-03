@@ -24,4 +24,4 @@ jobs:
         file: ./dockerfile
         push: true
         tags:
-          andretipolt/project_order_spring_image:v1
+          andretipolt/project_order_spring_image:${{githuv.run_number}}
