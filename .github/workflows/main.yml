@@ -18,7 +18,7 @@ jobs:
         password: ${{secrets.DOCKERHUB_PASSWORD}}
     
     - name: Construção da imagem Docker
-      uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
+    - uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
       with:
         context: . # Aonde está a imagem docker
         file: ./dockerfile
