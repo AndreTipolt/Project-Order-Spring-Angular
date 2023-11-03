@@ -1,0 +1,21 @@
+name: CI-CD
+
+on:
+  push:
+    branches: ["dev"]
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4.1.1
+    - name: Build docker image
+      uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
+      with:
+        context: . # Aonde está a imagem docker
+        file: ./dockerfile
+        push: true
+        tags:
+          andretipolt/project_order_spring_image:v1
+          andretipolt/project_order_spring_image:latest
