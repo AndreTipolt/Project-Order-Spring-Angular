@@ -92,11 +92,11 @@
 			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<build>
