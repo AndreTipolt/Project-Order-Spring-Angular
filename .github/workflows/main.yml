@@ -34,3 +34,4 @@ jobs:
         push: true
         tags:
           andretipolt/project_order_spring_image:${{github.run_number}}
+          
