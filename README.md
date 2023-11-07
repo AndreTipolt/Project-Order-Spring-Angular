@@ -12,6 +12,12 @@
 docker compose up --build
 ```
 
+<p>Caso queira rodar a aplicação usando o Maven basta digitar o seguinte comando no terminal:</p>
+
+```bash
+./mvnw spring-boot:run -Ptest
+```
+
 <img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/listProducts.png" alt="" style=" display: block; margin-bottom: 40px;">
 
 <img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/findAllOrders.png" alt="" style=" display: block; margin-bottom: 40px;">
