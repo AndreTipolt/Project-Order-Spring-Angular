@@ -32,6 +32,21 @@ services:
     restart: always
     env_file:
       - env/.env
+  redis:
+    hostname: redis-container
+    container_name: redis-container-db
+    image: redis:7.2.3
+    ports:
+      - "6379:6379"
+  
+  redis-GUI:
+    container_name: redis-GUI
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
 
   # mysql-sql:
   #   container_name: mysql-sql
