@@ -18,11 +18,11 @@ public class TestController {
 
     @GetMapping
     public Mono<String> save(){
-        return redisCacheService.save("product", "valorzinho");
+        return redisCacheService.save("product", "valueTest");
     }
 
-    @GetMapping(value = "/{id}")
-    public Mono<String> get(@PathVariable String id){
-        return redisCacheService.get(id);
+    @GetMapping(value = "/{key}")
+    public Mono<String> get(@PathVariable String key){
+        return redisCacheService.get(key);
     }
 }
