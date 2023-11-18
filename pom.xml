@@ -63,7 +63,7 @@
 			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -102,6 +102,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -120,7 +126,7 @@
 				</configuration> -->
 			</plugin>
 
-			
+
 		</plugins>
 	</build>
 
@@ -134,9 +140,10 @@
 				<spring.profiles.active>test</spring.profiles.active>
 			</properties>
 		</profile>
-		
+
 		<profile>
-			<id>dev</id> <!--List profiles mvn help:active-profiles -->
+			<id>dev</id> <!--List
+			profiles mvn help:active-profiles -->
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -155,7 +162,7 @@
 			</properties>
 		</profile>
 	</profiles>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

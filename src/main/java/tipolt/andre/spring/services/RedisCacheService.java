@@ -3,9 +3,11 @@ package tipolt.andre.spring.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 import tipolt.andre.spring.repositories.RedisCacheRepository;
 
+@Slf4j
 @Service
 public class RedisCacheService {
 
@@ -15,19 +17,25 @@ public class RedisCacheService {
     public Mono<Object> save(String key, Object object) {
 
         try {
-            return redisCacheRepository.save(key, object)
-                    .flatMap(saved -> { return Mono.just(saved); });
+            
+            return redisCacheRepository
+                    .save(key, object)
+                    .flatMap(saved -> { return Mono.just(object); });
+
         } catch (Exception e) {
-            System.out.println("Erro ao tentar salvar cache para chave {}");
+
+            log.error("Erro ao tentar salvar cache para chave {}", key);
         }
         return Mono.just(object);
     }
 
-    public Mono<Object> get(Object key) {
+    public Mono<Object> get(String key) {
         try {
+
             return redisCacheRepository.get(key);
+
         } catch (Exception ex) {
-            System.out.println("Erro ao tentar recuperar cache para chave {}");
+            log.error("Erro ao tentar recuperar cache para chave {}", key);
         }
 
         return Mono.empty();
@@ -36,9 +44,11 @@ public class RedisCacheService {
     public Mono<Boolean> existForKey(String key) {
 
         try {
+
             return redisCacheRepository.existsForKey(key);
+
         } catch (Exception ex) {
-            System.out.println("Erro ao tentar recuperar cache para chave {}");
+            log.error("Erro ao tentar recuperar cache para chave {}", key, ex);
         }
         return Mono.just(false);
     }
