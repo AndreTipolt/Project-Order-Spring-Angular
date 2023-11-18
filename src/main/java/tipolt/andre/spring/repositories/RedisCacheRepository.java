@@ -2,6 +2,7 @@ package tipolt.andre.spring.repositories;
 
 import java.time.Duration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -13,18 +14,19 @@ import reactor.core.publisher.Mono;
 @Repository
 public class RedisCacheRepository {
     
-    private ReactiveRedisTemplate<String, Object> reactiveRedisTemplate;
+    @Autowired
+    private ReactiveRedisTemplate<String, String> reactiveRedisTemplate;
 
     @Value("${app-config.cache.ttl}")
     private Integer ttl;
 
-    public Mono<Boolean> save(String key, Object object){
+    public Mono<Boolean> save(String key, String value){
         return reactiveRedisTemplate.opsForValue()
-                .set(key, object)
+                .set(key, value)
                 .then(reactiveRedisTemplate.expire(key, Duration.ofSeconds(ttl)));
     }
 
-    public Mono<Object> get(String key){
+    public Mono<String> get(String key){
         return reactiveRedisTemplate.opsForValue().get(key);
     }
 

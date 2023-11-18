@@ -14,22 +14,22 @@ public class RedisCacheService {
     @Autowired
     private RedisCacheRepository redisCacheRepository;
 
-    public Mono<Object> save(String key, Object object) {
+    public Mono<String> save(String key, String value) {
 
         try {
             
             return redisCacheRepository
-                    .save(key, object)
-                    .flatMap(saved -> { return Mono.just(object); });
+                    .save(key, value)
+                    .flatMap(saved -> { return Mono.just(value); });
 
         } catch (Exception e) {
 
             log.error("Erro ao tentar salvar cache para chave {}", key);
         }
-        return Mono.just(object);
+        return Mono.just(value);
     }
 
-    public Mono<Object> get(String key) {
+    public Mono<String> get(String key) {
         try {
 
             return redisCacheRepository.get(key);
