@@ -34,14 +34,13 @@ public class TestController implements Serializable{
         ObjectMapper objectMapper = new ObjectMapper();
 
         String json = objectMapper.writeValueAsString(productService.findAll());
-        redisCacheService.saveJson("product", json);
+        redisCacheService.saveJson("product", "lalalalala");
     }
 
     @GetMapping("/get")
     public String getJson() throws JsonMappingException, JsonProcessingException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         
         String response = redisCacheService.getJson("product");
 

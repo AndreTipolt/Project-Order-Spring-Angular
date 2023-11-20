@@ -114,6 +114,11 @@
 			<version>2.13.0</version> <!-- Use a versão mais recente disponível -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
