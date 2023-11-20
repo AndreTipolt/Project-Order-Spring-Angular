@@ -14,7 +14,7 @@ public class RedisCacheService {
     @Autowired
     private RedisTemplate<String, Object> redisRepository;
 
-    public void saveJson(String key, String json) {
+    public void saveJson(String key, Object json) {
         redisRepository.opsForValue().set(key, json);
     }
 

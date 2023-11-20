@@ -1,5 +1,6 @@
 package tipolt.andre.spring.services;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import tipolt.andre.spring.repositories.CategoryRepository;
 import tipolt.andre.spring.repositories.ProductRepository;
 
 @Service
-public class ProductService {
+public class ProductService implements Serializable{
 
     @Autowired
     private ProductRepository productRepository;
