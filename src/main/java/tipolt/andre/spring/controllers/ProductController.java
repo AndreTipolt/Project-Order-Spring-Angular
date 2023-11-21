@@ -1,5 +1,7 @@
 package tipolt.andre.spring.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import tipolt.andre.spring.dtos.ProductDTO;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.services.ProductService;

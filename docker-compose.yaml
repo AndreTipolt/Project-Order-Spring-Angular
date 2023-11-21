@@ -32,6 +32,7 @@ services:
     restart: always
     env_file:
       - env/.env
+      
   redis:
     hostname: redis-container
     container_name: redis-container-db
