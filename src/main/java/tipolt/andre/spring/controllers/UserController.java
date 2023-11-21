@@ -1,5 +1,7 @@
 package tipolt.andre.spring.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
+import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.services.UserService;
 
 @RestController
@@ -37,11 +40,14 @@ public class UserController {
         JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
         if(usersFindAllCached != null){
-
             return ResponseEntity.ok().body(usersFindAllCached);
             
         }
-        return ResponseEntity.ok().body(userService.findAll());
+
+        List<UserModel> listUserModels = userService.findAll();
+        objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", listUserModels);
+
+        return ResponseEntity.ok().body(listUserModels);
     }
 
     @PostMapping
