@@ -1,7 +1,6 @@
 package tipolt.andre.spring.controllers;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,22 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
-import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.services.ProductService;
-import tipolt.andre.spring.services.RedisCacheService;
 
 @RestController
 @RequestMapping("/test")
 public class TestController implements Serializable{
-
-    @Autowired
-    private RedisCacheService redisCacheService;
 
     @Autowired
     private ProductService productService;
