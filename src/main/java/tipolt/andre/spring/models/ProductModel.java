@@ -1,5 +1,6 @@
 package tipolt.andre.spring.models;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_product")
 @Data
-public class ProductModel {
+public class ProductModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
