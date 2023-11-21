@@ -10,11 +10,11 @@ public class RedisCacheService {
     @Autowired
     private RedisTemplate<String, Object> redisRepository;
 
-    public void saveJson(String key, Object json) {
+    public void save(String key, Object json) {
         redisRepository.opsForValue().set(key, json);
     }
 
-    public String getJson(String key) {
+    public String get(String key) {
         return (String) redisRepository.opsForValue().get(key);
     }
 }
