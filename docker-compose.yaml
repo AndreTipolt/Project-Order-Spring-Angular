@@ -5,20 +5,20 @@ networks:
     driver: bridge
 
 services:
-  # spring_app:
-  #   container_name: spring_app
-  #   build: .
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - application_spring
-  #   depends_on:
-  #     - postgres_sql
-  #     # - mysql-sql
-  #   links:
-  #     - postgres_sql
-  #   env_file:
-  #     - env/.env
+  spring_app:
+    container_name: spring_app
+    build: .
+    ports:
+      - 8080:8080
+    networks:
+      - application_spring
+    depends_on:
+      - postgres_sql
+      # - mysql-sql
+    links:
+      - postgres_sql
+    env_file:
+      - env/.env
 
   postgres_sql:
     container_name: postgres_sql
