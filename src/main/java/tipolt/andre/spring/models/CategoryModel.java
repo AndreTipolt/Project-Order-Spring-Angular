@@ -1,5 +1,6 @@
 package tipolt.andre.spring.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_category")
 @Data
-public class CategoryModel {
+public class CategoryModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,7 @@
 package tipolt.andre.spring.models;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,7 +14,7 @@ import tipolt.andre.spring.models.pk.UserRolePK;
 @Entity
 @Table(name = "tb_user_role")
 @Setter
-public class UserRoleModel {
+public class UserRoleModel implements Serializable{
 
     @JsonIgnore
     @EmbeddedId

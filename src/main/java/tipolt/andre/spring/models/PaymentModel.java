@@ -1,5 +1,6 @@
 package tipolt.andre.spring.models;
 
+import java.io.Serializable;
 import java.time.Instant;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_payment")
 @Data
-public class PaymentModel {
+public class PaymentModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

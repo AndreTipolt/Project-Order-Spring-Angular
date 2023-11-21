@@ -1,5 +1,6 @@
 package tipolt.andre.spring.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_role")
 @Data
-public class RoleModel {
+public class RoleModel implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
