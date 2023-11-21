@@ -30,7 +30,7 @@ public class OrderController {
     private ObjectMapperUtils objectMapperUtils;
 
     @GetMapping(value = "/orders")
-    public Object findAll(Pageable pageable) throws JsonMappingException, JsonProcessingException {
+    public ResponseEntity<? extends Object> findAll(Pageable pageable) throws JsonMappingException, JsonProcessingException {
 
         JsonNode cachedRedisFindAllOrders = objectMapperUtils.getRedisKeyAndConvertToJsonNode("orders_findAll");
 

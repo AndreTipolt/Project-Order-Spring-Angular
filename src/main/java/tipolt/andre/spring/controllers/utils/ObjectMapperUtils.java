@@ -39,8 +39,6 @@ public class ObjectMapperUtils {
 
         String contentKey = redisCacheService.get(key);
 
-        System.out.println(contentKey);
-
         if(contentKey != null){
 
             JsonNode contentKeyInTypeSpecified = objectMapper.readTree(contentKey);
