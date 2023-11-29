@@ -14,7 +14,6 @@ services:
       - application_spring
     depends_on:
       - postgres_sql
-      # - mysql-sql
     links:
       - postgres_sql
     env_file:
@@ -41,18 +40,3 @@ services:
       - "6379:6379"
     networks:
       - application_spring
-
-  # mysql-sql:
-  #   container_name: mysql-sql
-  #   image: mysql:8.0
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   restart: always
-  #   environment:
-  #     MYSQL_USER: mysql
-  #     MYSQL_DATABASE: mysql
-  #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_PASSWORD: password
-  #   ports:
-  #     - "3310:3306"
-  #   networks:
-  #     - application-spring
