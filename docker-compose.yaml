@@ -50,3 +50,16 @@ services:
       - "6379:6379"
     networks:
       - application_spring
+
+  nginx:
+    image: docker.io/nginx:1.25.3
+    command: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - spring_app_1
+      - spring_app_2
+    networks:
+      - application_spring
+    ports:
+      - 8080:80
