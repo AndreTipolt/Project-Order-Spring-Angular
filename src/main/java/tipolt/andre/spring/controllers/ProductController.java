@@ -38,7 +38,6 @@ public class ProductController {
     public ResponseEntity<? extends Object> findAll(Pageable pageable) throws JsonMappingException, JsonProcessingException {
 
         JsonNode findAllProductCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("products_findAll");
-        
         if(findAllProductCached != null){
             return ResponseEntity.ok().body(findAllProductCached);
         }

@@ -39,9 +39,10 @@ public class UserController {
 
         JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
+        System.out.println(usersFindAllCached != null);
+
         if(usersFindAllCached != null){
             return ResponseEntity.ok().body(usersFindAllCached);
-            
         }
 
         List<UserModel> listUserModels = userService.findAll();
