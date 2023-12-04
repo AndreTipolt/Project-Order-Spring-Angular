@@ -22,6 +22,7 @@ import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
+import tipolt.andre.spring.repositories.UserRepository;
 import tipolt.andre.spring.services.UserService;
 
 @RestController
@@ -34,8 +35,13 @@ public class UserController {
     @Autowired
     private ObjectMapperUtils objectMapperUtils;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping
     public ResponseEntity<? extends Object> findAll() throws JsonMappingException, JsonProcessingException {
+
+                userRepository.findAll();
 
         JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
