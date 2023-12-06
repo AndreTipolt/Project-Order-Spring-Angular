@@ -4,9 +4,10 @@
 
 <p>O projeto foi feito para uma empresa de controle de pedidos, onde podemos cadastrar produtos, usuários, realizar pedidos e muito mais.</p>
 
-<p>O login é feito por meio do token JWT gerado em "/login", e por meio dele será permitido ou não o acesso as rotas.</p> <br/>
+<p>O login é feito por meio do token JWT gerado em "/login", e por meio dele será permitido ou não o acesso as rotas.</p> 
 
-<p>É possível rodar a aplicação pelo Docker, primeiro preencha as informações no .env usando como base o .env.example. Após isso digite no terminal: </p>
+
+<p>É possível rodar a aplicação pelo Docker, lembre-se de preencher as informações no .env usando como base o .env.example. Após isso digite no terminal: </p>
 
 ```bash
 docker compose up --build
@@ -16,6 +17,12 @@ docker compose up --build
 
 ```bash
 ./mvnw spring-boot:run -Ptest
+```
+
+<p>Para efetuar os testes, use o seguinte dominio: </p>
+
+```
+http://order.127.0.0.1.nip.io:8080
 ```
 
 <img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/listProducts.png" alt="" style=" display: block; margin-bottom: 40px;">

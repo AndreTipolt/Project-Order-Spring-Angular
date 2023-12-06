@@ -33,5 +33,5 @@ jobs:
         file: ./dockerfile
         push: true
         tags:
-          andretipolt/project_order_spring_image:${{github.run_number}}
+          andretipolt/project_order_spring_image:1.0.${{github.run_number}}
           
