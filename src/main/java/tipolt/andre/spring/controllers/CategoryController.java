@@ -20,7 +20,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping(value = "/{categoryId}")
-    public List<ProductModel> findCategoryById(@PathVariable String categoryId) {
+    public List<ProductModel> findCategoryById(@PathVariable Long categoryId) {
         return categoryService.findCategoryById(categoryId);
     }
 

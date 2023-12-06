@@ -19,6 +19,6 @@ public class ProductDTO {
     private Double price;
 
     @NotNull(message = "Fill Category Field")
-    private String categoryId;
+    private Long categoryId;
 
 }

@@ -31,5 +31,5 @@ public class UserDTO {
     private String confirmPassword;
 
     @NotEmpty(message = "Fill roles Field")
-    private List<String> roles;
+    private List<Long> roles;
 }

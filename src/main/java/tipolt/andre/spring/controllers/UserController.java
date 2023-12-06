@@ -41,7 +41,6 @@ public class UserController {
 
         if(usersFindAllCached != null){
             return ResponseEntity.ok().body(usersFindAllCached);
-            
         }
 
         List<UserModel> listUserModels = userService.findAll();
@@ -50,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok().body(listUserModels);
     }
 
-    @PostMapping
+    @PostMapping(value = "/save")
     public ResponseEntity<Void> saveUser(@RequestBody @Valid UserInsertDTO userDTO) {
         userService.saveUser(userDTO);
         return ResponseEntity.status(201).build();
@@ -58,7 +57,7 @@ public class UserController {
 
     @PutMapping(value = "/{userId}")
     public ResponseEntity<Void> updateUser(@RequestBody @Valid UserUpdateDTO userUpdateDTO,
-                                           @PathVariable String userId) {
+                                           @PathVariable Long userId) {
         userService.updateUser(userId, userUpdateDTO);
         return ResponseEntity.noContent().build();
     }

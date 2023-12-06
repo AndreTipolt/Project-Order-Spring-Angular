@@ -137,7 +137,7 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
     @DisplayName("Update Product should return not found when id category does not exists")
     public void updateProductShouldReturnNotFoundWhenIdCategoryDoesNotExists() throws Exception {
 
-        String nonExistingCategoryId = "0";
+        Long nonExistingCategoryId = 0L;
 
         ProductDTO productDTO = new ProductDTO("Phone", 1999.99, nonExistingCategoryId);
 

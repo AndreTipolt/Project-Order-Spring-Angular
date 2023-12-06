@@ -38,7 +38,6 @@ public class ProductController {
     public ResponseEntity<? extends Object> findAll(Pageable pageable) throws JsonMappingException, JsonProcessingException {
 
         JsonNode findAllProductCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("products_findAll");
-        
         if(findAllProductCached != null){
             return ResponseEntity.ok().body(findAllProductCached);
         }
@@ -51,7 +50,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/{productId}")
-    public ResponseEntity<ProductModel> findProductById(@PathVariable String productId) {
+    public ResponseEntity<ProductModel> findProductById(@PathVariable Long productId) {
         ProductModel product = productService.findProductById(productId);
 
         return ResponseEntity.ok().body(product);
@@ -67,7 +66,7 @@ public class ProductController {
 
     @PutMapping(value = "/{productId}")
     public ResponseEntity<Void> updateProduct(@RequestBody @Valid ProductDTO productDTO,
-            @PathVariable String productId) {
+            @PathVariable Long productId) {
 
         productService.updateProduct(productDTO, productId);
 

@@ -26,13 +26,13 @@ public class UserServiceTests extends ApplicationTestConfig {
     @Mock
     private UserRepository userRepository;
 
-    private String existingId;
-    private String nonExistingId;
+    private Long existingId;
+    private Long nonExistingId;
 
     @BeforeEach
     public void setUp() {
-        this.existingId = "1";
-        this.nonExistingId = "0";
+        this.existingId = 1L;
+        this.nonExistingId = 0L;
     }
 
     @Test

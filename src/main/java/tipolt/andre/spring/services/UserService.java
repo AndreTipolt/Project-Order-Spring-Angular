@@ -47,12 +47,12 @@ public class UserService {
         userRoleService.insertManyUserRoles(userDTO.getRoles(), createdUser);
     }
 
-    public UserModel findUserById(String userId) {
+    public UserModel findUserById(Long userId) {
 
         return userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException("User Not Found"));
     }
 
-    public void updateUser(String userId, UserUpdateDTO userUpdateDTO) {
+    public void updateUser(Long userId, UserUpdateDTO userUpdateDTO) {
 
         UserModel user = this.findUserById(userId);
 

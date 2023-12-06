@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import tipolt.andre.spring.models.OrderModel;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderModel, String> {
+public interface OrderRepository extends JpaRepository<OrderModel, Long> {
 
 }

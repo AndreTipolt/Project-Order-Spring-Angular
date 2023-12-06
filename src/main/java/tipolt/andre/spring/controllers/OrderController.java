@@ -35,7 +35,6 @@ public class OrderController {
         JsonNode cachedRedisFindAllOrders = objectMapperUtils.getRedisKeyAndConvertToJsonNode("orders_findAll");
 
         if(cachedRedisFindAllOrders != null){
-            System.out.println("cached");
             return ResponseEntity.ok().body(cachedRedisFindAllOrders);
         }
 

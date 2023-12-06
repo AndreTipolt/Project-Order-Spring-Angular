@@ -14,15 +14,14 @@ import tipolt.andre.spring.services.RedisCacheService;
 public class ObjectMapperUtils {
 
     @Autowired
-    private  RedisCacheService redisCacheService;
+    private RedisCacheService redisCacheService;
 
-    private  ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
-    public  void convertObjectToStringAndSaveInRedis(String key, Object object) {
+    public void convertObjectToStringAndSaveInRedis(String key, Object object) {
 
-        
         try {
-            
+
             String json = objectMapper.writeValueAsString(object);
 
             redisCacheService.save(key, json);
@@ -32,14 +31,14 @@ public class ObjectMapperUtils {
             throw new RuntimeException("Error to save data in redis");
 
         }
-        
+
     }
 
     public JsonNode getRedisKeyAndConvertToJsonNode(String key) throws JsonMappingException, JsonProcessingException {
 
         String contentKey = redisCacheService.get(key);
 
-        if(contentKey != null){
+        if (contentKey != null) {
 
             JsonNode contentKeyInTypeSpecified = objectMapper.readTree(contentKey);
             return contentKeyInTypeSpecified;
