@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.ok().body(listUserModels);
     }
 
-    @PostMapping
+    @PostMapping(value = "/save")
     public ResponseEntity<Void> saveUser(@RequestBody @Valid UserInsertDTO userDTO) {
         userService.saveUser(userDTO);
         return ResponseEntity.status(201).build();

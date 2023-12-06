@@ -22,7 +22,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private Environment env;
 
-    private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", "/products/**" };
+    private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**", "/products/**", "/users/save" };
 
     private static final String[] OPERATOR_OR_ADMIN = { "/products/**", "/categories/**", "/myorders/**" };
 
@@ -40,12 +40,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             http.headers().frameOptions().disable();
         }
         http.authorizeRequests()
-            .anyRequest().permitAll();
-                // .antMatchers(PUBLIC).permitAll()
-                // .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).authenticated()
-                // .antMatchers(OPERATOR_OR_ADMIN).hasAnyAuthority("OPERATOR", "ADMIN")
-                // .antMatchers(ADMIN).hasAuthority("ADMIN")
-                // .anyRequest().authenticated();
+            // .anyRequest().permitAll();
+                .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).authenticated()
+                .antMatchers(OPERATOR_OR_ADMIN).hasAnyAuthority("OPERATOR", "ADMIN")
+                .antMatchers(ADMIN).hasAuthority("ADMIN")
+                .anyRequest().authenticated();
     }
 
 }
