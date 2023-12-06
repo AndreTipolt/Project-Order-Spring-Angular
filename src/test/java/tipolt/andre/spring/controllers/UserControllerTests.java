@@ -85,7 +85,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         String jsonBody = objectMapper.writeValueAsString(userWithoutEmailField);
 
-        ResultActions result = mockMvc.perform(post("/users")
+        ResultActions result = mockMvc.perform(post("/users/save")
                 .content(jsonBody)
                 .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
@@ -102,7 +102,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         String jsonBody = objectMapper.writeValueAsString(userWithDiffPasswords);
 
-        ResultActions result = mockMvc.perform(post("/users")
+        ResultActions result = mockMvc.perform(post("/users/save")
                 .content(jsonBody)
                 .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
@@ -121,7 +121,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         String jsonBody = objectMapper.writeValueAsString(userDTO);
 
-        ResultActions result = mockMvc.perform(post("/users")
+        ResultActions result = mockMvc.perform(post("/users/save")
                 .content(jsonBody)
                 .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
@@ -139,7 +139,7 @@ public class UserControllerTests extends ApplicationTestConfig {
 
         String jsonBody = objectMapper.writeValueAsString(userWithEmailFieldAlreadyExists);
 
-        ResultActions result = mockMvc.perform(post("/users")
+        ResultActions result = mockMvc.perform(post("/users/save")
                 .content(jsonBody)
                 .header("Authorization", "Bearer " + acessToken)
                 .accept(MediaType.APPLICATION_JSON)
