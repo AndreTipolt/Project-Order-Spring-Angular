@@ -8,22 +8,22 @@ public class OrderFactory {
 
     public static OrderDTO createOrderDTO() {
 
-        OrderDTO orderDTO = new OrderDTO(List.of("1"), "1", 1);
+        OrderDTO orderDTO = new OrderDTO(List.of(1L), 1L, 1);
 
         return orderDTO;
     }
 
     public static OrderDTO createOrderDTOWithInvalidUserId() {
-        String nonExistingUserId = "0";
+        Long nonExistingUserId = 0L;
 
-        OrderDTO orderDTO = new OrderDTO(List.of("1"), nonExistingUserId, 1);
+        OrderDTO orderDTO = new OrderDTO(List.of(1L), nonExistingUserId, 1);
         return orderDTO;
     }
 
     public static OrderDTO createOrderDTOWithInvalidProductID() {
-        String nonExistingProductID = "0";
+        Long nonExistingProductID = 0L;
 
-        OrderDTO orderDTO = new OrderDTO(List.of(nonExistingProductID), "1", 1);
+        OrderDTO orderDTO = new OrderDTO(List.of(nonExistingProductID), 1L, 1);
         return orderDTO;
     }
 
@@ -31,7 +31,7 @@ public class OrderFactory {
         OrderDTO orderDTO = new OrderDTO();
 
         orderDTO.setQuantity(1);
-        orderDTO.setListProductId(List.of("1"));
+        orderDTO.setListProductId(List.of(1L));
 
         return orderDTO;
     }

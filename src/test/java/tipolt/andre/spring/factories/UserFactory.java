@@ -13,7 +13,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -24,7 +24,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("notCoincidePassword");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -35,7 +35,7 @@ public class UserFactory {
         userInsertDTO.setPassword("password123");
         userInsertDTO.setEmail(null);
         userInsertDTO.setConfirmPassword("password123");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
         return userInsertDTO;
     }
 
@@ -45,7 +45,7 @@ public class UserFactory {
         userInsertDTO.setEmail("andretipoltlopes@gmail.com");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -56,7 +56,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("notCoincidePassword");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -67,7 +67,7 @@ public class UserFactory {
         userInsertDTO.setName("foo");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -79,7 +79,7 @@ public class UserFactory {
         userInsertDTO.setEmail("luanarodrigues@gmail.com");
         userInsertDTO.setPassword("password123");
         userInsertDTO.setConfirmPassword("password123");
-        userInsertDTO.setRoles(List.of("1"));
+        userInsertDTO.setRoles(List.of(1L));
 
         return userInsertDTO;
     }
@@ -91,7 +91,7 @@ public class UserFactory {
         userUpdateDTOValid.setName("Random name");
         userUpdateDTOValid.setPassword("randomPassword");
         userUpdateDTOValid.setConfirmPassword("randomPassword");
-        userUpdateDTOValid.setRoles(List.of("1"));
+        userUpdateDTOValid.setRoles(List.of(1L));
         return userUpdateDTOValid;
         
     }

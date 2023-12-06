@@ -22,9 +22,9 @@ public class UserRoleService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
-    public void insertManyUserRoles(List<String> listOfRoleID, UserModel userCadastred){
-        for(String roleId : listOfRoleID){
-
+    public void insertManyUserRoles(List<Long> listOfRoleID, UserModel userCadastred){
+        for(Long roleId : listOfRoleID){
+            System.out.println(roleId.toString());
             RoleModel role = roleRepository.findById(roleId)
                                            .orElseThrow(() -> new ObjectNotFoundException("Role Id not Found"));
             

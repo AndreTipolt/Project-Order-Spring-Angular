@@ -57,7 +57,7 @@ public class OrderService {
 
         List<OrderItemModel> listOrderItem = new ArrayList<>();
 
-        for (String productId : orderDTO.getListProductId()) {
+        for (Long productId : orderDTO.getListProductId()) {
 
             ProductModel product = productRepository.findById(productId)
                     .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));

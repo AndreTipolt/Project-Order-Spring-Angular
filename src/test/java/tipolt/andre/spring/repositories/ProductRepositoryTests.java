@@ -16,13 +16,13 @@ public class ProductRepositoryTests {
     @Autowired
     private ProductRepository productRepository;
 
-    private String existingId;
-    private String notExistingId;
+    private Long existingId;
+    private Long notExistingId;
 
     @BeforeEach
     void setUp() {
-        this.existingId = "1";
-        this.notExistingId = "0";
+        this.existingId = 1L;
+        this.notExistingId = 0L;
 
     }
 

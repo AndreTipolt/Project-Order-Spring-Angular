@@ -41,15 +41,11 @@ public class UserController {
     @GetMapping
     public ResponseEntity<? extends Object> findAll() throws JsonMappingException, JsonProcessingException {
 
-                userRepository.findAll();
+        // JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
-        JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
-
-        System.out.println(usersFindAllCached != null);
-
-        if(usersFindAllCached != null){
-            return ResponseEntity.ok().body(usersFindAllCached);
-        }
+        // if(usersFindAllCached != null){
+        //     return ResponseEntity.ok().body(usersFindAllCached);
+        // }
 
         List<UserModel> listUserModels = userService.findAll();
         objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", listUserModels);
@@ -65,7 +61,7 @@ public class UserController {
 
     @PutMapping(value = "/{userId}")
     public ResponseEntity<Void> updateUser(@RequestBody @Valid UserUpdateDTO userUpdateDTO,
-                                           @PathVariable String userId) {
+                                           @PathVariable Long userId) {
         userService.updateUser(userId, userUpdateDTO);
         return ResponseEntity.noContent().build();
     }

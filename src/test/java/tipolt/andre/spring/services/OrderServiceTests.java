@@ -34,7 +34,7 @@ public class OrderServiceTests extends ApplicationTestConfig {
     @DisplayName("Save Order Should Throw ObjectNotFoundException When userID does not exists")
     public void saveOrderShouldThrowObjectNotFoundExceptioWhenUserIdDoesNotExists() {
 
-        OrderDTO orderDTOWithUserIdNotExisting = new OrderDTO(List.of("1"), "0", 1);
+        OrderDTO orderDTOWithUserIdNotExisting = new OrderDTO(List.of(1L), 0L, 1);
 
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {
             orderService.save(orderDTOWithUserIdNotExisting);
@@ -45,7 +45,7 @@ public class OrderServiceTests extends ApplicationTestConfig {
     @DisplayName("Save Order Should Throw ObjectNotFoundException When productID does not exists")
     public void saveOrderShouldThrowObjectNotFoundExceptionWhenProductIdDoesNotExists() {
 
-        OrderDTO orderDTOWithProductIdNotExisting = new OrderDTO(List.of("0"), "1", 1);
+        OrderDTO orderDTOWithProductIdNotExisting = new OrderDTO(List.of(0L), 1L, 1);
 
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {
             orderService.save(orderDTOWithProductIdNotExisting);

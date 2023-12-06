@@ -35,7 +35,7 @@ services:
     container_name: postgres_sql
     image: postgres:16.1
     volumes:
-      - ./database/postgres-data:/var/lib/postgresql/data
+      - /database/postgres-data:/var/lib/postgresql/data
     networks: 
       - application_spring
     ports:

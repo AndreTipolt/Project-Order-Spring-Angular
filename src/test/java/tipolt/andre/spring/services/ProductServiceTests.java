@@ -22,13 +22,13 @@ public class ProductServiceTests extends ApplicationTestConfig {
     @Mock
     private ProductRepository productRepository;
 
-    private String existingId;
-    private String notExistingId;
+    private Long existingId;
+    private Long notExistingId;
 
     @BeforeEach
     public void setUp() throws Exception {
-        this.existingId = "1";
-        this.notExistingId = "0";
+        this.existingId = 1L;
+        this.notExistingId = 0L;
     }
 
     @Test
@@ -56,7 +56,7 @@ public class ProductServiceTests extends ApplicationTestConfig {
     @Test
     public void saveProductShouldReturnObjectNotFoundExceptionWhenCategoryIdDoesNotExist() {
 
-        String notExistingCategoryId = "0";
+        Long notExistingCategoryId = 0L;
 
         ProductDTO product = new ProductDTO();
 
