@@ -5,29 +5,29 @@ networks:
     driver: bridge
 
 services:
-  # spring_app_1:
-  #   container_name: spring_app_1
-  #   build: .
-  #   networks:
-  #     - application_spring
-  #   depends_on:
-  #     - postgres_sql
-  #   links:
-  #     - postgres_sql
-  #   env_file:
-  #     - env/.env
+  spring_app_1:
+    container_name: spring_app_1
+    build: .
+    networks:
+      - application_spring
+    depends_on:
+      - postgres_sql
+    links:
+      - postgres_sql
+    env_file:
+      - env/.env
 
-  # spring_app_2:
-  #   container_name: spring_app_2
-  #   build: .
-  #   networks:
-  #     - application_spring
-  #   depends_on:
-  #     - postgres_sql
-  #   links:
-  #     - postgres_sql
-  #   env_file:
-  #     - env/.env
+  spring_app_2:
+    container_name: spring_app_2
+    build: .
+    networks:
+      - application_spring
+    depends_on:
+      - postgres_sql
+    links:
+      - postgres_sql
+    env_file:
+      - env/.env
 
   postgres_sql:
     container_name: postgres_sql
@@ -51,16 +51,16 @@ services:
     networks:
       - application_spring
 
-  # nginx:
-  #   container_name: nginx
-  #   image: docker.io/nginx:1.25.3
-  #   command: ["nginx", "-g", "daemon off;"]
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
-  #   depends_on:
-  #     - spring_app_1
-  #     - spring_app_2
-  #   networks:
-  #     - application_spring
-  #   ports:
-  #     - 8080:80
+  nginx:
+    container_name: nginx
+    image: docker.io/nginx:1.25.3
+    command: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - spring_app_1
+      - spring_app_2
+    networks:
+      - application_spring
+    ports:
+      - 8080:80
