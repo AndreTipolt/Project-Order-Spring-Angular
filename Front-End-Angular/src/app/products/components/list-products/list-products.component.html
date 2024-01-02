@@ -3,8 +3,8 @@
         <img src="https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/cenourao/media/uploads/produtos/foto/dc1f0bf8b4a3file.png"
             alt="Product 1">
         <div class="card-content">
-            <div class="price">{{ product.price }}</div>
-            <div class="old-price">{{ product.price }}</div>
+            <div class="price">{{ product.price | currency : 'BRL' }}</div>
+            <div class="old-price">{{ product.price | currency : 'BRL'}}</div>
             <div class="description">{{ product.name }}</div>
         </div>
     </div>

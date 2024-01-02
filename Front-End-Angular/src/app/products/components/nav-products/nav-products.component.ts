@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../../types/Category.interface';
 
 @Component({
   selector: 'app-nav-products',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavProductsComponent implements OnInit {
 
+  @Input() categories!: Category[];
   constructor() { }
 
   ngOnInit(): void {

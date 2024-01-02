@@ -1,5 +1,5 @@
 <main>
-    <app-nav-products></app-nav-products>
+    <app-nav-products [categories]="categories"></app-nav-products>
     <app-list-products *ngIf="products; else loadingSpinner" [products]="products"></app-list-products>
     <ng-template #loadingSpinner>
         <app-spinner-loading></app-spinner-loading>

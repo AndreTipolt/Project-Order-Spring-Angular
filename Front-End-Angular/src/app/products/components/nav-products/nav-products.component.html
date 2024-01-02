@@ -1,9 +1,11 @@
 <nav>
     <div class="show-favorites">
+        <a *ngFor="let category of categories" routerLink="/category/{{ category.id }}">{{ category.name }}</a>
     </div>
     <div class="input-search">
         <input type="text" placeholder="Pesquisar pelo Produto..">
     </div>
     <div class="show-favorites">
+        <a *ngFor="let category of categories" routerLink="/category/{{ category.id }}">{{ category.name }}</a>
     </div>
 </nav>
