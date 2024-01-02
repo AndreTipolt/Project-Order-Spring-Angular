@@ -1,21 +1,11 @@
 <div class="container">
-    <div class="card">
+    <div class="card" *ngFor="let product of products">
         <img src="https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/cenourao/media/uploads/produtos/foto/dc1f0bf8b4a3file.png"
             alt="Product 1">
         <div class="card-content">
-            <div class="price">R$19,99</div>
-            <div class="old-price">R$24,99</div>
-            <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/cenourao/media/uploads/produtos/foto/dc1f0bf8b4a3file.png"
-            alt="Product 1">
-        <div class="card-content">
-            <div class="price">R$19,99</div>
-            <div class="old-price">R$24,99</div>
-            <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="price">{{ product.price }}</div>
+            <div class="old-price">{{ product.price }}</div>
+            <div class="description">{{ product.name }}</div>
         </div>
     </div>
 </div>
