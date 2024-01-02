@@ -1,3 +1,15 @@
+@import '@angular/material/theming';
+
+@include mat-core();
+
+$custom-app-primary: mat-palette($mat-gray, 900);
+$custom-app-secondary: mat-palette($mat-indigo, A200, A400, 700);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $custom-app-warn);
+
+@include angular-material-theme($custom-theme);
+
 * {
     font-family: 'Gotham';
     box-sizing: border-box;
