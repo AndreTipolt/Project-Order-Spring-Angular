@@ -7,13 +7,15 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { NavProductsComponent } from './components/nav-products/nav-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
 
 
 @NgModule({
   declarations: [
     ListProductsComponent,
     ProductsComponent,
-    NavProductsComponent
+    NavProductsComponent,
+    SpinnerLoadingComponent
   ],
   imports: [
     CommonModule,

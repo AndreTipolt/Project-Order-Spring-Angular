@@ -2,8 +2,6 @@
     <app-nav-products></app-nav-products>
     <app-list-products *ngIf="products$ | async as products; else loadingSpinner"></app-list-products>
     <ng-template #loadingSpinner>
-        <div class="loading-spinner">
-            <mat-spinner color="primary"></mat-spinner>
-        </div>
+        <app-spinner-loading></app-spinner-loading>
     </ng-template>
 </main>
