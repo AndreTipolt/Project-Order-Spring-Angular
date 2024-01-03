@@ -19,7 +19,7 @@ jobs:
 
     - name: Tests
       # run: docker run -d -p 6379:6379 redis:7.2.3 ; ./Back-End-Spring/mvnw test -Ptest
-      run: docker run -d -p 6379:6379 redis:7.2.3 ; cd ./Back-End-Spring/ ; ./mvnw test -Ptest
+      run: docker run -d -p 6379:6379 redis:7.2.3 ; chmod +x mvnw ./Back-End-Spring/mvnw test -Ptest
 
   CD:
     runs-on: ubuntu-latest
