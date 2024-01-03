@@ -19,7 +19,7 @@ jobs:
 
     - name: Tests
       # run: docker run -d -p 6379:6379 redis:7.2.3 ; ./Back-End-Spring/mvnw test -Ptest
-      run: docker run -d -p 6379:6379 redis:7.2.3 ; chmod +x mvnw ./Back-End-Spring/mvnw test -Ptest
+      run: docker run -d -p 6379:6379 redis:7.2.3 ; chmod +x mvnw ; ./Back-End-Spring/mvnw test -Ptest
 
   CD:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - name: Construção da imagem Docker
         uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
         with:
-          context: ./Back-End-Spring/ # Aonde está a imagem docker
+          context: "./Back-End-Spring/" # Aonde está a imagem docker
           file: dockerfile
           push: true
           tags:
