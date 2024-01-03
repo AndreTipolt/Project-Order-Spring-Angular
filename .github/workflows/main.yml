@@ -18,9 +18,9 @@ jobs:
         java-version: '17'
 
     - name: Tests
-      run: docker run -d -p 6379:6379 redis:7.2.3 \
-       cd ./Back-End-Spring/ \
-       chmod +x mvnw \
+      run: docker run -d -p 6379:6379 redis:7.2.3 ;
+       cd ./Back-End-Spring/ ;
+       chmod +x mvnw ;
        ./mvnw test -Ptest
 
   CD:
