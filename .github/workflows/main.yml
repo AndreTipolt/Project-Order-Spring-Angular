@@ -10,8 +10,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4.1.1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Java JDK
       uses: actions/setup-java@v3.13.0
@@ -21,7 +19,7 @@ jobs:
 
     - name: Tests
       # run: docker run -d -p 6379:6379 redis:7.2.3 ; ./Back-End-Spring/mvnw test -Ptest
-      run: ls
+      run: cd ./Back-End-Spring/ ; ls
 
   CD:
     runs-on: ubuntu-latest
