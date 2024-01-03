@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../types/Product.interface';
 import { CategoryService } from '../../services/category.service';
@@ -27,16 +27,16 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle("Spring - Home")
-    this.refreshCategories();
-
+    
     if (this.router.url.startsWith('/category')) { // Verify if the url contains category for list products using category
 
       const idCategory = this.activatedRoute.snapshot.params['id']; // Taking id category from url
 
-      this.products = this.productService.filterProductsByCategory(this.categories, idCategory);
+      this.refreshCategories(idCategory);
 
     }
     else{
+      this.refreshCategories();
       this.refreshProducts();
     }
   }
@@ -52,11 +52,22 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  refreshCategories() {
+  refreshCategories(filterCategoryById = null) {
 
     this.categoryService.getAllCategories().subscribe({
       next: (res) => {
+
+        if(filterCategoryById != null){
+          res.map((category) => {
+            if(category.id == filterCategoryById){
+              this.products = category.listProducts
+            }
+          });
+        }
         this.categories = res;
+      },
+      error: (error) => {
+        this.onError("Erro ao tentar carregar as categorias")
       }
     })
   }

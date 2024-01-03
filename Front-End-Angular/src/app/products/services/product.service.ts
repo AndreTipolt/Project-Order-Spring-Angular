@@ -21,16 +21,4 @@ export class ProductService {
 
     return this.httpClient.get<Response>(APIURL).pipe(first());
   }
-
-  filterProductsByCategory(categories: Category[], categoryId: number): Product[] {
-
-    categories.forEach((category) =>{
-      if (category.id == categoryId) {
-        return category.listProducts;
-      }
-      return [];
-    })
-
-    return [];
-  }
 }
