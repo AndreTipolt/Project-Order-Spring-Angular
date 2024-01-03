@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, delay, first } from 'rxjs';
+import { Observable, first } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Category } from '../types/Category.interface';
+import { Product } from '../types/Product.interface';
 import { Response } from '../types/Response.interface';
 
 @Injectable({
@@ -13,10 +15,22 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllProducts(): Observable<Response>{
-    
+  getAllProducts(): Observable<Response> {
+
     const APIURL = `${this.baseAPIURL}/products`;
 
     return this.httpClient.get<Response>(APIURL).pipe(first());
+  }
+
+  filterProductsByCategory(categories: Category[], categoryId: number): Product[] {
+
+    categories.forEach((category) =>{
+      if (category.id == categoryId) {
+        return category.listProducts;
+      }
+      return [];
+    })
+
+    return [];
   }
 }
