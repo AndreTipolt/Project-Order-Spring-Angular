@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4.1.1
       with:
-        token: ${{ secrets.GH_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Java JDK
       uses: actions/setup-java@v3.13.0
