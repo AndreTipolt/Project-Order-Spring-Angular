@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../types/Category.interface';
+import { Product } from '../types/Product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class CategoryService {
     return this.httpClient.get<Category[]>(APIURL);
   }
 
-  filterCategoryById(listCategory: Category[], categoryId: string) {
+  filterCategoryById(listCategory: Category[], categoryId: string): Product[]{
 
     for (let category of listCategory){
       if(category.id === Number(categoryId)){

@@ -8,6 +8,7 @@ import { NavProductsComponent } from './components/nav-products/nav-products.com
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
+import { ShowProductComponent } from './components/show-product/show-product.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-lo
     ListProductsComponent,
     ProductsComponent,
     NavProductsComponent,
-    SpinnerLoadingComponent
+    SpinnerLoadingComponent,
+    ShowProductComponent
   ],
   imports: [
     CommonModule,
