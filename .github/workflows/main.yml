@@ -19,7 +19,7 @@ jobs:
 
     - name: Tests
       # run: docker run -d -p 6379:6379 redis:7.2.3 ; ./Back-End-Spring/mvnw test -Ptest
-      run: cd ./Back-End-Spring/ ; ls
+      run: docker run -d -p 6379:6379 redis:7.2.3 ; cd ./Back-End-Spring/ ; ./mvnw test -Ptest
 
   CD:
     runs-on: ubuntu-latest
@@ -33,8 +33,8 @@ jobs:
       - name: Construção da imagem Docker
         uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
         with:
-          context: . # Aonde está a imagem docker
-          file: ./Back-End-Spring/dockerfile
+          context: ./Back-End-Spring/ # Aonde está a imagem docker
+          file: dockerfile
           push: true
           tags:
             andretipolt/project_order_spring_image:1.0.${{github.run_number}}
