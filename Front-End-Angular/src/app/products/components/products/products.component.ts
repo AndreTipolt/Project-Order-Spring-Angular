@@ -7,6 +7,7 @@ import { Category } from '../../types/Category.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +15,6 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-
   products!: Product[];
   categories!: Category[];
 
@@ -22,10 +22,11 @@ export class ProductsComponent implements OnInit {
     private categoryService: CategoryService, 
     private activatedRoute: ActivatedRoute, 
     private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private title: Title) { }
 
   ngOnInit(): void {
-
+    this.title.setTitle("Spring - Home")
     this.refreshCategories();
 
     if (this.router.url.startsWith('/category')) { // Verify if the url contains category for list products using category
@@ -35,8 +36,9 @@ export class ProductsComponent implements OnInit {
       this.products = this.productService.filterProductsByCategory(this.categories, idCategory);
 
     }
-
-    this.refreshProducts();
+    else{
+      this.refreshProducts();
+    }
   }
 
   refreshProducts() {
