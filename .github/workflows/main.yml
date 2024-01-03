@@ -18,7 +18,7 @@ jobs:
         java-version: '17'
 
     - name: Tests
-      run: docker run -d -p 6379:6379 redis:7.2.3 ; ./mvnw test -Ptest
+      run: docker run -d -p 6379:6379 redis:7.2.3 ; ./Back-End-Spring/mvnw test -Ptest
 
     - name: Autenticação do DockerHub
       uses: docker/login-action@v3.0.0
@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
       with:
         context: . # Aonde está a imagem docker
-        file: ./dockerfile
+        file: ./Back-End-Spring/dockerfile
         push: true
         tags:
           andretipolt/project_order_spring_image:1.0.${{github.run_number}}
