@@ -19,4 +19,14 @@ export class CategoryService {
 
     return this.httpClient.get<Category[]>(APIURL);
   }
+
+  filterCategoryById(listCategory: Category[], categoryId: string) {
+
+    for (let category of listCategory){
+      if(category.id === Number(categoryId)){
+        return category.listProducts; // The products receive the category data reference a category
+      }
+    }
+    return [];
+  }
 }

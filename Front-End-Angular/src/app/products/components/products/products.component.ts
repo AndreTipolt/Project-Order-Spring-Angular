@@ -52,19 +52,15 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  refreshCategories(filterCategoryById = null) {
+  refreshCategories(filterCategoryById = null) { // If there is a category filter
 
     this.categoryService.getAllCategories().subscribe({
       next: (res) => {
 
-        if(filterCategoryById != null){
-          res.map((category) => {
-            if(category.id == filterCategoryById){
-              this.products = category.listProducts
-            }
-          });
+        if(filterCategoryById != null){ // Checking if there is a id category
+          this.products = this.categoryService.filterCategoryById(res, filterCategoryById)
         }
-        this.categories = res;
+        this.categories = res; // If 
       },
       error: (error) => {
         this.onError("Erro ao tentar carregar as categorias")
