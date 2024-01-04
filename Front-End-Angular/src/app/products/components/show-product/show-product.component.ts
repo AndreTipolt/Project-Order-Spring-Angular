@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../types/Product.interface';
 
 @Component({
   selector: 'app-show-product',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowProductComponent implements OnInit {
 
-  constructor() { }
+  product!: Product;
+
+  constructor(private title: Title,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private productService: ProductService) { }
 
   ngOnInit(): void {
+
+    const idProduct: string = this.activatedRoute.snapshot.params['id'];
+
+    this.productService.getProductById(idProduct).subscribe({
+
+      next: (res) => {
+        this.product = res
+        console.log(res)
+      },
+      error: (err) => {
+        this.router.navigate(['/'])
+      }
+    })
+    
   }
 
 }
