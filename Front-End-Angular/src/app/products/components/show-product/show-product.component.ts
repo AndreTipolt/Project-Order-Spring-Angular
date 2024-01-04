@@ -26,7 +26,7 @@ export class ShowProductComponent implements OnInit {
 
       next: (res) => {
         this.product = res
-        console.log(res)
+        this.title.setTitle(res.name)
       },
       error: (err) => {
         this.router.navigate(['/'])
