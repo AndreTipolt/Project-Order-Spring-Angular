@@ -19,6 +19,6 @@ public class OrderItemModel implements Serializable{
     private Integer quantity;
 
     public Double subTotal() {
-        return this.quantity * this.getId().getProduct().getPrice();
+        return this.quantity * this.getId().getProduct().getSpotPrice();
     }
 }

@@ -14,10 +14,9 @@ INSERT INTO tb_category(id, name) VALUES (1, 'Tecnologia');
 INSERT INTO tb_category(id, name) VALUES (2, 'Aparelhos Domésticos');
 
 
-INSERT INTO tb_product(id, name, price, category_id) VALUES (1,'Televisão 40 Polegadas', 1999.99, 1);
-INSERT INTO tb_product(id, name, price, category_id) VALUES (2,'Mouse Gamer', 199.99, 1);
-
-INSERT INTO tb_product(id, name, price, category_id) VALUES (3,'Geladeira 2 Portas Frost Free', 2499.99, 2);
+INSERT INTO tb_product(id, name, spot_price, category_id, foward_price, installments, description, pix_discount) VALUES (1, 'Televisão 40 Polegadas', 1999.99, 1, 2200.00, 12, 'Televisão de 40 polegadas', 5);
+INSERT INTO tb_product(id, name, spot_price, category_id, foward_price, installments, description, pix_discount) VALUES (2,'Mouse Gamer', 199.99, 1, 230.00, 3, 'Mouse Gamer da marca X', 10);
+INSERT INTO tb_product(id, name, spot_price, category_id, foward_price, installments, description, pix_discount) VALUES (3,'Geladeira 2 Portas Frost Free', 2499.99, 2, 2700.00, 12, 'Geladeira de duas portas', 0);
 
 INSERT INTO tb_order(id, moment, client_id, status) VALUES (1,'2023-06-02 15:39:41.577911-03', 1, 1)
 

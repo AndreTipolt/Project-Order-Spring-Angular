@@ -16,9 +16,20 @@ public class ProductDTO {
     private String name;
 
     @NotNull(message = "Fill Price Field")
-    private Double price;
+    private Double fowardPrice;
 
     @NotNull(message = "Fill Category Field")
     private Long categoryId;
 
+    @NotNull(message = "Fill Installments Field")
+    private Integer installments;
+
+    @NotNull(message = "Fill SpotPrice Field")
+    private Double spotPrice;
+
+    @NotNull(message = "Fill PixDiscounts Field")
+    private Integer pixDiscount;
+
+    @NotNull(message = "Fill Description Field")
+    private String description;
 }

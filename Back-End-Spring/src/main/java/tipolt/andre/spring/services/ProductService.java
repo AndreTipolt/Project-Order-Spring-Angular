@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tipolt.andre.spring.dtos.ProductDTO;
+import tipolt.andre.spring.dtos.mappers.ProductMapper;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.models.CategoryModel;
 import tipolt.andre.spring.models.ProductModel;
@@ -24,6 +25,9 @@ public class ProductService implements Serializable{
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ProductMapper productMapper;
 
     @Transactional(readOnly = true)
     public List<ProductModel> findAll() {
@@ -45,16 +49,9 @@ public class ProductService implements Serializable{
     @Transactional
     public void saveProduct(ProductDTO newProduct) {
 
-        CategoryModel category = categoryRepository.findById(newProduct.getCategoryId())
-                .orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
+        ProductModel productModel =  productMapper.convertToProductModel(newProduct);
 
-        ProductModel product = new ProductModel();
-
-        product.setName(newProduct.getName());
-        product.setPrice(newProduct.getPrice());
-        product.setCategory(category);
-
-        productRepository.save(product);
+        productRepository.save(productModel);
     }
 
     public void updateProduct(ProductDTO productDTO, Long productId) {
@@ -68,12 +65,15 @@ public class ProductService implements Serializable{
 
     private ProductModel update(ProductDTO productDTO, ProductModel product) {
 
-        product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
-
         CategoryModel category = categoryRepository.findById(productDTO.getCategoryId())
                 .orElseThrow(() -> new ObjectNotFoundException("Invalid Category Id"));
 
+        product.setName(productDTO.getName());
+        product.setFowardPrice(productDTO.getFowardPrice());
+        product.setSpotPrice(productDTO.getSpotPrice());
+        product.setDescription(productDTO.getDescription());
+        product.setInstallments(productDTO.getInstallments());
+        product.setPixDiscount(productDTO.getPixDiscount());
         product.setCategory(category);
 
         return product;
