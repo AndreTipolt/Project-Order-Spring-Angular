@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,23 @@ public class ProductModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100, nullable = false)
     private String name;
 
-    private Double price;
+    @Column(nullable = false)
+    private Double spotPrice;
+
+    @Column(nullable = false)
+    private Double fowardPrice;
+
+    @Column(nullable = false)
+    private Integer installments;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
+    private Integer pixDiscount;
 
     @JsonIgnore
     @ManyToOne
