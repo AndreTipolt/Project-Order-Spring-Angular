@@ -42,14 +42,14 @@ services:
     env_file:
       - env/.env
       
-  # redis:
-  #   hostname: redis-container
-  #   container_name: redis-container
-  #   image: redis:7.2.3
-  #   ports:
-  #     - "6379:6379"
-  #   networks:
-  #     - application_spring
+  redis:
+    hostname: redis-container
+    container_name: redis-container
+    image: redis:7.2.3
+    ports:
+      - "6379:6379"
+    networks:
+      - application_spring
 
   # nginx:
   #   container_name: nginx

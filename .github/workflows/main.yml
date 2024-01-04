@@ -34,11 +34,11 @@ jobs:
           username: ${{secrets.DOCKERHUB_USER}}
           password: ${{secrets.DOCKERHUB_PASSWORD}}
       
-      - name: Construção da imagem Docker
-        uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
-        with:
-          context: "{{defaultContext}}:Back-End-Spring" # Aonde está a imagem docker
-          file: dockerfile
-          push: true
-          tags:
-            andretipolt/project_order_spring_image:1.0.${{github.run_number}}
+      # - name: Construção da imagem Docker
+      #   uses: docker/build-push-action@v5.0.0 # Construção da imagem docker
+      #   with:
+      #     context: "{{defaultContext}}:Back-End-Spring" # Aonde está a imagem docker
+      #     file: dockerfile
+      #     push: true
+      #     tags:
+      #       andretipolt/project_order_spring_image:1.0.${{github.run_number}}
