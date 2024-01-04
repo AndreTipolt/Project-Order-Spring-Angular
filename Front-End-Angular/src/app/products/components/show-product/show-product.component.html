@@ -4,11 +4,22 @@
     </div>
     <div class="product-details">
         <h1 class="product-title">{{ product.name }}</h1>
+        <!-- <div class="categories-product">
+            <div class="category-product">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="sell"></mat-icon> Category
+            </div>
+        </div> -->
         <div class="prices">
             <span class="old-price">{{ product.price | currency: 'BRL' }}</span>
             <p class="price">{{ product.price | currency: 'BRL' }}</p>
+            <div class="method-payment">
+                no pix <span class="discount-pix">(10% de desconto) <br/></span>
+                ou em 2x de R$ 21,00
+            </div>
         </div>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vitae delectus, atque eius porro laborum? Ea quo iusto non delectus dolor, illum temporibus magni animi, quos reiciendis vero, corporis ratione?
-        Ratione voluptatum debitis minus ad nesciunt quo soluta excepturi eos. Laboriosam deserunt, distinctio quibusdam rerum error assumenda perspiciatis quis saepe totam odio sapiente ipsa, accusamus dolores est aliquam? Sapiente, dolorum?</p>
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vitae delectus, atque eius porro laborum? Ea quo iusto non delectus dolor, illum temporibus magni animi, quos reiciendis vero, corporis ratione?</p>
+        <div class="button-buy">
+            <button>Comprar Agora</button>
+        </div>
     </div>
 </div>

@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from '../shared/shared.module';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { NavProductsComponent } from './components/nav-products/nav-products.component';
 import { ProductsComponent } from './components/products/products.component';
-import { ProductsRoutingModule } from './products-routing.module';
-import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
+import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ShowProductComponent } from './components/show-product/show-product.com
     ProductsRoutingModule,
     SharedModule,
     MatProgressSpinnerModule,
+    MatIconModule
   ]
 })
 export class ProductsModule { }
