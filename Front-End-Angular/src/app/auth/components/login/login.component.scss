@@ -1,5 +1,5 @@
 .form-login {
-  width: 390px;
+  width: 400px;
   min-height: 50vh;
   margin: 50px auto;
   border-radius: 15px;
@@ -29,13 +29,19 @@
     flex-direction: column;
     justify-self: center;
     width: 100%;
-    gap: 10px;
+    gap: 7px;
+    font-size: 1.1em;
 }
 
-.form-login .form-inputs .welcome-message {
+.form-inputs .input-password{
+  margin-bottom: 3px;
+}
+
+
+.form-login .welcome-div .welcome-message {
   font-size: 1.9em;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .form-login .form-inputs .welcome-div img {
@@ -46,15 +52,15 @@
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
-  background-color: #34495e;
+  background-color: #0f4172;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.login-button:hover {
-  background-color: #2c3e50;
+.form-login .form-inputs .login-button:hover {
+  background-color: rgb(33, 81, 128)
 }
 
 .login-button:active {
