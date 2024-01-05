@@ -48,6 +48,13 @@ export class ProductsComponent implements OnInit {
   refreshProducts() {
     this.productService.getAllProducts().subscribe({
       next: (res) => {
+        // this.products = res.content.map((product) => {
+          
+        //   let valueInstallent = product.fowardPrice / product.installments
+
+        //   product.valueInstallment = valueInstallent
+        //   return product;
+        // });
         this.products = res.content;
       },
       error: (err) => {

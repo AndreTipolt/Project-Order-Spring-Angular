@@ -61,7 +61,7 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
     @BeforeEach
     public void setUp() throws Exception {
 
-        this.productDTO = ProductFactory.createProductDTO();
+        // this.productDTO = ProductFactory.createProductDTO();
 
         this.existingId = "1";
         this.nonExistingId = "0";
@@ -139,7 +139,7 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
 
         Long nonExistingCategoryId = 0L;
 
-        ProductDTO productDTO = new ProductDTO("Phone", 1999.99, nonExistingCategoryId);
+        // ProductDTO productDTO = new ProductDTO("Phone", 1999.99, nonExistingCategoryId);
 
         String jsonBody = objectMapper.writeValueAsString(productDTO);
 
@@ -172,7 +172,7 @@ public class ProductControllerTests extends ApplicationTestConfig { // Set permi
     @Test
     @DisplayName("save product should return created when all fields are filled")
     public void saveProductShouldReturnCreatedWhenAllFieldsAreeFilled() throws Exception {
-        ProductDTO productDTO = ProductFactory.createProductDTO();
+        // ProductDTO productDTO = ProductFactory.createProductDTO();
 
         String jsonBody = objectMapper.writeValueAsString(productDTO);
 

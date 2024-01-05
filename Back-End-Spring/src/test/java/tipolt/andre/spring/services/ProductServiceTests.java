@@ -61,7 +61,7 @@ public class ProductServiceTests extends ApplicationTestConfig {
         ProductDTO product = new ProductDTO();
 
         product.setName("André");
-        product.setPrice(1.0);
+        // product.setPrice(1.0);
         product.setCategoryId(notExistingCategoryId);
 
         Assertions.assertThrows(ObjectNotFoundException.class, () -> {

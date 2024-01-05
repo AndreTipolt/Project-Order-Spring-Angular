@@ -1,12 +1,12 @@
 export interface Product{
     
-    id?: Number;
+    id?: number;
     name: string;
     fowardPrice: number;
     spotPrice: number;
     installments: number;
     description: string;
     pixDiscount: number;
-    category?: Number;
-
+    category?: number;
+    valueInstallment?: number;
 }

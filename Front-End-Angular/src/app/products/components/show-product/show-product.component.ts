@@ -25,6 +25,7 @@ export class ShowProductComponent implements OnInit {
     this.productService.getProductById(idProduct).subscribe({
 
       next: (res) => {
+        res.valueInstallment = res.fowardPrice / res.installments
         this.product = res
         this.title.setTitle(res.name)
       },

@@ -11,13 +11,13 @@
         </div> -->
         <div class="prices">
             <span class="old-price">{{ product.spotPrice + 10| currency: 'BRL' }}</span>
-            <p class="price">{{ product.spotPrice | currency: 'BRL' }}</p>
+            <p class="price">{{ product.spotPrice | currency: 'BRL' }} </p>
             <div class="method-payment" *ngIf="product.pixDiscount != 0">
                 no pix <span class="discount-pix">(10% de desconto) <br/></span>
             </div>
-            ou em {{ product.installments }}x de R$ 21,00
+            ou em {{ product.installments }}x de {{ product.valueInstallment | currency: 'BRL' }}
         </div>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vitae delectus, atque eius porro laborum? Ea quo iusto non delectus dolor, illum temporibus magni animi, quos reiciendis vero, corporis ratione?</p>
+        <p class="description">{{ product.description }}<p>
         <div class="button-buy">
             <button>Comprar Agora</button>
         </div>
