@@ -40,7 +40,7 @@ header .nav-header .btn-login-nav{
     justify-content: center;
     align-items: center;
 }
-header .nav-header .btn-login-nav .btn-login{
+header .nav-header .btn-login-nav .btn-login, .btn-sign-up{
     
     background-color: #272D2D;
     padding: 15px 22px;
@@ -48,4 +48,9 @@ header .nav-header .btn-login-nav .btn-login{
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+header .nav-header .btn-login-nav .btn-sign-up{
+    background-color: #08335d;
+    margin-left: 4px;
 }
