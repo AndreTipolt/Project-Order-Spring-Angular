@@ -8,7 +8,8 @@ export const environment = {
   baseAPIURL: "http://localhost:8080",
   
   client_id: "orderSpring",
-  client_secret: "orderSpring123"
+  client_secret: "orderSpring123",
+  basicKey: "3JkZXJTcHJpbmc6b3JkZXJTcHJpbmcxMjM="
 };
 
 /*

@@ -10,8 +10,9 @@ import { TokenSucessLogin } from '../types/TokenSucessLogin.interface';
 export class AuthService {
 
   private readonly baseAPIURL = environment.baseAPIURL
-  private readonly client_id = environment.client_id;
-  private readonly client_secret = environment.client_secret;
+  // private readonly client_id = environment.client_id;
+  // private readonly client_secret = environment.client_secret;
+  private readonly basicKey = environment.basicKey;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,10 +20,11 @@ export class AuthService {
 
     const apiURL = `${this.baseAPIURL}/oauth/token`;
 
-    const encodedCredentials = btoa(`${this.client_id}:${this.client_secret}`)
+    // const encodedCredentials = btoa(`${this.client_id}:${this.client_secret}`)
 
     let headers = new HttpHeaders()
-        .append("Authorization", `Basic ${encodedCredentials}`)
+        .append("Authorization", `Basic ${this.basicKey}`)
+        .append("Content-Type", "application/json");
 
     return this.httpClient.post<TokenSucessLogin>(apiURL, { dataForm,grant_type: "password" },{ headers });
   }
