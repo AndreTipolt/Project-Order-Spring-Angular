@@ -53,3 +53,7 @@ $custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $cust
 .container{
   padding: 90px 0;
 }
+
+button:active {
+  transform: scale(0.95);
+}

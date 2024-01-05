@@ -1,1 +1,22 @@
-<p>login works!</p>
+<section class="form-login">
+    <div class="welcome-div">
+        <h1 class="welcome-message">Bem-Vindo</h1>
+        <img src="/assets/images/logo/small_logo.png" alt="">
+    </div>
+    <div class="form-inputs">
+        <form action="">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Email" formControlName="email" #email>
+                <!-- <mat-error *ngIf="form.get('name')?.invalid">{{ getErrorMessage('name') }}</mat-error> -->
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Senha" formControlName="password" #password>
+                <!-- <mat-error *ngIf="form.get('name')?.invalid">{{ getErrorMessage('name') }}</mat-error> -->
+            </mat-form-field>
+            <button class="login-button">Login</button>
+        </form>
+    </div>
+    <div class="sign-up-link">
+        Não possui conta ainda? <a href="">Registrar-se</a>
+    </div>
+</section>
