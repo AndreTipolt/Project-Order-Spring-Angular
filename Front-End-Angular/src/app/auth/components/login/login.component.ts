@@ -19,4 +19,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getErrorMessage(fieldName: string){
+
+    const field = this.formLogin.get(fieldName);
+
+    if(field?.hasError('required')){
+
+      return "Campo obrigatório";
+
+    }
+
+    if(field?.hasError('email')){
+
+      return "Email Inválido";
+
+    }
+
+    return "Erro";
+  }
 }

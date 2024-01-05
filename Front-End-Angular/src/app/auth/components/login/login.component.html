@@ -7,10 +7,11 @@
         <form [formGroup]="formLogin">
             <mat-form-field class="full-width">
                 <input matInput placeholder="Email" formControlName="email" #email type="email">
+                <mat-error *ngIf="formLogin.get('email')?.invalid">{{ getErrorMessage("email") }}</mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
                 <input matInput placeholder="Senha" formControlName="password" #password type="password">
-                <!-- <mat-error *ngIf="form.get('name')?.invalid">{{ getErrorMessage('name') }}</mat-error> -->
+                <mat-error *ngIf="formLogin.get('password')?.invalid">{{ getErrorMessage("password") }}</mat-error>
             </mat-form-field>
             <button class="login-button">Login</button>
         </form>
