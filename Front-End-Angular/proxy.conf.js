@@ -1,10 +1,8 @@
-const PROXY_CONFIG = [
-    {
-        context: [''],
-        target: 'http://localhost:8080/',
-        secure: false,
-        logLebel: 'debug'
-    },
-]
-
-module.exports = PROXY_CONFIG
+const proxy = [{
+  context: '/api',
+  target: 'http://localhost:8080',
+  pathRewrite: {
+    '^/api': ''
+  }
+}];
+module.exports = proxy;
