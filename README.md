@@ -1,5 +1,7 @@
 # Project-Order-Spring
 
+<h2>(Front-End em Angular em Desenvolvimento na branch dev)</h2> <br/>
+
 <p>O projeto foi realizado em Java, no Spring Framework. PostgreSQL foi utilizado como banco de dados.</p>
 
 <p>O projeto foi feito para uma empresa de controle de pedidos, onde podemos cadastrar produtos, usuários, realizar pedidos e muito mais.</p>
