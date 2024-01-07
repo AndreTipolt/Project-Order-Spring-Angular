@@ -1,6 +1,6 @@
 package tipolt.andre.spring.dtos;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data

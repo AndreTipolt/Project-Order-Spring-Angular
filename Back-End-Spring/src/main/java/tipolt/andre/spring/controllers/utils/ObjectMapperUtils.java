@@ -21,9 +21,7 @@ public class ObjectMapperUtils {
     public void convertObjectToStringAndSaveInRedis(String key, Object object) {
 
         try {
-
             String json = objectMapper.writeValueAsString(object);
-
             redisCacheService.save(key, json);
 
         } catch (JsonProcessingException e) {

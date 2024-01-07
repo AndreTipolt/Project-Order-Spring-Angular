@@ -6,14 +6,19 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
+@EnableWebSecurity
 public class ResourceServerConfig {
 
     // private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**",
@@ -30,16 +35,20 @@ public class ResourceServerConfig {
     // if(Arrays.asList(env.getActiveProfiles()).contains("test")){
     // http.headers().frameOptions().disable();
     // }
-    http.authorizeRequests(requests -> requests.anyRequest().permitAll());
-    // .antMatchers(PUBLIC).permitAll()
-    // .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).authenticated()
-    // .antMatchers(OPERATOR_OR_ADMIN).hasAnyAuthority("OPERATOR", "ADMIN")
-    // .antMatchers(ADMIN).hasAuthority("ADMIN")
-    // .anyRequest().authenticated();
+    // http.authorizeRequests(requests -> requests.anyRequest().permitAll());
 
-    http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
-
-    return http.build();
+    return  http
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+                // .authorizeHttpRequests(authorize -> authorize
+                //         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                //         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                //         .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
+                //         .anyRequest().authenticated()
+                // )
+                .build();
     }
 
     @Bean
