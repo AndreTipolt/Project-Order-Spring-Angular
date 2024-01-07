@@ -27,12 +27,31 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
             String token = JWT.create()
-                            .withIssuer("auth-api")
-                            .withSubject(userModel.getEmail())
+                            .withIssuer("order-spring")
+                            .withSubject(userModel.getId().toString())
                             .withExpiresAt(genExpirarionDate())
                             .sign(algorithm);
 
             return token;
+        } catch (JWTCreationException exception) {
+            
+            throw new RuntimeException("Error at create jwt token");
+        }
+    }
+
+    public String validateToken(String acessToken){
+
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+
+            String token = JWT.require(algorithm)
+                            .withIssuer("order-spring")
+                            .build()
+                            .verify(acessToken)
+                            .getSubject();
+            
+            return token;
+
         } catch (JWTCreationException exception) {
             
             throw new RuntimeException("Error at create jwt token");
