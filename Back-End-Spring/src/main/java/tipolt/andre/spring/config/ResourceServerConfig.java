@@ -2,6 +2,7 @@ package tipolt.andre.spring.config;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,9 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableWebSecurity
 public class ResourceServerConfig {
+
+    @Autowired
+    private SecurityFilterConfig securityFilterConfig;
 
     // private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**",
     // "/products/**", "/users/save" };
@@ -48,6 +52,7 @@ public class ResourceServerConfig {
                 //         .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
                 //         .anyRequest().authenticated()
                 // )
+                .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
