@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,21 +36,24 @@ public class ResourceServerConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
-    // if(Arrays.asList(env.getActiveProfiles()).contains("test")){
-    // http.headers().frameOptions().disable();
-    // }
-    // http.authorizeRequests(requests -> requests.anyRequest().permitAll());
+        // if(Arrays.asList(env.getActiveProfiles()).contains("test")){
+        // http.headers().frameOptions().disable();
+        // }
+        // http.authorizeRequests(requests -> requests.anyRequest().permitAll());
 
-    return  http
+        return http
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+                .authorizeHttpRequests(
+                        authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/products").hasRole("OPERATOR")
+                                .anyRequest().authenticated())
                 // .authorizeHttpRequests(authorize -> authorize
-                //         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                //         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                //         .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
-                //         .anyRequest().authenticated()
+                // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                // .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
+                // .anyRequest().authenticated()
                 // )
                 .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)
                 .build();

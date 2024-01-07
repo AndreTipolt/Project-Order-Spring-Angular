@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 
 import org.springframework.stereotype.Service;
 
@@ -44,17 +45,17 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
-            String token = JWT.require(algorithm)
+            String userId = JWT.require(algorithm)
                             .withIssuer("order-spring")
                             .build()
                             .verify(acessToken)
                             .getSubject();
             
-            return token;
+            return userId;
 
-        } catch (JWTCreationException exception) {
+        } catch (JWTVerificationException  exception) {
             
-            throw new RuntimeException("Error at create jwt token");
+            return "";
         }
     }
 
