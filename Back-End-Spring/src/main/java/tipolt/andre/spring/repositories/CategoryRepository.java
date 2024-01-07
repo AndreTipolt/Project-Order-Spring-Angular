@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import tipolt.andre.spring.models.CategoryModel;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<CategoryModel, Long> {
+public interface CategoryRepository extends JpaRepository<CategoryModel, String> {
 
 }

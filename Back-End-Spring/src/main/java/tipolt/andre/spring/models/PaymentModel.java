@@ -21,8 +21,8 @@ import lombok.Data;
 public class PaymentModel implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     private Instant moment;
 

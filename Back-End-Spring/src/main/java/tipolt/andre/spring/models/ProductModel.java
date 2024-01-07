@@ -24,8 +24,8 @@ import lombok.Data;
 public class ProductModel implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(length = 100, nullable = false)
     private String name;
@@ -44,6 +44,9 @@ public class ProductModel implements Serializable{
 
     @Column(nullable = false)
     private Integer pixDiscount;
+
+    @Column(nullable = false)
+    private String imageURL;
 
     @JsonIgnore
     @ManyToOne

@@ -46,16 +46,12 @@ public class ProductController {
 
         objectMapperUtils.convertObjectToStringAndSaveInRedis("products_findAll", listProducts);
 
-        // HttpHeaders responseHeader = new HttpHeaders();
-
-        // responseHeader.set("ahslamanoqueraiva", "to cheid odio ja");
 
         return ResponseEntity.ok().body(listProducts);
-        // return ResponseEntity.ok().headers(responseHeader).body(listProducts);
     }
 
     @GetMapping(value = "/{productId}")
-    public ResponseEntity<ProductModel> findProductById(@PathVariable Long productId) {
+    public ResponseEntity<ProductModel> findProductById(@PathVariable String productId) {
         ProductModel product = productService.findProductById(productId);
 
         return ResponseEntity.ok().body(product);
@@ -71,7 +67,7 @@ public class ProductController {
 
     @PutMapping(value = "/{productId}")
     public ResponseEntity<Void> updateProduct(@RequestBody @Valid ProductDTO productDTO,
-            @PathVariable Long productId) {
+            @PathVariable String productId) {
 
         productService.updateProduct(productDTO, productId);
 

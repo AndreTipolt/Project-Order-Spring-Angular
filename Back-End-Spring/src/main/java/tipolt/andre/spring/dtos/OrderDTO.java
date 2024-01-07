@@ -16,10 +16,10 @@ import lombok.Setter;
 public class OrderDTO {
 
     @NotEmpty(message = "Fill Products Field")
-    private List<Long> listProductId;
+    private List<String> listProductId;
 
     @NotNull(message = "Fill User Field")
-    private Long userId;
+    private String userId;
 
     @NotNull(message = "Fill Quantity Fields")
     private Integer quantity;

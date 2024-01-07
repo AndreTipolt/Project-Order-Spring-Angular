@@ -48,7 +48,7 @@ public class ResourceServerConfig {
                 .authorizeHttpRequests(
                         authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/products").hasRole("OPERATOR")
-                                .anyRequest().authenticated())
+                                .anyRequest().permitAll())
                 // .authorizeHttpRequests(authorize -> authorize
                 // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                 // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()

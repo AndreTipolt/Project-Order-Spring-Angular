@@ -41,7 +41,7 @@ public class ProductService implements Serializable{
     }
 
     @Transactional(readOnly = true)
-    public ProductModel findProductById(Long productId) {
+    public ProductModel findProductById(String productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new ObjectNotFoundException("Product Not Found"));
     }
@@ -54,7 +54,7 @@ public class ProductService implements Serializable{
         productRepository.save(productModel);
     }
 
-    public void updateProduct(ProductDTO productDTO, Long productId) {
+    public void updateProduct(ProductDTO productDTO, String productId) {
 
         ProductModel product = this.findProductById(productId);
 

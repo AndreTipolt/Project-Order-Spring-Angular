@@ -19,7 +19,7 @@ public class ProductDTO {
     private Double fowardPrice;
 
     @NotNull(message = "Fill Category Field")
-    private Long categoryId;
+    private String categoryId;
 
     @NotNull(message = "Fill Installments Field")
     private Integer installments;
@@ -32,4 +32,7 @@ public class ProductDTO {
 
     @NotNull(message = "Fill Description Field")
     private String description;
+
+    @NotNull(message = "Fill imageURL Field")
+    private String imageURL;
 }

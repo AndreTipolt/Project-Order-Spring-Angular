@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import tipolt.andre.spring.models.UserRoleModel;
 
 @Repository
-public interface UserRoleRepository extends JpaRepository<UserRoleModel, Long> {
+public interface UserRoleRepository extends JpaRepository<UserRoleModel, String> {
 
 }

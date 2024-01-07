@@ -26,6 +26,7 @@ public class ProductMapper {
         productDTO.setDescription(productModel.getDescription());
         productDTO.setCategoryId(productModel.getCategory().getId());
         productDTO.setInstallments(productModel.getInstallments());
+        productDTO.setImageURL(productModel.getImageURL());
         return productDTO;
     }
 
@@ -42,6 +43,7 @@ public class ProductMapper {
         productModel.setDescription(productDTO.getDescription());
         productModel.setInstallments(productDTO.getInstallments());
         productModel.setPixDiscount(productDTO.getPixDiscount());
+        productModel.setImageURL(productDTO.getImageURL());
         productModel.setCategory(category);
 
         return productModel;

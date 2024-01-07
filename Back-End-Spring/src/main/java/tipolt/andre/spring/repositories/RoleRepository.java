@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import tipolt.andre.spring.models.RoleModel;
 
 @Repository
-public interface RoleRepository extends JpaRepository<RoleModel, Long> {
+public interface RoleRepository extends JpaRepository<RoleModel, String> {
 
 }
