@@ -34,7 +34,7 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
         if (tokenAuthHeader != null) {
 
             String userId = tokenService.validateToken(tokenAuthHeader);
-
+            System.out.println(userId);
             UserModel user = userRepository.findById(userId)
                     .orElseThrow(() -> new InvalidJWTException("Invalid JWT Exception"));
 

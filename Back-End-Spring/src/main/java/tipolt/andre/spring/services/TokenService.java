@@ -30,6 +30,7 @@ public class TokenService {
             String token = JWT.create()
                             .withIssuer("order-spring")
                             .withSubject(userModel.getId().toString())
+                            .withClaim("email", userModel.getEmail())
                             .withExpiresAt(genExpirarionDate())
                             .sign(algorithm);
 
