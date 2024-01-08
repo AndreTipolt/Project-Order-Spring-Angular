@@ -1,7 +1,5 @@
 package tipolt.andre.spring.controllers;
 
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import jakarta.validation.Valid;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
 import tipolt.andre.spring.dtos.ProductDTO;
 import tipolt.andre.spring.models.ProductModel;
@@ -35,17 +34,17 @@ public class ProductController {
     private ObjectMapperUtils objectMapperUtils;
 
     @GetMapping
-    public ResponseEntity<? extends Object> findAll(Pageable pageable) throws JsonMappingException, JsonProcessingException {
+    public ResponseEntity<? extends Object> findAll(Pageable pageable)
+            throws JsonMappingException, JsonProcessingException {
 
         JsonNode findAllProductCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("products_findAll");
-        if(findAllProductCached != null){
+        if (findAllProductCached != null) {
             return ResponseEntity.ok().body(findAllProductCached);
         }
 
         Page<ProductModel> listProducts = productService.findAllPaged(pageable);
 
         objectMapperUtils.convertObjectToStringAndSaveInRedis("products_findAll", listProducts);
-
 
         return ResponseEntity.ok().body(listProducts);
     }

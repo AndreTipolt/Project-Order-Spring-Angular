@@ -19,10 +19,14 @@ export class AuthService {
   login(dataForm: Login){
 
     // const apiURL = `${this.baseAPIURL}/auth/login`;
-    const apiURL = `${this.baseAPIURL}/products`;
+    const apiURL = `${this.baseAPIURL}/auth/login`;
 
     // const encodedCredentials = btoa(`${this.client_id}:${this.client_secret}`)
 
-    return this.httpClient.post<TokenSucessLogin>(apiURL, { dataForm });
+    let headers = new HttpHeaders();
+
+    headers.append("Content-Type", "application/json")
+
+    return this.httpClient.post<TokenSucessLogin>(apiURL, dataForm, { headers });
   }
 }
