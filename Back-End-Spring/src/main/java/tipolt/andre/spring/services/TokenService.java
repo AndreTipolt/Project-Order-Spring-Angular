@@ -15,52 +15,50 @@ import org.springframework.stereotype.Service;
 
 import tipolt.andre.spring.models.UserModel;
 
-
 @Service
 public class TokenService {
-    
+
     @Value("${jwt.secret}")
     private String secret;
 
-    public String generateToken(UserModel userModel){
+    public String generateToken(UserModel userModel) {
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-
             String token = JWT.create()
-                            .withIssuer("order-spring")
-                            .withSubject(userModel.getId().toString())
-                            .withClaim("email", userModel.getEmail())
-                            .withExpiresAt(genExpirarionDate())
-                            .sign(algorithm);
+                    .withIssuer("order-spring")
+                    .withSubject(userModel.getId().toString())
+                    .withClaim("email", userModel.getEmail())
+                    .withExpiresAt(genExpirarionDate())
+                    .sign(algorithm);
 
             return token;
         } catch (JWTCreationException exception) {
-            
+
             throw new RuntimeException("Error at create jwt token");
         }
     }
 
-    public String validateToken(String acessToken){
+    public String validateToken(String acessToken) {
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
             String userId = JWT.require(algorithm)
-                            .withIssuer("order-spring")
-                            .build()
-                            .verify(acessToken)
-                            .getSubject();
-            
+                    .withIssuer("order-spring")
+                    .build()
+                    .verify(acessToken)
+                    .getSubject();
+
             return userId;
 
-        } catch (JWTVerificationException  exception) {
-            
-            return "";
+        } catch (JWTVerificationException exception) {
+
+            return null;
         }
     }
 
-    private Instant genExpirarionDate(){
+    private Instant genExpirarionDate() {
         return LocalDateTime.now().plusDays(1).toInstant(ZoneOffset.of("-03:00"));
     }
 }

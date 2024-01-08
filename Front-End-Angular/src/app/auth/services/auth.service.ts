@@ -23,7 +23,6 @@ export class AuthService {
     // const encodedCredentials = btoa(`${this.client_id}:${this.client_secret}`)
 
     let headers = new HttpHeaders()
-        .append("Authorization", `Basic ${this.basicKey}`)
         .append("Content-Type", "application/json");
 
     return this.httpClient.post<TokenSucessLogin>(apiURL, { dataForm,grant_type: "password" },{ headers });

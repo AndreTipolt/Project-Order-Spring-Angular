@@ -50,8 +50,10 @@ public class ResourceServerConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/products").hasRole("ADMIN")
-                                .anyRequest().permitAll())
+                                .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                                .anyRequest().authenticated())
                 // .authorizeHttpRequests(authorize -> authorize
                 // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                 // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
