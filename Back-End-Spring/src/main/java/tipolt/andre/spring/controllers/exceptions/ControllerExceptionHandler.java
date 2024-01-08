@@ -6,6 +6,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 import tipolt.andre.spring.exceptions.AcessDeniedException;
@@ -96,6 +97,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
 
         StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Unauthorized", e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<StandardError> endPointNotFound(NoResourceFoundException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "EndPoint Not found", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }
