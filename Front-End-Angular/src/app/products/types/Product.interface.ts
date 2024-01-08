@@ -9,4 +9,5 @@ export interface Product{
     pixDiscount: number;
     category?: number;
     valueInstallment?: number;
+    imageURL: string;
 }

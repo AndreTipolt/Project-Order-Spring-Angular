@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card" *ngFor="let product of products">
         <a href="/products/{{ product.id }}">
-            <img src="https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/cenourao/media/uploads/produtos/foto/nhkgvszz/morango.jpg"
+            <img src="{{ product.imageURL }}"
                 alt="Product 1">
             <div class="card-content">
                 <div class="price">{{ product.spotPrice | currency : 'BRL' }}</div>
