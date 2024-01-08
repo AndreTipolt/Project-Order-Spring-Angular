@@ -44,7 +44,7 @@ public class UserController {
         }
 
         List<UserModel> listUserModels = userService.findAll();
-        objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", listUserModels);
+        // objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", listUserModels);
 
         return ResponseEntity.ok().body(listUserModels);
     }

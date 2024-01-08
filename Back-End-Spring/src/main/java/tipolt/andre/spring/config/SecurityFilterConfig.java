@@ -31,7 +31,6 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String tokenAuthHeader = getTokenFromRequest(request);
-
         if (tokenAuthHeader != null) {
 
             String userId = tokenService.validateToken(tokenAuthHeader);
@@ -43,6 +42,8 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
                     user.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         }
 
         filterChain.doFilter(request, response);

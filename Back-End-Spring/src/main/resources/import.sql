@@ -3,8 +3,8 @@ INSERT INTO tb_user(id, name, email, password) VALUES ('2','Luana Rodrigues', 'l
 INSERT INTO tb_user(id, name, email, password) VALUES ('3','Daniela Figueiredo', 'danielafigueiredo@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
 
 
-INSERT INTO tb_role(id, authority) VALUES ('1', 'OPERATOR');
-INSERT INTO tb_role(id, authority) VALUES ('2', 'ADMIN');
+INSERT INTO tb_role(id, authority) VALUES ('1', 'ROLE_OPERATOR');
+INSERT INTO tb_role(id, authority) VALUES ('2', 'ROLE_ADMIN');
 
 INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '2');
 INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '1');

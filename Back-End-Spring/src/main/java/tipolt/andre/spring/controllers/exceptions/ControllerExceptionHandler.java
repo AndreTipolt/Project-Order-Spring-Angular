@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
+import tipolt.andre.spring.exceptions.BadCredentialsException;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
@@ -76,6 +77,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
 
         OAuthCustomError err = new OAuthCustomError("Unathorized", e.getMessage());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<StandardError> badCredentials(BadCredentialsException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Bad Credentials", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }

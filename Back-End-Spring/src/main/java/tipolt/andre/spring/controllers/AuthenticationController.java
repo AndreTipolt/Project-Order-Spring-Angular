@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import tipolt.andre.spring.dtos.AuthenticationDTO;
 import tipolt.andre.spring.dtos.LoginResponseDTO;
+import tipolt.andre.spring.exceptions.BadCredentialsException;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.services.TokenService;
 
@@ -33,9 +34,16 @@ public class AuthenticationController {
                 authenticationDTO.getEmail(),
                 authenticationDTO.getPassword());
 
-        Authentication auth = this.authenticationManager.authenticate(usernamePassword); // Do the authentication
-        String acessToken = tokenService.generateToken((UserModel) auth.getPrincipal());
+        try {
 
-        return ResponseEntity.ok().body(new LoginResponseDTO(acessToken));
+            Authentication auth = this.authenticationManager.authenticate(usernamePassword); // Do the authentication
+            String acessToken = tokenService.generateToken((UserModel) auth.getPrincipal());
+
+            return ResponseEntity.ok().body(new LoginResponseDTO(acessToken));
+
+        } catch (org.springframework.security.authentication.BadCredentialsException e) {
+            throw new BadCredentialsException("Bad Credentials");
+        }
+
     }
 }

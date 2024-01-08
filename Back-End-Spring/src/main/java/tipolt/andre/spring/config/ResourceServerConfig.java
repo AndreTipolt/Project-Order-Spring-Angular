@@ -47,7 +47,7 @@ public class ResourceServerConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/products").hasRole("OPERATOR")
+                                .requestMatchers(HttpMethod.GET, "/products").hasRole("ADMIN")
                                 .anyRequest().permitAll())
                 // .authorizeHttpRequests(authorize -> authorize
                 // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
