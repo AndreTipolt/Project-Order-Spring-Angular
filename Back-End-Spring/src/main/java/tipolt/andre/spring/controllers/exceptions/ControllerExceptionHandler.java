@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
+import tipolt.andre.spring.exceptions.AcessDeniedException;
 import tipolt.andre.spring.exceptions.BadCredentialsException;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
@@ -86,6 +87,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
         StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Bad Credentials", e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(AcessDeniedException.class)
+    public ResponseEntity<StandardError> acessDenied(AcessDeniedException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Unauthorized", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }

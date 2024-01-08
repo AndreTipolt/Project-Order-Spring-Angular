@@ -11,12 +11,15 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
+import tipolt.andre.spring.controllers.exceptions.CustomAcessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -55,6 +58,7 @@ public class ResourceServerConfig {
                 // .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
                 // .anyRequest().authenticated()
                 // )
+                .exceptionHandling(handling -> handling.authenticationEntryPoint(accessDeniedHandler()))
                 .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
@@ -84,4 +88,8 @@ public class ResourceServerConfig {
         return bean;
     }
 
+    @Bean
+    public AuthenticationEntryPoint accessDeniedHandler() {
+        return new CustomAcessDeniedHandler();
+    }
 }
