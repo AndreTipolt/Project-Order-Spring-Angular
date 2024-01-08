@@ -3,15 +3,20 @@ package tipolt.andre.spring.config;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import tipolt.andre.spring.controllers.exceptions.StandardError;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
@@ -26,25 +31,40 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
         String tokenAuthHeader = getTokenFromRequest(request);
+
         if (tokenAuthHeader != null) {
 
-            String userId = tokenService.validateToken(tokenAuthHeader);
-            
-            if(userId == null){
-                throw new InvalidJWTException("Invalid Token");
+            try {
+                String userId = tokenService.validateToken(tokenAuthHeader);
+
+                if (userId == null) { // Invalid token
+                    throw new InvalidJWTException("Invalid Token");
+                }
+
+                UserModel user = userRepository.findById(userId)
+                        .orElseThrow(() -> new InvalidJWTException("Invalid JWT Exception")); // Token with userId is invalid
+
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null,
+                        user.getAuthorities());
+
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            } catch (InvalidJWTException e) {
+
+                String error = createInvalidJWTObject(request);
+
+                response.setContentType("application/json");
+                response.getWriter().print(error);
+                return;
             }
-            UserModel user = userRepository.findById(userId)
-                    .orElseThrow(() -> new InvalidJWTException("Invalid JWT Exception"));
-
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null,
-                    user.getAuthorities());
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
         filterChain.doFilter(request, response);
@@ -60,4 +80,15 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
         return authHeader.replace("Bearer ", "");
     }
 
+    private String createInvalidJWTObject(HttpServletRequest httpServletRequest){
+
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.UNAUTHORIZED.value(), "Invalid Token", "The token is invalid", httpServletRequest.getRequestURI());
+
+        try {
+            return objectMapper.writeValueAsString(err);
+        } catch (JsonProcessingException e) {
+            
+            throw new RuntimeException("Error to create a object Invalid JWT");
+        }
+    }
 }
