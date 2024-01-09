@@ -1,0 +1,72 @@
+.form-login {
+  width: 400px;
+  min-height: 50vh;
+  margin: 50px auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  gap: 30px;
+  padding: 40px;
+}
+
+.form-login .welcome-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-inputs{
+    width: 100%;
+}
+
+.form-inputs form{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 100%;
+    gap: 7px;
+    font-size: 1.1em;
+}
+
+.form-inputs .input-password{
+  margin-bottom: 3px;
+}
+
+
+.form-login .welcome-div .welcome-message {
+  font-size: 1.9em;
+  text-align: center;
+  font-weight: 400;
+}
+
+.form-login .form-inputs .welcome-div img {
+  width: 80%;
+}
+
+.form-login .form-inputs .login-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0f4172;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.form-login .form-inputs .login-button:hover {
+  background-color: rgb(33, 81, 128)
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+.form-login .form-inputs .message-form{
+  margin-bottom: 7px;
+}

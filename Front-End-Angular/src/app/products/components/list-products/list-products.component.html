@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="card" *ngFor="let product of products">
+        <a href="/products/{{ product.id }}">
+            <img src="{{ product.imageURL }}"
+                alt="Product 1">
+            <div class="card-content">
+                <div class="price">{{ product.spotPrice | currency : 'BRL' }}</div>
+                <div class="old-price">{{ product.fowardPrice | currency : 'BRL'}}</div>
+                <div class="description">{{ product.name }}</div>
+            </div>
+        </a>
+    </div>
+</div>

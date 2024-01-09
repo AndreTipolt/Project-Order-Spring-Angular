@@ -1,0 +1,25 @@
+<div class="display-product">
+    <div class="product-image">
+        <img src="{{ product.imageURL }}" alt="Produto Exemplo">
+    </div>
+    <div class="product-details">
+        <h1 class="product-title">{{ product.name }}</h1>
+        <!-- <div class="categories-product">
+            <div class="category-product">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="sell"></mat-icon> Category
+            </div>
+        </div> -->
+        <div class="prices">
+            <span class="old-price">{{ product.spotPrice + 10| currency: 'BRL' }}</span>
+            <p class="price">{{ product.spotPrice | currency: 'BRL' }} </p>
+            <div class="method-payment" *ngIf="product.pixDiscount != 0">
+                no pix <span class="discount-pix">(10% de desconto) <br/></span>
+            </div>
+            ou em {{ product.installments }}x de {{ product.valueInstallment | currency: 'BRL' }}
+        </div>
+        <p class="description">{{ product.description }}<p>
+        <div class="button-buy">
+            <button>Comprar Agora</button>
+        </div>
+    </div>
+</div>

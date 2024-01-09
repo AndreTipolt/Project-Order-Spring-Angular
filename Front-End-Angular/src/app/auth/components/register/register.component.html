@@ -1,0 +1,34 @@
+<section class="form-login">
+    <div class="welcome-div">
+        <h1 class="welcome-message">Registrar-se</h1>
+        <img src="/assets/images/logo/small_logo.png" alt="">
+    </div>
+    <div class="form-inputs">
+        <mat-error *ngIf="messageForm" class="message-form">{{ messageForm }}</mat-error>
+        <form [formGroup]="formUser" (submit)="onSubmit()">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Name" formControlName="name" #email type="text">
+                <mat-error *ngIf="formUser.get('name')?.invalid">{{ getErrorMessage("name") }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width input-password">
+                <input matInput placeholder="Email" formControlName="email" #password type="text">
+                <mat-error *ngIf="formUser.get('email')?.invalid">{{ getErrorMessage("email") }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width input-password">
+                <input matInput placeholder="Senha" formControlName="password" #password type="password">
+                <mat-error *ngIf="formUser.get('password')?.invalid">{{ getErrorMessage("password") }}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width input-password">
+                <input matInput placeholder="Confirmar Senha" formControlName="confirmPassword" #password type="password">
+                <mat-error *ngIf="formUser.get('confirmPassword')?.invalid">{{ getErrorMessage("confirmPassword") }}</mat-error>
+            </mat-form-field>
+            <button class="login-button">Cadastrar-se</button>
+        </form>
+    </div>
+    <div class="spinner-loader" *ngIf="showSpinnerLoading">
+        <app-spinner-loading [diameter]="getDiameterSpinnerLoading()"></app-spinner-loading>
+    </div>
+    <div class="sign-up-link">
+        Já possui conta? Faça o <a href="" routerLink="/auth/login">Login</a>
+    </div>
+</section>

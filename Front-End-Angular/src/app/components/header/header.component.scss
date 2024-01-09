@@ -1,0 +1,86 @@
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 70px;
+    min-height: 100px;
+    background-color: #F6F8FF;
+    position: sticky;
+    border-bottom: 1px solid #272d2d4f;
+}
+
+header .image-header img{
+    height: 100px;
+    cursor: pointer;
+}
+
+header .nav-header{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header .nav-header ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+header .nav-header ul li{
+    list-style: none;
+}
+
+header .nav-header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+header .nav-header .btn-login-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .nav-header .btn-login-nav .btn-login, .btn-sign-up{
+    
+    background-color: #272D2D;
+    padding: 15px 22px;
+    border-radius: 14px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+header .nav-header .btn-login-nav .btn-sign-up{
+    background-color: #08335d;
+    margin-left: 4px;
+}
+
+header .user-informations{
+    display: flex;
+    align-items: center;
+    width: 70px;
+}
+
+header .user-informations img{
+    border-radius: 50%;
+    width: 100%;
+}
+
+header .btn-to-show-menu-user{
+    background-color: transparent;
+    border: none;
+}
+
+header .user-informations .icon-user-menu{
+    margin-left: -6px;
+}
+
+.link-user-menu {
+    text-decoration: none;
+    color: inherit;
+}
+
+header .content-user-menu{
+    display: flex;
+    align-items: center;
+}
