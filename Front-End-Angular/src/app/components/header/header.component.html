@@ -18,9 +18,9 @@
                         <img src="assets/images/images_application/user_default_image.jpg" alt="">
 
                         <mat-menu #userMenu="matMenu">
-                            <a href="" class="link-user-menu"><button mat-menu-item><mat-icon fontIcon="person"></mat-icon> <span>Minha Conta</span></button></a>
-                            <a href="" class="link-user-menu"><button mat-menu-item><mat-icon fontIcon="shopping_bag"></mat-icon><span>Meus Pedidos</span></button></a>
-                            <a href="" class="link-user-menu" routerLink="/auth/logout"><button mat-menu-item><mat-icon fontIcon="logout"></mat-icon><span>Sair</span></button></a>
+                            <a class="link-user-menu"><button mat-menu-item><mat-icon fontIcon="person"></mat-icon> <span>Minha Conta</span></button></a>
+                            <a class="link-user-menu"><button mat-menu-item><mat-icon fontIcon="shopping_bag"></mat-icon><span>Meus Pedidos</span></button></a>
+                            <a class="link-user-menu" (click)="logout()"><button mat-menu-item><mat-icon fontIcon="logout"></mat-icon><span>Sair</span></button></a>
                         </mat-menu>
                     </div>
                     <div class="icon-user-menu">

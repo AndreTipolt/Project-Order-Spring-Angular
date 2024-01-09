@@ -5,11 +5,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     ErrorDialogComponent,
-    SpinnerLoadingComponent
+    SpinnerLoadingComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-lo
     MatButtonModule,
     MatProgressSpinnerModule
   ],
-  exports: [ErrorDialogComponent, SpinnerLoadingComponent]
+  exports: [ErrorDialogComponent, SpinnerLoadingComponent, ConfirmationDialogComponent]
 })
 export class SharedModule { }
