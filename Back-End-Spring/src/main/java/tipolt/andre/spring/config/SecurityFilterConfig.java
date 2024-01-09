@@ -62,6 +62,7 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
                 String error = createInvalidJWTObject(request);
 
                 response.setContentType("application/json");
+                response.setStatus(HttpStatus.UNAUTHORIZED.value());
                 response.getWriter().print(error);
                 return;
             }

@@ -55,7 +55,7 @@ public class ResourceServerConfig {
                                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                                .anyRequest().permitAll())
+                                .anyRequest().authenticated())
                 // .authorizeHttpRequests(authorize -> authorize
                 // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                 // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()

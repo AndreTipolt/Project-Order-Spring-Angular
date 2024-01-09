@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.validation.Valid;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
+import tipolt.andre.spring.dtos.GetImageAccountDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
@@ -64,11 +65,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/imageAccount")
-    public ResponseEntity<Void> getImageAccount() {
+    public ResponseEntity<GetImageAccountDTO> getImageAccount() {
         
         this.userService.getImageAccount();
 
-        return ResponseEntity.ok().build();
+        GetImageAccountDTO imageAccountDTO = new GetImageAccountDTO("");
+
+        return ResponseEntity.ok().body(imageAccountDTO);
     }
     
 }

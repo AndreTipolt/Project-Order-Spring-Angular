@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/user/services/user.service';
+import { GetImageAccount } from 'src/app/user/types/GetImageAccount.interface';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +10,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() isLogged!: boolean;
-  constructor() { }
+  isLogged: boolean = false;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
 
+
+    this.userService.getImageAccount().subscribe({
+
+      error: (responseError: HttpErrorResponse) => {
+
+        this.isLogged = false;
+      },
+      next: (response) => {
+
+        this.isLogged = true;
+      }
+    })
   }
 
 }

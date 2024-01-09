@@ -41,10 +41,6 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  ngOnChanges(){
-    console.log('sim')
-  }
-
   refreshProducts() {
     this.productService.getAllProducts().subscribe({
       next: (res) => {

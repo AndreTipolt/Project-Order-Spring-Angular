@@ -31,4 +31,9 @@ export class AuthService {
     return this.httpClient.post(apiURL, dataForm);
   }
 
+  getAcessToken(): string{
+    
+    return this.cookieService.get("acess_token")
+  }
+
 }
