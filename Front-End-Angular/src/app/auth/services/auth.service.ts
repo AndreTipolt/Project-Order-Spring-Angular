@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { TokenSucessLogin } from '../types/TokenSucessLogin.interface';
 import { RegisterUser } from '../types/RegisterUser.interface';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthService {
 
   private readonly baseAPIURL = environment.baseAPIURL
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private cookieService: CookieService) { }
 
   login(dataForm: Login){
 
@@ -28,4 +30,5 @@ export class AuthService {
 
     return this.httpClient.post(apiURL, dataForm);
   }
+
 }

@@ -21,6 +21,9 @@ public class TokenService {
     @Value("${jwt.secret}")
     private String secret;
 
+    @Value("${jwt.duration}")
+    private Long duration;
+
     public String generateToken(UserModel userModel) {
 
         try {
@@ -59,6 +62,6 @@ public class TokenService {
     }
 
     private Instant genExpirarionDate() {
-        return LocalDateTime.now().plusDays(1).toInstant(ZoneOffset.of("-03:00"));
+        return LocalDateTime.now().plusSeconds(duration).toInstant(ZoneOffset.of("-03:00"));
     }
 }

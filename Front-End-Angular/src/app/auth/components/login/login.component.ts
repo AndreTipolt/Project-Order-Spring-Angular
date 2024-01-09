@@ -67,9 +67,11 @@ export class LoginComponent implements OnInit {
       },
       next: (res: TokenSucessLogin) => {
         
-        let acessToken = `Bearer ${res.acessToken}`
+        const acessToken = `${res.prefixToken} ${res.acessToken}`
 
-        this.cookieService.set("acess_token", acessToken)
+        const expiresDate: Date = new Date(res.expires);
+
+        this.cookieService.set("acess_token", acessToken, expiresDate);
       }
     })
   }
