@@ -5,6 +5,8 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 import { AuthService } from '../../services/auth.service';
 import { HttpStatusCode } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenSucessLogin } from '../../types/TokenSucessLogin.interface';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +29,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService,
-    private title: Title) { }
+    private title: Title,
+    private cookieService: CookieService) { }
 
   ngOnInit(): void {
 
@@ -62,9 +65,11 @@ export class LoginComponent implements OnInit {
           this.showSpinnerLoading = false;
         }
       },
-      next: (res) => {
+      next: (res: TokenSucessLogin) => {
         
-        // Implements
+        let acessToken = `Bearer ${res.acessToken}`
+
+        this.cookieService.set("acess_token", acessToken)
       }
     })
   }

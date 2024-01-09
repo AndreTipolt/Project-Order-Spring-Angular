@@ -1,5 +1,5 @@
 export interface TokenSucessLogin{
-    acess_token: string,
+    acessToken: string,
         
     // If error
     // error?: string,

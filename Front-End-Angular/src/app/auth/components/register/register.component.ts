@@ -11,7 +11,7 @@ import { ErrorFormRegisterUser } from '../../types/ErrorFormRegisterUser.interfa
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
 
@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle("Spring - Cadastrar-se")
+    document.cookie = "defato eu confor"
   }
 
   onSubmit() {
@@ -53,19 +54,19 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.formUser.value).subscribe({
       error: (res: HttpErrorResponse) => {
-        console.log(res)
+
+        this.showSpinnerLoading = false;
 
         let emailAlreadyExists = this.checkEmailAlreadyExists(res);
 
         if(emailAlreadyExists){
           this.messageForm = "Email já existe"
-          this.showSpinnerLoading = false;
+          
           return;
         }
 
         if (res.status === HttpStatusCode.UnprocessableEntity) {
           this.messageForm = "Preencha todos os campos do formulário"
-          this.showSpinnerLoading = false;
         }
       },
       next: (res) => {
