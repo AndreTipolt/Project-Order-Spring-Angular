@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 import { ErrorFormRegisterUser } from '../../types/ErrorFormRegisterUser.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,8 @@ export class RegisterComponent implements OnInit {
   constructor(private title: Title,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.title.setTitle("Spring - Cadastrar-se")
@@ -71,7 +73,7 @@ export class RegisterComponent implements OnInit {
       },
       next: (res) => {
 
-        // Implements
+        this.router.navigate(['/auth/login'])
       }
     })
   }

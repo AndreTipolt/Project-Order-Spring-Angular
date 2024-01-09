@@ -24,6 +24,7 @@ import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.services.UserService;
 
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -61,4 +62,13 @@ public class UserController {
         userService.updateUser(userId, userUpdateDTO);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/imageAccount")
+    public ResponseEntity<Void> getImageAccount() {
+        
+        this.userService.getImageAccount();
+
+        return ResponseEntity.ok().build();
+    }
+    
 }

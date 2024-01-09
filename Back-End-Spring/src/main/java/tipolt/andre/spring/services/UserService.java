@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
@@ -26,6 +27,7 @@ public class UserService {
     @Autowired
     private UserRoleService userRoleService;
 
+    @Transactional(readOnly = true)
     public List<UserModel> findAll() {
         return userRepository.findAll();
     }
@@ -50,6 +52,7 @@ public class UserService {
         userRoleService.insertManyUserRoles(List.of(commomRole), createdUser); // Only operator user yet
     }
 
+    @Transactional(readOnly = true)
     public UserModel findUserById(String userId) {
 
         return userRepository.findById(userId).orElseThrow(() -> new ObjectNotFoundException("User Not Found"));
@@ -71,5 +74,11 @@ public class UserService {
         userModel.setEmail(userUpdateDTO.getEmail());
         userModel.setName(userUpdateDTO.getName());
         userModel.setPassword(passwordEncoder.encode(userUpdateDTO.getPassword()));
+    }
+
+    @Transactional(readOnly = true)
+    public String getImageAccount(){
+        
+        return "ImageAccount.jpg";
     }
 }

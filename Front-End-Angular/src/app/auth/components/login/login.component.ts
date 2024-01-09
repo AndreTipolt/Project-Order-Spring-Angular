@@ -7,6 +7,7 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenSucessLogin } from '../../types/TokenSucessLogin.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
     private dialog: MatDialog,
     private authService: AuthService,
     private title: Title,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -72,6 +74,8 @@ export class LoginComponent implements OnInit {
         const expiresDate: Date = new Date(res.expires);
 
         this.cookieService.set("acess_token", acessToken, expiresDate);
+
+        this.router.navigate(['/'])
       }
     })
   }

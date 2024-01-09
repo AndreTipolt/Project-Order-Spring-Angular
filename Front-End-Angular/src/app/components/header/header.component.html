@@ -10,7 +10,7 @@
             <li> <a href="">Quem Somos</a></li>
         </ul>
 
-        <div *ngIf="!isLogged ; else loginAndRegister" class="content-user-menu">
+        <div *ngIf="isLogged ; else loginAndRegister" class="content-user-menu">
             <button mat-button [matMenuTriggerFor]="userMenu" class="btn-to-show-menu-user">
                 <div class="user-informations">
                     <div class="image-user-menu">

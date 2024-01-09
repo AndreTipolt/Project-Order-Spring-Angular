@@ -1,7 +1,6 @@
 package tipolt.andre.spring.dtos;
 
 import java.time.Instant;
-import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
