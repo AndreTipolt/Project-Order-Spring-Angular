@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { AuthService } from '../../services/auth.service';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,9 @@ export class LoginComponent implements OnInit {
     password: new FormControl<string | null>('', [Validators.required])
 
   })
+
+  messageForm!: string;
+
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService) { }
@@ -41,8 +45,15 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.login(this.formLogin.value).subscribe((res) => {
-      console.log(res)
+    this.authService.login(this.formLogin.value).subscribe({
+      error: (error) => {
+
+        if(error.status === HttpStatusCode.BadRequest){
+
+          this.messageForm = "Usuário e/ou Senha inválidos"
+
+        }
+      }
     })
   }
 

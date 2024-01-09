@@ -4,6 +4,7 @@
         <img src="/assets/images/logo/small_logo.png" alt="">
     </div>
     <div class="form-inputs">
+        <mat-error *ngIf="messageForm" class="message-form">{{ messageForm }}</mat-error>
         <form [formGroup]="formLogin">
             <mat-form-field class="full-width">
                 <input matInput placeholder="Email" formControlName="email" #email type="email">
