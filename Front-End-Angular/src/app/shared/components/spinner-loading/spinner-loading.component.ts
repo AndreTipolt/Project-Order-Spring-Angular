@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-spinner-loading',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spinner-loading.component.scss']
 })
 export class SpinnerLoadingComponent implements OnInit {
+
+  @Input() diameter!: number
 
   constructor() { }
 

@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
 
   messageForm!: string;
 
+  showSpinnerLoading: boolean = false;
+
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService) { }
@@ -53,6 +55,10 @@ export class LoginComponent implements OnInit {
           this.messageForm = "Usuário e/ou Senha inválidos"
 
         }
+      },
+      next: (res) => {
+        this.messageForm = "";
+        this.showSpinnerLoading = true;
       }
     })
   }
@@ -61,5 +67,10 @@ export class LoginComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: message
     })
+  }
+
+  getDiameterSpinnerLoading(): number{
+    
+    return 50;
   }
 }

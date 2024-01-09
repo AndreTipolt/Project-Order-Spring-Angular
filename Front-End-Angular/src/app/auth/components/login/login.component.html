@@ -17,6 +17,9 @@
             <button class="login-button" (click)="onSubmit()">Login</button>
         </form>
     </div>
+    <div class="spinner-loader" *ngIf="showSpinnerLoading">
+        <app-spinner-loading [diameter]="getDiameterSpinnerLoading()"></app-spinner-loading>
+    </div>
     <div class="sign-up-link">
         Não possui conta ainda? <a href="">Registrar-se</a>
     </div>
