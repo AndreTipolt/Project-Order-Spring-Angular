@@ -75,6 +75,11 @@ header .user-informations .icon-user-menu{
     margin-left: -6px;
 }
 
+.link-user-menu {
+    text-decoration: none;
+    color: inherit;
+}
+
 header .content-user-menu{
     display: flex;
     align-items: center;
