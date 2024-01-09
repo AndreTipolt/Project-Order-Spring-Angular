@@ -1,14 +1,14 @@
 INSERT INTO tb_user(id, name, email, password) VALUES ('1','André Tipolt Lopes', 'andretipoltlopes@gmail.com', '$2a$10$u6g4Y6BSt6e7iM2LnSxfOuvSu6737p2g41uhz0KbqKuuNHhAlRhM6');
 INSERT INTO tb_user(id, name, email, password) VALUES ('2','Luana Rodrigues', 'luanarodrigues@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
-INSERT INTO tb_user(id, name, email, password) VALUES ('3','Daniela Figueiredo', 'danielafigueiredo@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
+-- INSERT INTO tb_user(id, name, email, password) VALUES ('3','Daniela Figueiredo', 'danielafigueiredo@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
 
 
-INSERT INTO tb_role(id, authority) VALUES ('1', 'ROLE_OPERATOR');
-INSERT INTO tb_role(id, authority) VALUES ('2', 'ROLE_ADMIN');
+INSERT INTO tb_role(id, authority) VALUES ('59bd2375-dd0c-4570-af65-f36a138efc94', 'ROLE_USER');
+INSERT INTO tb_role(id, authority) VALUES ('3d041437-412f-4466-aa3b-72da1e19e52a', 'ROLE_ADMIN');
 
-INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '2');
-INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '1');
-INSERT INTO tb_user_role(user_id, role_id) VALUES ('2', '1');
+INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '59bd2375-dd0c-4570-af65-f36a138efc94');
+INSERT INTO tb_user_role(user_id, role_id) VALUES ('1', '3d041437-412f-4466-aa3b-72da1e19e52a');
+INSERT INTO tb_user_role(user_id, role_id) VALUES ('2', '59bd2375-dd0c-4570-af65-f36a138efc94');
 
 INSERT INTO tb_category(id, name) VALUES ('1', 'Tecnologia');
 INSERT INTO tb_category(id, name) VALUES ('2', 'Aparelhos Domésticos');

@@ -4,7 +4,9 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { HttpStatusCode } from '@angular/common/http';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+
+import { ErrorFormRegisterUser } from '../../types/ErrorFormRegisterUser.interface';
 
 @Component({
   selector: 'app-register',
@@ -34,14 +36,14 @@ export class RegisterComponent implements OnInit {
     this.title.setTitle("Spring - Cadastrar-se")
   }
 
-  onSubmit(){
+  onSubmit() {
 
-    
-    if(this.formUser.invalid){
+
+    if (this.formUser.invalid) {
       return;
     }
 
-    if(this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value){
+    if (this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value) {
       this.messageForm = "Senhas não coincidem";
       return;
     }
@@ -50,10 +52,20 @@ export class RegisterComponent implements OnInit {
     this.showSpinnerLoading = true;
 
     this.authService.register(this.formUser.value).subscribe({
-      error: (res) => {
+      error: (res: HttpErrorResponse) => {
         console.log(res)
-        if(res.status === HttpStatusCode.BadRequest){
-          this.onError("Dados do formulário invalidos")
+
+        let emailAlreadyExists = this.checkEmailAlreadyExists(res);
+
+        if(emailAlreadyExists){
+          this.messageForm = "Email já existe"
+          this.showSpinnerLoading = false;
+          return;
+        }
+
+        if (res.status === HttpStatusCode.UnprocessableEntity) {
+          this.messageForm = "Preencha todos os campos do formulário"
+          this.showSpinnerLoading = false;
         }
       },
       next: (res) => {
@@ -63,7 +75,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  onError(message: string){
+  onError(message: string) {
     return this.dialog.open(ErrorDialogComponent, {
       data: message
     })
@@ -79,13 +91,27 @@ export class RegisterComponent implements OnInit {
 
     if (field?.hasError('minlength')) return "Senha muito curta";
 
-    if(this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value) return "Senhas não coincidem"
+    if (this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value) return "Senhas não coincidem"
 
     return "Erro";
   }
 
-  getDiameterSpinnerLoading(): number{
+  getDiameterSpinnerLoading(): number {
     return 50
+  }
+
+  checkEmailAlreadyExists(resposseError: HttpErrorResponse): boolean{
+
+    let emailAlreadyExists: boolean = false;
+    resposseError.error?.errors.forEach((error: ErrorFormRegisterUser) => {
+
+      if (error.fieldName == "email" && error.message === "Email already exists") { // Checks if the email user already exists
+        emailAlreadyExists = true;
+
+      }
+    });
+
+    return emailAlreadyExists;
   }
 
 }

@@ -53,17 +53,17 @@ export class LoginComponent implements OnInit {
 
     this.messageForm = "";
     this.showSpinnerLoading = true;
-
     this.authService.login(this.formLogin.value).subscribe({
       error: (error) => {
 
         if(error.status === HttpStatusCode.BadRequest){
 
           this.messageForm = "Usuário e/ou Senha inválidos"
-
+          this.showSpinnerLoading = false;
         }
       },
       next: (res) => {
+        
         // Implements
       }
     })

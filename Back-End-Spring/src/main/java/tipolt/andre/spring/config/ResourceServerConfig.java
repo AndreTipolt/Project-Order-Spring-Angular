@@ -74,7 +74,7 @@ public class ResourceServerConfig {
 
         corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT", "OPTIONS"));
-        corsConfig.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        corsConfig.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         corsConfig.setMaxAge(Duration.ofSeconds(1800));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

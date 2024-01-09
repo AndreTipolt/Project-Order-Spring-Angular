@@ -10,6 +10,7 @@ import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
+import tipolt.andre.spring.models.RoleModel;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
 
@@ -44,7 +45,9 @@ public class UserService {
 
         UserModel createdUser = userRepository.save(newUser);
 
-        userRoleService.insertManyUserRoles(userDTO.getRoles(), createdUser);
+        RoleModel commomRole = userRoleService.getRoleUser();
+        
+        userRoleService.insertManyUserRoles(List.of(commomRole), createdUser); // Only operator user yet
     }
 
     public UserModel findUserById(String userId) {

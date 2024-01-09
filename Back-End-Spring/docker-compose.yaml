@@ -4,6 +4,9 @@ networks:
   application_spring:
     driver: bridge
 
+volumes:
+  database:
+  
 services:
   # spring_app_1:
   #   container_name: spring_app_1
@@ -33,7 +36,7 @@ services:
     container_name: postgres_sql_db
     image: postgres:16.1
     volumes:
-      - /database/postgres-data:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
     networks: 
       - application_spring
     ports:
