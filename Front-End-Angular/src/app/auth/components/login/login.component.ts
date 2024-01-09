@@ -61,21 +61,23 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.formLogin.value).subscribe({
       error: (error) => {
 
-        if(error.status === HttpStatusCode.BadRequest){
+        if (error.status === HttpStatusCode.BadRequest) {
 
           this.messageForm = "Usuário e/ou Senha inválidos"
           this.showSpinnerLoading = false;
         }
       },
       next: (res: TokenSucessLogin) => {
-        
+
         const acessToken = `${res.prefixToken} ${res.acessToken}`
 
         const expiresDate: Date = new Date(res.expires);
 
         this.cookieService.set("acess_token", acessToken, expiresDate);
 
-        this.router.navigate(['/'])
+        this.router.navigate(['/']).then(() => {
+          window.location.reload()
+        })
       }
     })
   }
@@ -86,8 +88,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  getDiameterSpinnerLoading(): number{
-    
+  getDiameterSpinnerLoading(): number {
+
     return 50;
   }
 }
