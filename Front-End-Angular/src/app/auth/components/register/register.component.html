@@ -4,7 +4,7 @@
         <img src="/assets/images/logo/small_logo.png" alt="">
     </div>
     <div class="form-inputs">
-        <!-- <mat-error *ngIf="messageForm" class="message-form">{{ messageForm }}</mat-error> -->
+        <mat-error *ngIf="messageForm" class="message-form">{{ messageForm }}</mat-error>
         <form [formGroup]="formUser" (submit)="onSubmit()">
             <mat-form-field class="full-width">
                 <input matInput placeholder="Name" formControlName="name" #email type="text">

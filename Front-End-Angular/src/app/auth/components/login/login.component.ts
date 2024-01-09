@@ -51,6 +51,9 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.messageForm = "";
+    this.showSpinnerLoading = true;
+
     this.authService.login(this.formLogin.value).subscribe({
       error: (error) => {
 
@@ -61,8 +64,7 @@ export class LoginComponent implements OnInit {
         }
       },
       next: (res) => {
-        this.messageForm = "";
-        this.showSpinnerLoading = true;
+        // Implements
       }
     })
   }

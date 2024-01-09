@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Login } from '../types/Login.interface';
 import { environment } from 'src/environments/environment';
 import { TokenSucessLogin } from '../types/TokenSucessLogin.interface';
+import { RegisterUser } from '../types/RegisterUser.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,12 @@ export class AuthService {
     const apiURL = `${this.baseAPIURL}/auth/login`;
 
     return this.httpClient.post<TokenSucessLogin>(apiURL, dataForm);
+  }
+
+  register(dataForm: RegisterUser){
+
+    const apiURL = `${this.baseAPIURL}/users/save`;
+
+    return this.httpClient.post(apiURL, dataForm);
   }
 }

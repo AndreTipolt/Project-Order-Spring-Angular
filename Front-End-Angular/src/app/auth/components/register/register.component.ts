@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +26,9 @@ export class RegisterComponent implements OnInit {
   showSpinnerLoading: boolean = false;
 
   constructor(private title: Title,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.title.setTitle("Spring - Cadastrar-se")
@@ -30,6 +36,37 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
 
+    
+    if(this.formUser.invalid){
+      return;
+    }
+
+    if(this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value){
+      this.messageForm = "Senhas não coincidem";
+      return;
+    }
+
+    this.messageForm = ""
+    this.showSpinnerLoading = true;
+
+    this.authService.register(this.formUser.value).subscribe({
+      error: (res) => {
+        console.log(res)
+        if(res.status === HttpStatusCode.BadRequest){
+          this.onError("Dados do formulário invalidos")
+        }
+      },
+      next: (res) => {
+
+        // Implements
+      }
+    })
+  }
+
+  onError(message: string){
+    return this.dialog.open(ErrorDialogComponent, {
+      data: message
+    })
   }
 
   getErrorMessage(fieldName: string) {
@@ -41,6 +78,8 @@ export class RegisterComponent implements OnInit {
     if (field?.hasError('email')) return "Email Inválido";
 
     if (field?.hasError('minlength')) return "Senha muito curta";
+
+    if(this.formUser.get('password')?.value != this.formUser.get('confirmPassword')?.value) return "Senhas não coincidem"
 
     return "Erro";
   }
