@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle("Spring - Cadastrar-se")
-    document.cookie = "defato eu confor"
   }
 
   onSubmit() {
@@ -106,7 +105,7 @@ export class RegisterComponent implements OnInit {
   checkEmailAlreadyExists(resposseError: HttpErrorResponse): boolean{
 
     let emailAlreadyExists: boolean = false;
-    resposseError.error?.errors.forEach((error: ErrorFormRegisterUser) => {
+    resposseError.error?.errors?.forEach((error: ErrorFormRegisterUser) => {
 
       if (error.fieldName == "email" && error.message === "Email already exists") { // Checks if the email user already exists
         emailAlreadyExists = true;
