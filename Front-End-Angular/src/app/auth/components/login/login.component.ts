@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { AuthService } from '../../services/auth.service';
 import { HttpStatusCode } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +26,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private title: Title) { }
 
   ngOnInit(): void {
+
+    this.title.setTitle("Spring - Login")
   }
 
   getErrorMessage(fieldName: string) {

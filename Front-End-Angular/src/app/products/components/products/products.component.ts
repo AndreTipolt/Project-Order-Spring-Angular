@@ -86,4 +86,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+
+  getDiameterSpinnerLoading(): number{
+    return 100;
+  }
+
 }
