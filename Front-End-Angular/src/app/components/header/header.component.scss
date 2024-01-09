@@ -2,7 +2,7 @@ header{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0px 50px;
+    padding: 0px 70px;
     min-height: 100px;
     background-color: #F6F8FF;
     position: sticky;
@@ -53,4 +53,29 @@ header .nav-header .btn-login-nav .btn-login, .btn-sign-up{
 header .nav-header .btn-login-nav .btn-sign-up{
     background-color: #08335d;
     margin-left: 4px;
+}
+
+header .user-informations{
+    display: flex;
+    align-items: center;
+    width: 70px;
+}
+
+header .user-informations img{
+    border-radius: 50%;
+    width: 100%;
+}
+
+header .btn-to-show-menu-user{
+    background-color: transparent;
+    border: none;
+}
+
+header .user-informations .icon-user-menu{
+    margin-left: -6px;
+}
+
+header .content-user-menu{
+    display: flex;
+    align-items: center;
 }

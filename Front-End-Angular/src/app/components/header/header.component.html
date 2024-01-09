@@ -9,9 +9,30 @@
             <li> <a href="">Alugar</a></li>
             <li> <a href="">Quem Somos</a></li>
         </ul>
-        <div class="btn-login-nav" *ngIf="!(isLogged)">
-            <button class="btn-login" routerLink="auth/login">Login</button>
-            <button class="btn-sign-up" routerLink="auth/register">Registrar-se</button>
+
+        <div *ngIf="!isLogged ; else loginAndRegister" class="content-user-menu">
+            <button mat-button [matMenuTriggerFor]="userMenu" class="btn-to-show-menu-user">
+                <div class="user-informations">
+                    <div class="image-user-menu">
+
+                        <img src="assets/images/images_application/user_default_image.jpg" alt="">
+
+                        <mat-menu #userMenu="matMenu">
+                            <button mat-menu-item>Minha Conta</button>
+                            <button mat-menu-item>Meus Pedidos</button>
+                        </mat-menu>
+                    </div>
+                    <div class="icon-user-menu">
+                        <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+                    </div>
+                </div>
+            </button>
         </div>
+        <ng-template #loginAndRegister>
+            <div class="btn-login-nav">
+                <button class="btn-login" routerLink="auth/login">Login</button>
+                <button class="btn-sign-up" routerLink="auth/register">Registrar-se</button>
+            </div>
+        </ng-template>
     </nav>
 </header>
