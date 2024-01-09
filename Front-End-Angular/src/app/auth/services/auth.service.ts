@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Login } from '../types/Login.interface';
-import { environment } from 'src/environments/environment';
-import { TokenSucessLogin } from '../types/TokenSucessLogin.interface';
-import { RegisterUser } from '../types/RegisterUser.interface';
-import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
+import { Login } from '../types/Login.interface';
+import { RegisterUser } from '../types/RegisterUser.interface';
+import { TokenSucessLogin } from '../types/TokenSucessLogin.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,25 +14,31 @@ export class AuthService {
   private readonly baseAPIURL = environment.baseAPIURL
 
   constructor(private httpClient: HttpClient,
-              private cookieService: CookieService) { }
+    private cookieService: CookieService) { }
 
-  login(dataForm: Login){
+  login(dataForm: Login) {
 
     const apiURL = `${this.baseAPIURL}/auth/login`;
 
     return this.httpClient.post<TokenSucessLogin>(apiURL, dataForm);
   }
 
-  register(dataForm: RegisterUser){
+  register(dataForm: RegisterUser) {
 
     const apiURL = `${this.baseAPIURL}/users/save`;
 
     return this.httpClient.post(apiURL, dataForm);
   }
 
-  getAcessToken(): string{
-    
+  getAcessToken(): string {
+
     return this.cookieService.get("acess_token")
+  }
+
+  logout() {
+
+    this.cookieService.delete("acess_token")
+    return;
   }
 
 }
