@@ -45,7 +45,7 @@ public class OrderController {
 
         List<OrderModel> pageOrders = orderService.findAllOrders(user.getId());
 
-        objectMapperUtils.convertObjectToStringAndSaveInRedis("orders_findAll", pageOrders);
+        // objectMapperUtils.convertObjectToStringAndSaveInRedis("orders_findAll", pageOrders);
 
         return ResponseEntity.ok().body(pageOrders);
     }
