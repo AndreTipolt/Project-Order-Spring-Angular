@@ -46,7 +46,7 @@ public class ResourceServerConfig {
                                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/users/save").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/user/save").permitAll()
                                 .anyRequest().authenticated())
                 .exceptionHandling(handling -> handling.authenticationEntryPoint(accessDeniedHandler()))
                 .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)

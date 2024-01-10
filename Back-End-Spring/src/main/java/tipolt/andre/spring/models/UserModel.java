@@ -1,7 +1,9 @@
 package tipolt.andre.spring.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -39,7 +41,7 @@ public class UserModel implements UserDetails{
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<OrderModel> listOrders = new HashSet<>();
+    private List<OrderModel> listOrders = new ArrayList<>();
 
     @OneToMany(mappedBy = "id.user", fetch = FetchType.EAGER)
     private Set<UserRoleModel> roles = new HashSet<>();
