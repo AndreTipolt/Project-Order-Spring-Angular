@@ -6,12 +6,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { InformationsUserComponent } from './components/informations-user/informations-user.component';
+import { OrdersUserComponent } from './components/orders-user/orders-user.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    InformationsUserComponent
+    InformationsUserComponent,
+    OrdersUserComponent
   ],
   imports: [
     CommonModule,

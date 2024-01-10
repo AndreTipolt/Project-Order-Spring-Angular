@@ -4,7 +4,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthResolver } from '../auth/guards/auth.resolver';
 
 const routes: Routes = [
-  {path: '', component: ProfileComponent, resolve: { user: AuthResolver }}
+  {path: '', component: ProfileComponent, resolve: { user: AuthResolver }},
+  {path: 'my-orders', component: ProfileComponent, resolve: { user: AuthResolver }}
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="link-user">
-                <a routerLink="/my-profile">
+                <a routerLink="/my-profile/my-orders">
                     <mat-icon fontIcon="shopping_bag"></mat-icon><span>Meus Pedidos</span>
                 </a>
             </div>
@@ -20,7 +20,8 @@
     </mat-drawer>
     <mat-drawer-content class="main-content">
         <div class="content">
-            <app-informations-user [currentUser]="currentUser"></app-informations-user>
+            <app-informations-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile')"></app-informations-user>
+            <app-orders-user></app-orders-user>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>
