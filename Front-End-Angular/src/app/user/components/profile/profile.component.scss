@@ -1,0 +1,38 @@
+.container{
+    width: 100%;
+    height: 80vh;
+}
+.aside-nav{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding-top: 50px;
+}
+
+
+.aside-nav .link-user{
+    width: 100%;
+    padding: 15px 30px 15px 10px;
+}
+
+.aside-nav .link-user a{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.aside-nav .link-user:hover{
+
+    background: rgba(0, 0, 0, 0.04);
+    border-left: 2px solid #272D2D;
+}
+
+.aside-nav .link-user a span{
+    margin-left: 4px;
+}
+
+.main-content{
+    background-color: red;
+}
