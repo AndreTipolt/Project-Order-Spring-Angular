@@ -1,6 +1,7 @@
 .container{
     width: 100%;
     height: 80vh;
+    padding: 0;
 }
 .aside-nav{
     display: flex;
@@ -34,5 +35,15 @@
 }
 
 .main-content{
-    background-color: red;
+    height: 100%;
+}
+
+.main-content .content{
+    background-color: #fff;
+    width: 50%;
+    margin: 20px auto;
+    height: 100%;
+    padding: 0px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
