@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { LogoutComponent } from './components/logout/logout.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MatInputModule,
     ReactiveFormsModule,
     MatDialogModule,
-    SharedModule
+    SharedModule,
+    MatIconModule
   ]
 })
 export class AuthModule { }

@@ -1,1 +1,30 @@
-<p>orders-user works!</p>
+<div class="content-container">
+    <h1 class="title-order">Compras</h1>
+    <div class="input-search">
+    </div>
+</div>
+
+<div class="content-container" *ngFor="let order of currentUser.listOrders">
+    <div class="content-date-order">
+        <span class="date-order">{{ order.moment | date: 'dd/MM/yyyy' }}</span>
+    </div>
+    <hr>
+    <section class="order">
+        <div class="image-order">
+            <img src="{{ order.listOrderItems[0].id.product.imageURL }}" alt="">
+        </div>
+        <div class="information-order">
+
+            <span class="status-order">Pago</span>
+            <div class="description-products">
+                <div *ngFor="let orderItem of order.listOrderItems">
+                    <p>{{ orderItem.id.product.name }} ({{ orderItem.quantity }} unid.)</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-total-order">
+            <p>Total do pedido:</p>
+            <span class="total-order">{{ order.total | currency: 'BRL' }}</span>
+        </div>
+    </section>
+</div>

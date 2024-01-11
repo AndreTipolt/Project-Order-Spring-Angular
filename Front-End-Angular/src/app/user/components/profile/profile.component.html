@@ -21,7 +21,7 @@
     <mat-drawer-content class="main-content">
         <div class="content">
             <app-informations-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile')"></app-informations-user>
-            <app-orders-user></app-orders-user>
+            <app-orders-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-orders')"></app-orders-user>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

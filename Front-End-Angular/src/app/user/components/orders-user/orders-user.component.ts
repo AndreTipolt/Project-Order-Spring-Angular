@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserResponse } from '../../types/UserResponse.interface';
 
 @Component({
   selector: 'app-orders-user',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersUserComponent implements OnInit {
 
+  @Input() currentUser!: UserResponse;
   constructor() { }
 
   ngOnInit(): void {

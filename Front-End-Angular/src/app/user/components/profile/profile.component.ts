@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/auth/login']);
       },
       next: (res) => {
+        console.log(res.listOrders)
         this.currentUser = res;
       }
     })

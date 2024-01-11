@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
 
   showSpinnerLoading: boolean = false;
 
+  hide = true
+
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService,
