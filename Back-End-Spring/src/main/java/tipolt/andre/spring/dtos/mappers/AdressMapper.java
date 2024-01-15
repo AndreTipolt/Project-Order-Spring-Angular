@@ -7,22 +7,22 @@ import tipolt.andre.spring.dtos.AdressDTO;
 import tipolt.andre.spring.models.AdressModel;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.models.enums.TypeAdressEnum;
-import tipolt.andre.spring.services.UserService;
+import tipolt.andre.spring.services.AuthService;
 
 @Component
 public class AdressMapper {
     
-
     @Autowired
-    private UserService userService;
+    private AuthService authService;
 
 
     public AdressModel convertDTOtoAdressModel(AdressDTO adressDTO){
 
-        UserModel user = userService.findUserById(adressDTO.getUserId());
+        UserModel user = authService.getUserInAuthentication();
 
         AdressModel adressModel = new AdressModel();
 
+        adressModel.setStreet(adressDTO.getStreet());
         adressModel.setCep(adressDTO.getCep());
         adressModel.setCity(adressDTO.getCity());
         adressModel.setComplement(adressDTO.getComplement());

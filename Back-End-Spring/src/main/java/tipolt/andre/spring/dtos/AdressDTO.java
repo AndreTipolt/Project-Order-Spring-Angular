@@ -35,8 +35,5 @@ public class AdressDTO {
     @Pattern(regexp = "WORK|HOME")
     private String typeAdress;
 
-    @NotBlank(message = "Fill Email Field")
-    private String userId;
-
     private String complement;
 }
