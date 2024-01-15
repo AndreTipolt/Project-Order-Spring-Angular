@@ -1,6 +1,8 @@
 package tipolt.andre.spring.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -47,6 +49,7 @@ public class AdressModel {
     @Convert(converter = TypeAdressEnumConverter.class)
     private TypeAdressEnum typeAdress;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserModel user;
