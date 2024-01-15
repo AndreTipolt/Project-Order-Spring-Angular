@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
 
   componentConfig = {
     showInformationsUserComponent: false,
-    showOrdersUserComponent : false
+    showOrdersUserComponent : false,
+    showAdressesUserComponent: false
   }
   
   constructor(private title: Title,
@@ -37,6 +38,12 @@ export class ProfileComponent implements OnInit {
     else if(uri === "/my-profile/my-orders"){
       this.componentConfig.showOrdersUserComponent= true
     }
+    else if(uri === "/my-profile/my-adresses"){
+      this.componentConfig.showAdressesUserComponent= true
+    }
+    else{
+      this.componentConfig.showInformationsUserComponent = true
+    }
 
     this.userService.getUserData().subscribe({
       error: (error: HttpErrorResponse) => {
@@ -44,7 +51,6 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/auth/login']);
       },
       next: (res) => {
-        console.log(res.listOrders)
         this.currentUser = res;
       }
     })
@@ -58,6 +64,9 @@ export class ProfileComponent implements OnInit {
 
     else if(component === "/my-profile/my-orders"){
       return this.componentConfig.showOrdersUserComponent;
+    }
+    else if(component === "/my-profile/my-adresses"){
+      return this.componentConfig.showAdressesUserComponent;
     }
 
     return false;

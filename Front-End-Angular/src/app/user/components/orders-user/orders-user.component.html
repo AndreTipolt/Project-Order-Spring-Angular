@@ -15,7 +15,7 @@
         </div>
         <div class="information-order">
 
-            <span class="status-order">Pago</span>
+            <span class="status-order">{{ order.status | statusPayment }}</span>
             <div class="description-products">
                 <div *ngFor="let orderItem of order.listOrderItems">
                     <p>{{ orderItem.id.product.name }} ({{ orderItem.quantity }} unid.)</p>

@@ -7,13 +7,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { InformationsUserComponent } from './components/informations-user/informations-user.component';
 import { OrdersUserComponent } from './components/orders-user/orders-user.component';
+import { StatusPaymentPipe } from './pipes/status-payment.pipe';
+import { AdressesUserComponent } from './components/adresses-user/adresses-user.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     InformationsUserComponent,
-    OrdersUserComponent
+    OrdersUserComponent,
+    StatusPaymentPipe,
+    AdressesUserComponent
   ],
   imports: [
     CommonModule,
