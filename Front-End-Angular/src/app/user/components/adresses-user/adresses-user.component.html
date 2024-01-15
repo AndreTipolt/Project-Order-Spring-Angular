@@ -1,4 +1,20 @@
 <div class="content-container">
+
+    <div class="menu-adress">
+        <button mat-button [matMenuTriggerFor]="adressMenu" class="btn-menu-adress">
+            <div class="option-adress">
+                <mat-menu #adressMenu="matMenu">
+
+                    <a class="link-adress-menu" routerLink="/my-profile/my-adresses/delete/1"><button
+                            mat-menu-item><mat-icon fontIcon="edit"></mat-icon> <span>Editar</span></button></a>
+                    <a class="link-adress-menu" routerLink="/my-profile/my-adresses/delete/1"><button
+                            mat-menu-item><mat-icon fontIcon="delete"></mat-icon> <span>Excluir</span></button></a>
+                </mat-menu>
+                <mat-icon fontIcon="more_vert"></mat-icon>
+            </div>
+        </button>
+    </div>
+
     <div class="icon-adress">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     </div>
@@ -7,9 +23,6 @@
         CEP 07191010 - São Paulo - Guarulhos
     </div>
 
-    <!-- <div class="menu-adress">
-        <mat-icon fontIcon="more_vert"></mat-icon>
-    </div> -->
 </div>
 
 <a class="content-container add-adress">

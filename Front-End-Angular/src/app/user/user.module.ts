@@ -9,6 +9,7 @@ import { InformationsUserComponent } from './components/informations-user/inform
 import { OrdersUserComponent } from './components/orders-user/orders-user.component';
 import { StatusPaymentPipe } from './pipes/status-payment.pipe';
 import { AdressesUserComponent } from './components/adresses-user/adresses-user.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AdressesUserComponent } from './components/adresses-user/adresses-user.
     CommonModule,
     UserRoutingModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class UserModule { }
