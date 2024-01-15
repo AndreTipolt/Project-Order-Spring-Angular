@@ -47,7 +47,7 @@ public class UserModel implements UserDetails{
     private Set<UserRoleModel> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
-    private Set<AdressModel> listAdress = new HashSet<>();
+    private List<AdressModel> listAdress = new ArrayList<>();
 
     @JsonIgnore
     @Override

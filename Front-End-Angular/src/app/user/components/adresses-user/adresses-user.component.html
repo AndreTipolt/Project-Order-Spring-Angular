@@ -1,4 +1,4 @@
-<div class="content-container">
+<div class="content-container" *ngFor="let adress of currentUser.listAdress">
 
     <div class="menu-adress">
         <button mat-button [matMenuTriggerFor]="adressMenu" class="btn-menu-adress">
@@ -18,9 +18,9 @@
     <div class="icon-adress">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     </div>
-    <div class="street-adress">Avenida Av. Benjamin Harris Hunicutt 178</div>
+    <div class="street-adress">{{ adress.street }}, {{ adress.number }}</div>
     <div class="information-adress">
-        CEP 07191010 - São Paulo - Guarulhos
+        CEP {{ adress.cep }} - {{ adress.state }} - {{ adress.city }}
     </div>
 
 </div>
