@@ -10,6 +10,7 @@ import { OrdersUserComponent } from './components/orders-user/orders-user.compon
 import { StatusPaymentPipe } from './pipes/status-payment.pipe';
 import { AdressesUserComponent } from './components/adresses-user/adresses-user.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatMenuModule } from '@angular/material/menu';
     InformationsUserComponent,
     OrdersUserComponent,
     StatusPaymentPipe,
-    AdressesUserComponent
+    AdressesUserComponent,
+    TypeAdressIconPipe
   ],
   imports: [
     CommonModule,

@@ -8,10 +8,10 @@ export class StatusPaymentPipe implements PipeTransform {
   transform(value: unknown, ...args: unknown[]): unknown {
     
     switch(value){
-      case (value == "WAIT_PAYMENT"): return "Aguardando Pagamento"
-      case (value == "PAID"): return "Pago"
-      case (value == "DELIVERED"): return "Entregue"
-      case (value == "CANCELED"): return "Cancelado"
+      case ("WAIT_PAYMENT"): return "Aguardando Pagamento"
+      case ("PAID"): return "Pago"
+      case ("DELIVERED"): return "Entregue"
+      case ("CANCELED"): return "Cancelado"
       default: return 'Aguardando Pagamento' 
     }
   }
