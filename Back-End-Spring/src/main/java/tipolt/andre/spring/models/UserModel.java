@@ -46,6 +46,9 @@ public class UserModel implements UserDetails{
     @OneToMany(mappedBy = "id.user", fetch = FetchType.EAGER)
     private Set<UserRoleModel> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    private Set<AdressModel> listAdress = new HashSet<>();
+
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
