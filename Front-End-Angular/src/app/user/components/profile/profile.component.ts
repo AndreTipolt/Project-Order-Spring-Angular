@@ -52,6 +52,9 @@ export class ProfileComponent implements OnInit {
     else if(component === "/my-profile/my-adresses"){
       return this.componentConfig.showAdressesUserComponent;
     }
+    else if(component === "/my-profile/my-adresses/add"){
+      return this.componentConfig.showAddAdressesUserComponent;
+    }
 
     return false;
   }

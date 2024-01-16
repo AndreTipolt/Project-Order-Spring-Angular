@@ -1,0 +1,50 @@
+.content-container{
+    width: 100%;
+    background-color: #fff;
+    margin: 20px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px 0px;
+}
+
+.content-container .title-add-adress{
+    font-size: 1.5em;
+    font-weight: 700px;
+    padding: 0 20px;
+}
+
+.content-container .form-add-adress{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.content-container .form-add-adress .row-input-adress{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+}
+
+.content-container .form-add-adress .row-input-adress .input-add-adress{
+    width: 50%;
+}
+
+
+
+
+
+
+.btn-add-adress {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0f4172;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }

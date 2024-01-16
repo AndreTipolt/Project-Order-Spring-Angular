@@ -11,6 +11,9 @@ import { StatusPaymentPipe } from './pipes/status-payment.pipe';
 import { AdressesUserComponent } from './components/adresses-user/adresses-user.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
+import { AddAdressUserComponent } from './components/add-adress-user/add-adress-user.component';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,14 +23,17 @@ import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
     OrdersUserComponent,
     StatusPaymentPipe,
     AdressesUserComponent,
-    TypeAdressIconPipe
+    TypeAdressIconPipe,
+    AddAdressUserComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     MatSidenavModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
