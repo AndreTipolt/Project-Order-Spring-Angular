@@ -6,5 +6,5 @@ export interface UserResponse{
     name: string,
     email: string,
     listOrders: OrderResponse[],
-    listAdress: Adress[]
+    listAdress?: Adress[]
 }

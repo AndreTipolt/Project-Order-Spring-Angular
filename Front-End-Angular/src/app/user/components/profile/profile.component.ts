@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InformationsUserComponent } from '../informations-user/informations-user.component';
 import { OrdersUserComponent } from '../orders-user/orders-user.component';
+import { ShowComponentUser } from '../../types/ShowComponentUser.interface';
 
 @Component({
   selector: 'app-profile',
@@ -16,34 +17,17 @@ export class ProfileComponent implements OnInit {
 
   currentUser!: UserResponse
 
-  componentConfig = {
-    showInformationsUserComponent: false,
-    showOrdersUserComponent : false,
-    showAdressesUserComponent: false
-  }
+  componentConfig!: ShowComponentUser
   
   constructor(private title: Title,
               private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.title.setTitle('Spring - Meu Perfil')
 
-    const uri = this.router.url;
-
-    if(uri === "/my-profile"){
-      this.componentConfig.showInformationsUserComponent = true
-    } 
-
-    else if(uri === "/my-profile/my-orders"){
-      this.componentConfig.showOrdersUserComponent= true
-    }
-    else if(uri === "/my-profile/my-adresses"){
-      this.componentConfig.showAdressesUserComponent= true
-    }
-    else{
-      this.componentConfig.showInformationsUserComponent = true
-    }
+    this.componentConfig = this.activatedRoute.snapshot.data['routing']
 
     this.userService.getUserData().subscribe({
       error: (error: HttpErrorResponse) => {
