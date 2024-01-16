@@ -23,6 +23,7 @@ public class AdressMapper {
         AdressModel adressModel = new AdressModel();
 
         adressModel.setStreet(adressDTO.getStreet());
+        adressModel.setName(adressDTO.getName());
         adressModel.setCep(adressDTO.getCep());
         adressModel.setCity(adressDTO.getCity());
         adressModel.setComplement(adressDTO.getComplement());

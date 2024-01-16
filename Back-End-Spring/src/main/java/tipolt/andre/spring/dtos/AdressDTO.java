@@ -15,6 +15,9 @@ public class AdressDTO {
 
     @NotBlank(message = "Fill Street Field")
     private String street;
+
+    @NotBlank(message = "Fill Name Field")
+    private String name;
     
     @NotBlank(message = "Fill Number Field")
     private String number;

@@ -27,6 +27,9 @@ public class AdressModel {
 
     @Column(nullable = false)
     private String street;
+
+    @Column(nullable = false)
+    private String name;
     
     @Column(nullable = false)
     private String number;
