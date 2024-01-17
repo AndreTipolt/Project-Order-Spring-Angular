@@ -1,16 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserResponse } from '../../types/UserResponse.interface';
-import { Title } from '@angular/platform-browser';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AdressService } from 'src/app/adress/services/adress.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+import { UserResponse } from 'src/app/user/types/UserResponse.interface';
+import { AdressService } from '../../services/adress.service';
 
 @Component({
-  selector: 'app-add-adress-user',
-  templateUrl: './add-adress-user.component.html',
-  styleUrls: ['./add-adress-user.component.scss']
+  selector: 'app-add-adress',
+  templateUrl: './add-adress.component.html',
+  styleUrls: ['./add-adress.component.scss']
 })
-export class AddAdressUserComponent implements OnInit {
+export class AddAdressComponent implements OnInit {
 
   @Input() currentUser!: UserResponse;
 
@@ -49,8 +48,8 @@ export class AddAdressUserComponent implements OnInit {
       this.adressService.getInformationsAdress(cep).subscribe({
         next: (res) => {
 
-          if(res.erro){
-            
+          if (res.erro) {
+
           }
 
           console.log(res)

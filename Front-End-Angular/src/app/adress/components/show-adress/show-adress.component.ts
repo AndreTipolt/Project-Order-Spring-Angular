@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserResponse } from '../../types/UserResponse.interface';
 import { Title } from '@angular/platform-browser';
+import { UserResponse } from 'src/app/user/types/UserResponse.interface';
 
 @Component({
-  selector: 'app-adresses-user',
-  templateUrl: './adresses-user.component.html',
-  styleUrls: ['./adresses-user.component.scss']
+  selector: 'app-show-adresses',
+  templateUrl: './show-adress.component.html',
+  styleUrls: ['./show-adress.component.scss']
 })
-export class AdressesUserComponent implements OnInit {
+export class ShowAdressComponent implements OnInit {
 
   @Input() currentUser!: UserResponse
   

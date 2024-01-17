@@ -22,8 +22,8 @@
         <div class="content">
             <app-informations-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile')"></app-informations-user>
             <app-orders-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-orders')"></app-orders-user>
-            <app-adresses-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses')"></app-adresses-user>
-            <app-add-adress-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses/add')"></app-add-adress-user>
+            <app-show-adresses [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses')"></app-show-adresses>
+            <app-add-adress [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses/add')"></app-add-adress>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

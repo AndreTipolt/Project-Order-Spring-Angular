@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { UserRoutingModule } from './user-routing.module';
-import { ProfileComponent } from './components/profile/profile.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { AddAdressComponent } from '../adress/components/add-adress/add-adress.component';
+import { ShowAdressComponent } from '../adress/components/show-adress/show-adress.component';
+import { TypeAdressIconPipe } from '../adress/pipes/type-adress-icon.pipe';
 import { InformationsUserComponent } from './components/informations-user/informations-user.component';
 import { OrdersUserComponent } from './components/orders-user/orders-user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { StatusPaymentPipe } from './pipes/status-payment.pipe';
-import { AdressesUserComponent } from './components/adresses-user/adresses-user.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
-import { AddAdressUserComponent } from './components/add-adress-user/add-adress-user.component';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { UserRoutingModule } from './user-routing.module';
 
 
 @NgModule({
@@ -22,9 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     InformationsUserComponent,
     OrdersUserComponent,
     StatusPaymentPipe,
-    AdressesUserComponent,
-    TypeAdressIconPipe,
-    AddAdressUserComponent,
+    ShowAdressComponent,
+    AddAdressComponent,
+    TypeAdressIconPipe
   ],
   imports: [
     CommonModule,
@@ -33,7 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatMenuModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class UserModule { }
