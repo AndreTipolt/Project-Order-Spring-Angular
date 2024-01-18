@@ -41,11 +41,11 @@ public class UserController {
     @GetMapping
     public ResponseEntity<? extends Object> findDataUser() throws JsonMappingException, JsonProcessingException {
 
-        JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
+        // JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
-        if (usersFindAllCached != null) {
-            return ResponseEntity.ok().body(usersFindAllCached);
-        }
+        // if (usersFindAllCached != null) {
+        //     return ResponseEntity.ok().body(usersFindAllCached);
+        // }
 
         UserModel userInAuthentication = authService.getUserInAuthentication();
 

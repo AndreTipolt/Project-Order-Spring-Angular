@@ -53,8 +53,7 @@ public class AdressService {
 
             if (this.canDeleteAdress(adressModel)) { // Checks if the user that wants to delete the adress is yours or
                                                      // he is a admin
-
-                adressRepository.deleteById(adressId);
+                adressRepository.delete(adressModel);
 
                 return;
             }

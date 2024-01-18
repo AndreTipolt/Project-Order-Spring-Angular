@@ -6,7 +6,7 @@
         <mat-menu #adressMenu="matMenu">
 
           <a class="link-adress-menu" routerLink="/my-profile/my-adresses/delete/1"><button mat-menu-item><mat-icon fontIcon="edit"></mat-icon> <span>Editar</span></button></a>
-          <a class="link-adress-menu"><button mat-menu-item><mat-icon fontIcon="delete"></mat-icon> <span>Excluir</span></button></a>
+          <a class="link-adress-menu" (click)="deleteAdressById(adress.id)"><button mat-menu-item><mat-icon fontIcon="delete"></mat-icon> <span>Excluir</span></button></a>
         </mat-menu>
         <mat-icon fontIcon="more_vert"></mat-icon>
       </div>

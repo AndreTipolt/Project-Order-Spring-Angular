@@ -35,11 +35,11 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<? extends Object> findAll() throws JsonMappingException, JsonProcessingException {
 
-        JsonNode cachedRedisFindAllOrders = objectMapperUtils.getRedisKeyAndConvertToJsonNode("orders_findAll");
+        // JsonNode cachedRedisFindAllOrders = objectMapperUtils.getRedisKeyAndConvertToJsonNode("orders_findAll");
 
-        if (cachedRedisFindAllOrders != null) {
-            return ResponseEntity.ok().body(cachedRedisFindAllOrders);
-        }
+        // if (cachedRedisFindAllOrders != null) {
+        //     return ResponseEntity.ok().body(cachedRedisFindAllOrders);
+        // }
 
         UserModel user = (UserModel) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

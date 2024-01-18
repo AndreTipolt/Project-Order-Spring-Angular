@@ -35,4 +35,14 @@ export class AdressService {
     return this.httpClient.post(apiURL, dataForm, { headers });
 
   }
+
+  deleteAdress(adressId: string){
+    let headers = new HttpHeaders()
+
+    headers = headers.append("Authorization", this.authService.getAcessToken())
+
+    const apiURL = `${this.baseApiURL}/adresses/${adressId}`
+
+    return this.httpClient.delete(apiURL, { headers });
+  }
 }
