@@ -1,66 +1,69 @@
 .content-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    background-color: #fff;
-    margin: 20px;
-    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-  }
-  
-  .content-container {
-    display: flex;
-    font-size: 1.3em;
-    font-weight: 700px;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-  
-  .content-container .icon-adress {
-    transform: scale(1.7);
-  }
-  
-  .content-container .menu-adress{
-      position: relative;
-      width: 100%;
-  }
-  
-  .link-adress-menu{
-      color: inherit;
-      text-decoration: none;
-  }
-  
-  .content-container .menu-adress .btn-menu-adress{
-      background: transparent;
-      border: none;
-      position: absolute;
-      top: 0;
-      right: 13px;
-      cursor: pointer;
-      transform: scale(1.1);
-  }
-  
-  .content-container .street-adress {
-    font-weight: 700;
-  }
-  
-  .content-container .information-adress {
-    font-size: 0.8em;
-  }
-  
-  .add-adress {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    color: #0000FF;
-    font-size: 1.1em;
-    cursor: pointer;
-  }
-  
-  .add-adress:hover {
-    background: rgba(0, 0, 0, 0.02);
-    cursor: pointer;
-  }
-  
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  margin: 20px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.content-container {
+  display: flex;
+  font-size: 1.3em;
+  font-weight: 700px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.content-container .icon-adress {
+  transform: scale(1.7);
+}
+
+.content-container .menu-adress {
+  position: relative;
+  width: 100%;
+}
+
+.link-adress-menu {
+  color: inherit;
+  text-decoration: none;
+}
+
+.content-container .menu-adress .btn-menu-adress {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 13px;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.content-container .name-adress {
+  font-weight: 700;
+}
+
+.content-container .street-adress {
+  font-weight: 500;
+}
+
+.content-container .information-adress {
+  font-size: 0.8em;
+}
+
+.add-adress {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #0000FF;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.add-adress:hover {
+  background: rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+}
