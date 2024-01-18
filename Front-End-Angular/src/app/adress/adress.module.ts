@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { SharedModule } from '../shared/shared.module';
 import { AddAdressComponent } from './components/add-adress/add-adress.component';
 import { ShowAdressComponent } from './components/show-adress/show-adress.component';
 import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
-
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule,
+    MatRadioModule
   ],
   exports: [AddAdressComponent, ShowAdressComponent]
 })

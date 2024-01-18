@@ -9,4 +9,5 @@ export interface Adress {
     complement: string,
     cep: string,
     typeAdress: string,
+    name: string
 }

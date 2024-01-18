@@ -15,9 +15,10 @@
         </button>
     </div>
 
-    <div class="icon-adress"> 
+    <div class="icon-adress">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="{{ adress.typeAdress | typeAdressIcon }}"></mat-icon>
     </div>
+    <div class="name-adress">{{ adress.name }}</div>
     <div class="street-adress">{{ adress.street }}, {{ adress.number }}</div>
     <div class="information-adress">
         CEP {{ adress.cep }} - {{ adress.state }} - {{ adress.city }}

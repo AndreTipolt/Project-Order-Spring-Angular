@@ -54,6 +54,17 @@
       </mat-form-field>
     </div>
 
+    <div class="typeAdress-input">
+
+      <mat-radio-group aria-label="Select an option" formControlName="typeAdress" class="radio-group-type-adress" #typeAdress>
+        <mat-radio-button value="HOME" color="primary" [checked]="true">Casa</mat-radio-button>
+        <mat-radio-button value="WORK" color="primary">Trabalho</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+
+    <app-spinner-loading [diameter]="getDiameterSpinnerLoading()" class="spinner-loading"
+      *ngIf="showSpinnerLoading"></app-spinner-loading>
     <button class="btn-add-adress" (click)="onSubmit()">Cadastrar</button>
   </form>
 </div>
