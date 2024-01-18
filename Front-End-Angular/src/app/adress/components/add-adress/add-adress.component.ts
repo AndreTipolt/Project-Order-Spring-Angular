@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Title } from '@angular/platform-browser';
 import { UserResponse } from 'src/app/user/types/UserResponse.interface';
 import { AdressService } from '../../services/adress.service';
+import { DataCepResponse } from '../../types/DataCepResponse.interface';
 
 @Component({
   selector: 'app-add-adress',
@@ -12,6 +13,7 @@ import { AdressService } from '../../services/adress.service';
 export class AddAdressComponent implements OnInit {
 
   @Input() currentUser!: UserResponse;
+  messageForm: string = "sdf";
 
   formAddAdress: FormGroup = this.formBuilder.group({
 
@@ -46,14 +48,14 @@ export class AddAdressComponent implements OnInit {
     if (this.validateCep(cep)) {
 
       this.adressService.getInformationsAdress(cep).subscribe({
-        next: (res) => {
+        next: (res: DataCepResponse) => {
 
           if (res.erro) {
 
+            return this.onErrorSearchCep()
           }
 
-          console.log(res)
-
+          this.onSucessSearchCep(res)
         }
       })
     }
@@ -61,6 +63,10 @@ export class AddAdressComponent implements OnInit {
   }
 
   validateCep(cep: string): boolean {
+
+    if(cep.length != 8){
+      return false;
+    }
 
     cep = cep.replace(/\D/g, '')
 
@@ -75,6 +81,33 @@ export class AddAdressComponent implements OnInit {
     }
 
     return false
+  }
+
+  onErrorSearchCep(){
+    this.messageForm = "CEP Inválido"
+
+    this.formAddAdress.get('cep')?.setErrors({ "cep_invalid_error": true })
+  }
+
+  onSucessSearchCep(dataCepResponse: DataCepResponse){
+
+    this.formAddAdress.get("street")?.setValue(dataCepResponse.logradouro);
+    this.formAddAdress.get("neighborhood")?.setValue(dataCepResponse.bairro);
+    this.formAddAdress.get("state")?.setValue(dataCepResponse.uf);
+    this.formAddAdress.get("city")?.setValue(dataCepResponse.localidade);
+  }
+
+
+  getErrorMessage(fieldName: string) {
+
+    const field = this.formAddAdress.get(fieldName);
+
+
+    if (field?.hasError('required')) return "Campo obrigatório";
+
+    if (field?.hasError('cep_invalid_error')) return "Cep Inválido";
+
+    return "Erro";
   }
 
 

@@ -20,6 +20,7 @@
     align-items: center;
     gap: 10px;
     padding: 20px;
+    position: relative;
 }
 
 .content-container .form-add-adress .row-input-adress{
@@ -34,8 +35,10 @@
 }
 
 
-
-
+.content-container .form-add-adress .message-form{
+  position: absolute;
+  left: 0;
+}
 
 
 .btn-add-adress {

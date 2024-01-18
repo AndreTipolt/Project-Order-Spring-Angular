@@ -14,8 +14,8 @@ import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
 @NgModule({
   declarations: [
     TypeAdressIconPipe,
-    ShowAdressComponent,
     AddAdressComponent,
+    ShowAdressComponent
   ],
   imports: [
     CommonModule,
