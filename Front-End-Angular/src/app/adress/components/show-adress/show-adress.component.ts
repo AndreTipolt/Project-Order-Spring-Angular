@@ -10,12 +10,16 @@ import { UserResponse } from 'src/app/user/types/UserResponse.interface';
 export class ShowAdressComponent implements OnInit {
 
   @Input() currentUser!: UserResponse
-  
+
   constructor(private title: Title) { }
 
   ngOnInit(): void {
 
     this.title.setTitle("Spring - Meus Endereços")
+  }
+
+  deleteAdressById(adressId: string){
+    console.log('apertou')
   }
 
 }
