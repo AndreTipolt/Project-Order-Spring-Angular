@@ -1,0 +1,29 @@
+<mat-drawer-container class="container">
+    <mat-drawer mode="side" opened>
+        <aside class="aside-nav">
+            <div class="link-user">
+                <a routerLink="/my-profile">
+                    <mat-icon fontIcon="account_circle"></mat-icon><span>Meu Perfil</span>
+                </a>
+            </div>
+            <div class="link-user">
+                <a routerLink="/my-profile/my-orders">
+                    <mat-icon fontIcon="shopping_bag"></mat-icon><span>Meus Pedidos</span>
+                </a>
+            </div>
+            <div class="link-user">
+                <a routerLink="/my-profile">
+                    <mat-icon fontIcon="shopping_cart"></mat-icon><span>Meu Carrinho</span>
+                </a>
+            </div>
+        </aside>
+    </mat-drawer>
+    <mat-drawer-content class="main-content">
+        <div class="content">
+            <app-informations-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile')"></app-informations-user>
+            <app-orders-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-orders')"></app-orders-user>
+            <app-show-adresses [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses')"></app-show-adresses>
+            <app-add-adress [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses/add')"></app-add-adress>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

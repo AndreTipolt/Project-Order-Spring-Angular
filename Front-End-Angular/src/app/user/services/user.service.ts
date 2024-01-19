@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { GetImageAccount } from '../types/GetImageAccount.interface';
+import { UserResponse } from '../types/UserResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
 
   getImageAccount() {
 
-    const apiURL = `${this.baseAPIURL}/users/imageAccount`
+    const apiURL = `${this.baseAPIURL}/user/imageAccount`
 
     let headers: HttpHeaders = this.createHeaderWithAcessToken();
 
@@ -31,5 +32,16 @@ export class UserService {
     headers = headers.append("Authorization", this.authService.getAcessToken())
 
     return headers;
+  }
+
+  getUserData(){
+
+    const apiURL = `${this.baseAPIURL}/user`
+
+    let headers = new HttpHeaders()
+
+    headers = headers.append("Authorization", this.authService.getAcessToken())
+
+    return this.httpClient.get<UserResponse>(apiURL, { headers })
   }
 }

@@ -1,0 +1,73 @@
+<div class="content-container">
+  <h1 class="title-add-adress">Adicionar Endereço</h1>
+</div>
+
+<div class="content-container">
+
+  <form [formGroup]="formAddAdress" class="form-add-adress">
+
+    <mat-error *ngIf="showMessageForm" class="message-form">{{ showMessageForm }}</mat-error>
+    <div class="row-input-adress">
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Nome do Endereço" formControlName="name" #name>
+        <mat-error *ngIf="formAddAdress.get('name')?.invalid">{{ getErrorMessage("name") }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="CEP" formControlName="cep" #cep (blur)="searchCEP()" [maxlength]="8"
+          [minlength]="8">
+        <mat-error *ngIf="formAddAdress.get('cep')?.invalid">{{ getErrorMessage("cep") }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row-input-adress">
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Estado" formControlName="state" #state>
+        <mat-error *ngIf="formAddAdress.get('state')?.invalid">{{ getErrorMessage("state") }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Cidade" formControlName="city" #city>
+        <mat-error *ngIf="formAddAdress.get('city')?.invalid">{{ getErrorMessage("city") }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row-input-adress">
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Bairro" formControlName="neighborhood" #neighborhood>
+        <mat-error *ngIf="formAddAdress.get('neighborhood')?.invalid">{{ getErrorMessage("neighborhood") }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Logradouro" formControlName="street" #street>
+        <mat-error *ngIf="formAddAdress.get('street')?.invalid">{{ getErrorMessage("street") }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row-input-adress">
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Número" formControlName="number" #number>
+        <mat-error *ngIf="formAddAdress.get('number')?.invalid">{{ getErrorMessage("number") }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width input-add-adress">
+        <input matInput placeholder="Complemento" formControlName="complement" #complement>
+        <mat-error *ngIf="formAddAdress.get('complement')?.invalid">{{ getErrorMessage("complement") }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="typeAdress-input">
+
+      <mat-radio-group aria-label="Select an option" formControlName="typeAdress" class="radio-group-type-adress"
+        #typeAdress>
+        <mat-radio-button value="HOME" color="primary" [checked]="true">Casa</mat-radio-button>
+        <mat-radio-button value="WORK" color="primary">Trabalho</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+
+    <app-spinner-loading [diameter]="getDiameterSpinnerLoading()" class="spinner-loading"
+      *ngIf="showSpinnerLoading"></app-spinner-loading>
+    <button class="btn-add-adress" (click)="onSubmit()">Cadastrar</button>
+  </form>
+</div>

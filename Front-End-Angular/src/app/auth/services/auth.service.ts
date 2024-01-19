@@ -25,7 +25,7 @@ export class AuthService {
 
   register(dataForm: RegisterUser) {
 
-    const apiURL = `${this.baseAPIURL}/users/save`;
+    const apiURL = `${this.baseAPIURL}/user/save`;
 
     return this.httpClient.post(apiURL, dataForm);
   }

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import tipolt.andre.spring.exceptions.ErrorSaveDataInRedisException;
 import tipolt.andre.spring.services.RedisCacheService;
 
 @Service
@@ -26,7 +27,7 @@ public class ObjectMapperUtils {
 
         } catch (JsonProcessingException e) {
 
-            throw new RuntimeException("Error to save data in redis");
+            throw new ErrorSaveDataInRedisException("Error to save data in redis");
 
         }
 

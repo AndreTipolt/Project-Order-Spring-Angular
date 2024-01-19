@@ -1,0 +1,83 @@
+.content-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    margin: 20px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.content-container .image-user img{
+    border-radius: 50%;
+    width: 150px;
+}
+
+.content-container .description-user{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.content-container .description-user .data-user h3{
+
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.content-container .description-user .data-user p{
+    margin-top: -10px;
+}
+
+.actions-user{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px 0;
+    gap: 2px;
+}
+
+.actions-user .action-user{
+    padding: 13px 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    text-decoration: none;
+    color: inherit;
+}
+
+.actions-user .action-user:hover{
+    background: rgba(0, 0, 0, 0.04);
+    border-left: 2px solid #272D2D;
+    cursor: pointer;
+}
+
+.actions-user .description-action{
+    display: flex;
+    align-items: center;
+}
+
+.actions-user .icon-arrow{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.actions-user .description-action .description{
+    padding: 0px 30px;
+}
+
+.actions-user .description-action .description h3{
+    font-weight: 400px;
+    font-size: 1.2em;
+}
+
+.actions-user .description-action .description p{
+    margin-top: -13px;
+}
+
+.actions-user .description-action .icon-action mat-icon{
+    transform: scale(1.7);
+    color: #272D2D;
+}

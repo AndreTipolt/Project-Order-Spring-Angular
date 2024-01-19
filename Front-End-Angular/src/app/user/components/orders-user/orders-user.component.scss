@@ -1,0 +1,64 @@
+.content-container{
+    width: 100%;
+    background-color: #fff;
+    margin: 20px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px 0px;
+}
+
+.content-container .title-order{
+    font-size: 1.5em;
+    font-weight: 700px;
+    padding: 20px;
+}
+.content-container .content-date-order{
+    padding: 0px 20px;
+    margin-bottom: 10px;
+}
+
+.content-container .content-date-order .date-order{
+    font-weight: 600;
+}
+
+.content-container .order {
+    display: flex;
+    justify-content: start;
+    padding: 20px;
+    font-size: 1.03em;
+}
+
+.order .image-order img{
+    width: 120px;
+}
+
+.order .information-order{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    gap: 7px;
+}
+
+.order .information-order .description-products p{
+    margin: 4px 0;
+}
+
+.order .information-order .status-order{
+    font-size: 1.2em;
+    color: rgb(42, 211, 42);
+}
+
+.order .content-total-order{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order .content-total-order .total-order{
+
+    font-weight: 700;
+    font-size: 1.2em;
+}

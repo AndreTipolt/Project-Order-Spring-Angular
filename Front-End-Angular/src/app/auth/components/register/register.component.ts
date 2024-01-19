@@ -71,7 +71,6 @@ export class RegisterComponent implements OnInit {
         }
       },
       next: (res) => {
-
         this.router.navigate(['/auth/login'])
       }
     })

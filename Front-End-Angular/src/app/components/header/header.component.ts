@@ -1,7 +1,10 @@
-import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { hasUncaughtExceptionCaptureCallback } from 'process';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { UserService } from 'src/app/user/services/user.service';
-import { GetImageAccount } from 'src/app/user/types/GetImageAccount.interface';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +14,9 @@ import { GetImageAccount } from 'src/app/user/types/GetImageAccount.interface';
 export class HeaderComponent implements OnInit {
 
   isLogged: boolean = false;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -27,6 +32,31 @@ export class HeaderComponent implements OnInit {
         this.isLogged = true;
       }
     })
+  }
+
+  logout() {
+    let dialog = this.openDialogConfirmation("Deseja realmente sair?")
+
+    dialog.afterClosed().subscribe({
+      next: (result) => {
+
+        if(result){
+          this.router.navigate(["/auth/logout"])
+        }
+
+      }
+    })
+  }
+
+  openDialogConfirmation(message: string) {
+
+    const dialogReg = this.dialog.open(ConfirmationDialogComponent, {
+      width: '300px',
+      data: message,
+      height: '140px'
+    })
+
+    return dialogReg;
   }
 
 }

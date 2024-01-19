@@ -29,14 +29,6 @@ public class ResourceServerConfig {
     @Autowired
     private SecurityFilterConfig securityFilterConfig;
 
-    // private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**",
-    // "/products/**", "/users/save" };
-
-    // private static final String[] OPERATOR_OR_ADMIN = { "/products/**",
-    // "/categories/**", "/myorders/**" };
-
-    // private static final String[] ADMIN = { "/users/**", "/orders/**" };
-
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
@@ -47,22 +39,15 @@ public class ResourceServerConfig {
 
         return http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.disable())
-                // .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/users/save").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/user/save").permitAll()
                                 .anyRequest().authenticated())
-                // .authorizeHttpRequests(authorize -> authorize
-                // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                // .requestMatchers(HttpMethod.POST, "/product").hasRole("ADMIN")
-                // .anyRequest().authenticated()
-                // )
                 .exceptionHandling(handling -> handling.authenticationEntryPoint(accessDeniedHandler()))
                 .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)
                 .build();

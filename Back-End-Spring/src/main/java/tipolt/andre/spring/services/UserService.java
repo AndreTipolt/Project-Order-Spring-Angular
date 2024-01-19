@@ -28,8 +28,8 @@ public class UserService {
     private UserRoleService userRoleService;
 
     @Transactional(readOnly = true)
-    public List<UserModel> findAll() {
-        return userRepository.findAll();
+    public UserModel findDataUser(UserModel userModel) {
+        return userRepository.findById(userModel.getId()).orElseThrow(() -> new ObjectNotFoundException("User doesn't exists"));
     }
 
     public void saveUser(UserInsertDTO userDTO) {

@@ -1,0 +1,46 @@
+.container{
+    width: 100%;
+    height: 80vh;
+    padding: 0;
+}
+.aside-nav{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding-top: 50px;
+}
+
+
+.aside-nav .link-user{
+    width: 100%;
+}
+
+.aside-nav .link-user a{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 15px 30px 15px 10px;
+}
+
+.aside-nav .link-user:hover{
+
+    background: rgba(0, 0, 0, 0.04);
+    border-left: 2px solid #272D2D;
+}
+
+.aside-nav .link-user a span{
+    margin-left: 4px;
+}
+
+.main-content{
+    height: 100%;
+}
+
+.main-content .content{
+    min-width: 800px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 30px 20px;
+}

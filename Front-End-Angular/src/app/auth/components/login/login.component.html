@@ -4,18 +4,22 @@
         <img src="/assets/images/logo/small_logo.png" alt="">
     </div>
     <div class="form-inputs">
+
         <mat-error *ngIf="messageForm" class="message-form">{{ messageForm }}</mat-error>
         <form [formGroup]="formLogin">
+
             <mat-form-field class="full-width">
                 <input matInput placeholder="Email" formControlName="email" #email type="email">
                 <mat-error *ngIf="formLogin.get('email')?.invalid">{{ getErrorMessage("email") }}</mat-error>
             </mat-form-field>
+
             <mat-form-field class="full-width input-password">
-                <input matInput placeholder="Senha" formControlName="password" #password type="password">
+                <input matInput placeholder="Senha" formControlName="password" #password type="password" [type]="'password'">
                 <mat-error *ngIf="formLogin.get('password')?.invalid">{{ getErrorMessage("password") }}</mat-error>
             </mat-form-field>
             <button class="login-button" (click)="onSubmit()">Login</button>
         </form>
+
     </div>
     <div class="spinner-loader" *ngIf="showSpinnerLoading">
         <app-spinner-loading [diameter]="getDiameterSpinnerLoading()"></app-spinner-loading>

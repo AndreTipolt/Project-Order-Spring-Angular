@@ -1,7 +1,5 @@
 package tipolt.andre.spring.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +21,12 @@ import tipolt.andre.spring.dtos.GetImageAccountDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
+import tipolt.andre.spring.services.AuthService;
 import tipolt.andre.spring.services.UserService;
 
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
@@ -36,19 +35,24 @@ public class UserController {
     @Autowired
     private ObjectMapperUtils objectMapperUtils;
 
+    @Autowired
+    private AuthService authService;
+
     @GetMapping
-    public ResponseEntity<? extends Object> findAll() throws JsonMappingException, JsonProcessingException {
+    public ResponseEntity<? extends Object> findDataUser() throws JsonMappingException, JsonProcessingException {
 
-        JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
+        // JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
-        if (usersFindAllCached != null) {
-            return ResponseEntity.ok().body(usersFindAllCached);
-        }
+        // if (usersFindAllCached != null) {
+        //     return ResponseEntity.ok().body(usersFindAllCached);
+        // }
 
-        List<UserModel> listUserModels = userService.findAll();
-        // objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", listUserModels);
+        UserModel userInAuthentication = authService.getUserInAuthentication();
 
-        return ResponseEntity.ok().body(listUserModels);
+        UserModel userData = userService.findDataUser(userInAuthentication);
+        // objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", userData);
+
+        return ResponseEntity.ok().body(userData);
     }
 
     @PostMapping(value = "/save")
