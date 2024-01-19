@@ -35,6 +35,11 @@ O projeto se trata de uma loja virtual onde os clientes conseguem se cadastrar, 
 
 <hr/>
 
+<h2>Exibir Produto</h2>
+<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/showProduct.png" alt="" style=" display: block; margin-bottom: 40px; ">
+
+<hr/>
+
 <h2>Meu Perfil</h2>
 <img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Profile.png" alt="" style=" display: block; margin-bottom: 40px;">
 
