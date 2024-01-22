@@ -1,47 +1,31 @@
+# Project-Order-Spring
 
-# Project Order Spring Angular
+<p>O projeto foi realizado em Java, no Spring Framework. PostgreSQL foi utilizado como banco de dados.</p>
 
-O projeto se trata de uma loja virtual onde os clientes conseguem se cadastrar, fazer login, acessar os produtos, filtrar pelas categorias e muito mais. 
+<p>O projeto foi feito para uma empresa de controle de pedidos, onde podemos cadastrar produtos, usuários, realizar pedidos e muito mais.</p>
 
-- O Back-End foi realizado em Spring na versão 3.4.4;
-
-- O Front-End foi feito em Angular na versão 14;
-
-- O Banco de Dados utilizado foi o PostgreSQL;
-
-- O Banco de Dados em memória utlizado foi o Redis;
-
-## Funcionalidades
-
-- Total Suporte ao Docker
-- Utiliza Nginx
-- Pipelines de CI/CD
+<p>O login é feito por meio do token JWT gerado em "/login", e por meio dele será permitido ou não o acesso as rotas.</p> 
 
 
-## Imagens das telas
+<p>É possível rodar a aplicação pelo Docker, lembre-se de preencher as informações no .env usando como base o .env.example. Após isso digite no terminal: </p>
 
-<h2>Home</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Home.png" alt="" style=" display: block; margin-bottom: 40px; ">
+```bash
+docker compose up --build
+```
 
-<hr/>
+<p>Caso queira rodar a aplicação usando o Maven basta digitar o seguinte comando no terminal:</p>
 
-<h2>Cadastrar-se</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Register.png" alt="" style=" display: block; margin-bottom: 40px;">
+```bash
+./mvnw spring-boot:run -Ptest
+```
 
-<hr/>
+<p>Para efetuar os testes, use o seguinte dominio: </p>
 
-<h2>Login</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/login.png" alt="" style=" display: block; margin-bottom: 40px;">
+```
+http://order.127.0.0.1.nip.io:8080
+```
 
-<hr/>
-
-<h2>Exibir Produto</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/showProduct.png" alt="" style=" display: block; margin-bottom: 40px; ">
-
-<hr/>
-
-<h2>Meu Perfil</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Profile.png" alt="" style=" display: block; margin-bottom: 40px;">
+<img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/listProducts.png" alt="" style=" display: block; margin-bottom: 40px;">
 
 <hr/>
 
@@ -53,7 +37,4 @@ O projeto se trata de uma loja virtual onde os clientes conseguem se cadastrar, 
 <h2>Meus Endereços</h2>
 <img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Enderecos.png" alt="" style=" display: block; margin-bottom: 40px;">
 
-<hr/>
-
-<h2>Adicionar Endereço</h2>
-<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/AddAdress.png" alt="" style=" display: block; margin-bottom: 40px;">
+<img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/login.png" alt="" style=" display: block; margin-bottom: 40px;">
