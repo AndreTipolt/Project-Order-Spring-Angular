@@ -1,7 +1,5 @@
 # Project-Order-Spring
 
-<h2>(Front-End em Angular em Desenvolvimento na branch dev)</h2> <br/>
-
 <p>O projeto foi realizado em Java, no Spring Framework. PostgreSQL foi utilizado como banco de dados.</p>
 
 <p>O projeto foi feito para uma empresa de controle de pedidos, onde podemos cadastrar produtos, usuários, realizar pedidos e muito mais.</p>
@@ -29,8 +27,14 @@ http://order.127.0.0.1.nip.io:8080
 
 <img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/listProducts.png" alt="" style=" display: block; margin-bottom: 40px;">
 
-<img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/findAllOrders.png" alt="" style=" display: block; margin-bottom: 40px;">
+<hr/>
 
-<img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/categories.png" alt="" style=" display: block; margin-bottom: 40px;">
+<h2>Meus Pedidos</h2>
+<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Orders.png" alt="" style=" display: block; margin-bottom: 40px;">
+
+<hr/>
+
+<h2>Meus Endereços</h2>
+<img src="https://github.com/AndreTipolt/Project-Order-Spring-Angular/blob/dev/images/Enderecos.png" alt="" style=" display: block; margin-bottom: 40px;">
 
 <img src="https://github.com/AndreTipolt/Project-Order-Spring/blob/main/images/login.png" alt="" style=" display: block; margin-bottom: 40px;">
