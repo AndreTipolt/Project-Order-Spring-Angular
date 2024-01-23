@@ -16,6 +16,7 @@ import { OrdersUserComponent } from './components/orders-user/orders-user.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { StatusPaymentPipe } from './pipes/status-payment.pipe';
 import { UserRoutingModule } from './user-routing.module';
+import { MyInformationsComponent } from './components/my-informations/my-informations.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UserRoutingModule } from './user-routing.module';
     StatusPaymentPipe,
     ShowAdressComponent,
     AddAdressComponent,
-    TypeAdressIconPipe
+    TypeAdressIconPipe,
+    MyInformationsComponent
   ],
   imports: [
     CommonModule,
