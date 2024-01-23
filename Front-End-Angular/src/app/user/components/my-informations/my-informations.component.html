@@ -1,1 +1,50 @@
-<p>my-informations works!</p>
+<div class="content-container">
+  <h1 class="title-my-informations">Minhas Informações</h1>
+</div>
+
+
+<div class="content-container my-informations">
+
+  <div class="my-information">
+
+    <a class="icon-edit">
+      <mat-icon aria-hidden="false" aria-label="Edit Information" fontIcon="edit"></mat-icon>
+    </a>
+
+    <h2>Nome</h2>
+    <span>{{ currentUser.name }}</span>
+
+  </div>
+</div>
+
+<div class="content-container my-informations">
+
+  <div class="my-information">
+
+    <a class="icon-edit">
+      <mat-icon aria-hidden="false" aria-label="Edit Information" fontIcon="edit"></mat-icon>
+    </a>
+
+    <h2>Email</h2>
+    <span>{{ currentUser.email }}</span>
+  </div>
+
+</div>
+
+<div class="content-container my-informations">
+
+  <div class="my-information">
+
+
+    <a class="icon-edit">
+      <mat-icon aria-hidden="false" aria-label="Edit Information" fontIcon="edit"></mat-icon>
+    </a>
+
+
+    <h2>Telefone</h2>
+    <span *ngIf="currentUser.phone ; phoneNumberNotExists">{{ currentUser.phone }}</span>
+
+    <ng-container #phoneNumberNotExists>Número não cadastrado</ng-container>
+  </div>
+
+</div>
