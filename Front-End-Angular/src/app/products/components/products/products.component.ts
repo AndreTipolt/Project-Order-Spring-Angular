@@ -25,14 +25,8 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.title.setTitle("Spring - Home")
 
-    if (this.router.url.startsWith('/category')) { // Verify if the url contains category for list products using category
 
-      const idCategory = this.activatedRoute.snapshot.params['id']; // Taking id category from url
-
-    }
-    else {
-      this.refreshProducts();
-    }
+    this.refreshProducts();
   }
 
   refreshProducts() {

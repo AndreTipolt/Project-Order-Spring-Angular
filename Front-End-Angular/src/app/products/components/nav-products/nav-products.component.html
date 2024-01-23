@@ -1,13 +1,46 @@
 <nav>
-    <div class="show-favorites">
-      <a href="/category/b4f7bf8e-3f99-4c42-9cb2-cf5199116afd">Tecnologia</a>
-      <a href="/category/e0b50eef-beae-4b20-a49c-1053601774c0">Eletrodomésticos</a>
+  <div class="show-favorites">
+    <a href="/category/b4f7bf8e-3f99-4c42-9cb2-cf5199116afd">Tecnologia</a>
+    <a href="/category/e0b50eef-beae-4b20-a49c-1053601774c0">Eletrodomésticos</a>
+  </div>
+  <div class="input-search">
+
+    <input type="text" placeholder="Pesquisar pelo Produto..." (input)="search($event)">
+
+    <div class="product-results">
+
+      <div class="product-result" routerLink="/products/f5a3d420-ec64-48fa-a3e4-d08b68e2aaad">
+
+        <div class="image-product-result">
+          <img
+            src="https://media.istockphoto.com/id/173242750/pt/foto/cacho-de-bananas.jpg?s=612x612&w=0&k=20&c=V-t2KAV-myQK5WugvB8wxfi69iP3sce0A-TYFJuL3Tg="
+            alt="">
+        </div>
+
+        <div class="name-product-result">
+          Banana 24 quilates
+        </div>
+
+      </div>
+      <div class="product-result">
+
+        <div class="image-product-result">
+          <img
+            src="https://frutassteffen.com.br/wp-content/uploads/2020/07/e18b9743004127b18c08c384c0389511-1.jpg"
+            alt="">
+        </div>
+
+        <div class="name-product-result">
+          Abacaxi arretado
+        </div>
+
+      </div>
+
     </div>
-    <div class="input-search">
-        <input type="text" placeholder="Pesquisar pelo Produto...">
-    </div>
-    <div class="show-favorites">
-      <a href="/category/b4f7bf8e-3f99-4c42-9cb2-cf5199116afd">Tecnologia</a>
-      <a href="/category/e0b50eef-beae-4b20-a49c-1053601774c0">Eletrodomésticos</a>
-    </div>
+
+  </div>
+  <div class="show-favorites">
+    <a href="/category/b4f7bf8e-3f99-4c42-9cb2-cf5199116afd">Tecnologia</a>
+    <a href="/category/e0b50eef-beae-4b20-a49c-1053601774c0">Eletrodomésticos</a>
+  </div>
 </nav>

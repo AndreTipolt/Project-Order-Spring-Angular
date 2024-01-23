@@ -16,33 +16,33 @@ $custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $cust
     padding: 0;
     margin: 0;
   }
-  
+
   body {
     height: 100%;
     width: 100%;
   }
-  
+
   @font-face {
     font-family: 'Gotham';
     src: url('assets/fonts/Gotham/gotham-light.woff2') format('truetype');
     font-weight: 300;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: 'Gotham';
     src: url('assets/fonts/Gotham/gotham-book.woff2') format('truetype');
     font-weight: 500;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: 'Gotham';
     src: url('assets/fonts/Gotham/gotham-bold.woff2') format('truetype');
     font-weight: 700;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: 'Gotham';
     src: url('assets/fonts/Gotham/gotham-black.woff2') format('truetype');
@@ -51,7 +51,7 @@ $custom-theme: mat-light-theme($custom-app-primary, $custom-app-secondary, $cust
   }
 
 .container{
-  padding: 90px 0;
+  padding: 40px 0;
 }
 
 button:active {
