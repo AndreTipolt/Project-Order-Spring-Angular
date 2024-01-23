@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../../../category/types/Category.interface';
 
 @Component({
@@ -9,6 +9,8 @@ import { Category } from '../../../category/types/Category.interface';
 export class NavProductsComponent implements OnInit {
 
   @Input() categories!: Category[];
+
+  @Output() clickCategory = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
