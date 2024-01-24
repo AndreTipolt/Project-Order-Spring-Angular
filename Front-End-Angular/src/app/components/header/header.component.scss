@@ -84,11 +84,13 @@ header .user-informations{
     display: flex;
     align-items: center;
     width: 70px;
+    margin-bottom: 5px;
 }
 
 header .user-informations img{
     border-radius: 50%;
     width: 100%;
+    padding: 5px;
 }
 
 header .btn-to-show-menu-user{
