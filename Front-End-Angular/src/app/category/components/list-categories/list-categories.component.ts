@@ -5,6 +5,7 @@ import { Category } from '../../types/Category.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Product } from 'src/app/products/types/Product.interface';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-categories',
@@ -17,10 +18,12 @@ export class ListCategoriesComponent implements OnInit {
   products!: Product[]
 
   constructor(private activatedRoute: ActivatedRoute,
-              private categoryService: CategoryService,
-              private dialog: MatDialog) { }
+    private categoryService: CategoryService,
+    private dialog: MatDialog,
+    private title: Title) { }
 
   ngOnInit(): void {
+
     const idCategory = this.activatedRoute.snapshot.params['id']; // Taking id category from url
 
     this.refreshCategory(idCategory);
@@ -33,7 +36,8 @@ export class ListCategoriesComponent implements OnInit {
 
         this.category = res;
 
-        console.log(res.listProducts);
+        this.title.setTitle(`Spring - ${res.name}`)
+
 
         this.products = res.listProducts;
       },
@@ -43,7 +47,7 @@ export class ListCategoriesComponent implements OnInit {
     })
   }
 
-  onError(errorMessage: string){
+  onError(errorMessage: string) {
 
     this.dialog.open(ErrorDialogComponent, {
       data: errorMessage
