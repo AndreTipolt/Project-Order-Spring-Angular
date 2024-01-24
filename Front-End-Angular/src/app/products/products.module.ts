@@ -9,6 +9,7 @@ import { NavProductsComponent } from './components/nav-products/nav-products.com
 import { ProductsComponent } from './components/products/products.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { SearchProductsComponent } from './components/search-products/search-products.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductsRoutingModule } from './products-routing.module';
     ListProductsComponent,
     ProductsComponent,
     NavProductsComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    SearchProductsComponent
   ],
   imports: [
     CommonModule,

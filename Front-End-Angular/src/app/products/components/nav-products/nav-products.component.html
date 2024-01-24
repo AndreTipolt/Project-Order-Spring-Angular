@@ -4,8 +4,9 @@
     <a href="/category/e0b50eef-beae-4b20-a49c-1053601774c0">Eletrodomésticos</a>
   </div>
   <div class="input-search">
-
-    <input type="text" placeholder="Pesquisar pelo Produto..." (input)="search($event)">
+    <form method="get" action="/products/search">
+      <input type="search" placeholder="Pesquisar pelo Produto..." (input)="search($event)" name="q">
+    </form>
 
     <!-- <div class="product-results">
 

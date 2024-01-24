@@ -22,10 +22,17 @@ export class ProductService {
     return this.httpClient.get<Response>(APIURL).pipe(first());
   }
 
-  getProductById(productId: string): Observable<Product>{
+  getProductById(productId: string): Observable<Product> {
 
     const APIURL = `${this.baseAPIURL}/products/${productId}`;
 
     return this.httpClient.get<Product>(APIURL);
+  }
+
+  searchProductByName(productName: string) {
+
+    const APIURL = `${this.baseAPIURL}/products/search?q=${productName}`;
+
+    return this.httpClient.get<Product[]>(APIURL);
   }
 }

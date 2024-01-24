@@ -16,7 +16,6 @@ export class NavProductsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.products)
   }
 
   search(e: Event){
