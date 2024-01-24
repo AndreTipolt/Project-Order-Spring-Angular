@@ -11,4 +11,6 @@ import tipolt.andre.spring.models.ProductModel;
 public interface ProductRepository extends JpaRepository<ProductModel, String> {
 
     List<ProductModel> findByCategoryId(String categoryId);
+
+    List<ProductModel> findAllByNameStartsWithIgnoreCase(String nameProduct);
 }

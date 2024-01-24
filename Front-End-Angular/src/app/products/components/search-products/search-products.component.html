@@ -1,0 +1,13 @@
+<app-nav-products [searchInput]="searchedNameProduct"></app-nav-products>
+
+<app-list-products *ngIf="products.length > 0; else productsNotFound" [products]="products"></app-list-products>
+
+<ng-template #productsNotFound>
+
+  <div class="template-product-not-found">
+    <div class="product-not-found">
+      <mat-icon class="icon-search-not-found">search_off</mat-icon>
+      <h2 class="title-search-not-found">Não foi possível encontrar resultados para esta busca</h2>
+    </div>
+  </div>
+</ng-template>

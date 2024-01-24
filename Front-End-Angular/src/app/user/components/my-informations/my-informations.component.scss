@@ -1,0 +1,43 @@
+.content-container{
+  width: 100%;
+  background-color: #fff;
+  margin: 20px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px 0px;
+}
+
+.content-container .title-my-informations{
+  font-size: 1.5em;
+  font-weight: 700px;
+  padding: 0 20px;
+}
+
+.my-informations{
+  padding: 20px;
+  height: 100%;
+}
+
+.my-informations .my-information{
+  position: relative;
+  margin: 10px 0;
+  height: 100%;
+}
+
+.my-informations .my-information .icon-edit mat-icon{
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.my-informations .my-information .icon-edit mat-icon:hover{
+  cursor: pointer;
+}
+
+.my-informations .my-information h2{
+
+  margin-bottom: 3px;
+}

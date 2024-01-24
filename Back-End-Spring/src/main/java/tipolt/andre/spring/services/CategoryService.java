@@ -20,12 +20,10 @@ public class CategoryService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductModel> findCategoryById(String categoryId) {
+    public CategoryModel findCategoryById(String categoryId) {
 
-        categoryRepository.findById(categoryId).orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
+        return categoryRepository.findById(categoryId).orElseThrow(() -> new ObjectNotFoundException("Category Not Found"));
 
-        List<ProductModel> listProductsByCategory = productRepository.findByCategoryId(categoryId);
-        return listProductsByCategory;
     }
 
     public List<CategoryModel> findAll() {

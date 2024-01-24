@@ -5,11 +5,12 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .card {

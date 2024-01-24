@@ -8,8 +8,8 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { NavProductsComponent } from './components/nav-products/nav-products.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
-import { SpinnerLoadingComponent } from '../shared/components/spinner-loading/spinner-loading.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { SearchProductsComponent } from './components/search-products/search-products.component';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { ProductsRoutingModule } from './products-routing.module';
     ListProductsComponent,
     ProductsComponent,
     NavProductsComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    SearchProductsComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { ProductsRoutingModule } from './products-routing.module';
     SharedModule,
     MatProgressSpinnerModule,
     MatIconModule
-  ]
+  ],
+  exports: [ ListProductsComponent, NavProductsComponent ]
 })
 export class ProductsModule { }

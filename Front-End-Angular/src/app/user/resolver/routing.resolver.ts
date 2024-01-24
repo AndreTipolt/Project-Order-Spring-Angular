@@ -21,7 +21,7 @@ export class RoutingResolver implements Resolve<ShowComponentUser> {
     if(uri === "/my-profile"){
 
       return of({ showInformationsUserComponent: true })
-    } 
+    }
 
     else if(uri === "/my-profile/my-orders"){
 
@@ -34,6 +34,10 @@ export class RoutingResolver implements Resolve<ShowComponentUser> {
 
     else if(uri === "/my-profile/my-adresses/add"){
       return of({ showAddAdressesUserComponent: true })
+    }
+
+    else if(uri === "/my-profile/my-informations"){
+      return of({ showMyInformationsUserComponent: true })
     }
 
     return of({ showInformationsUserComponent: true })

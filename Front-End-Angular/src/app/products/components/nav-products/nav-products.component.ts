@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Category } from '../../types/Category.interface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Category } from '../../../category/types/Category.interface';
+import { Product } from '../../types/Product.interface';
 
 @Component({
   selector: 'app-nav-products',
@@ -8,10 +9,26 @@ import { Category } from '../../types/Category.interface';
 })
 export class NavProductsComponent implements OnInit {
 
-  @Input() categories!: Category[];
+  @Input() products!: Product[];
+
+  @Input() searchInput!: string;
+
+  @Output() clickCategory = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  search(e: Event){
+    const target = e.target as HTMLInputElement
+
+    const value = target.value
+
+    if(value.length === 0){
+      return;
+    }
+
   }
 
 }

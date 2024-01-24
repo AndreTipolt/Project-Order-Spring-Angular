@@ -3,14 +3,17 @@ header{
     display: flex;
     justify-content: space-between;
     padding: 0px 70px;
-    min-height: 100px;
+    height: 100px;
     background-color: #F6F8FF;
     position: sticky;
     border-bottom: 1px solid #272d2d4f;
 }
+header .image-header {
+  height: 100%;
+}
 
 header .image-header img{
-    height: 100px;
+    height: 100%;
     cursor: pointer;
 }
 
@@ -20,12 +23,34 @@ header .nav-header{
     gap: 20px;
 }
 
+header .nav-header .content-user-menu{
+  display: flex;
+  gap: 13px;
+}
+
+header .nav-header .content-user-menu a{
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 5px;
+}
+
+header .nav-header .icon-header mat-icon{
+  transform: scale(0.9);
+}
+
+header .nav-header .icon-header mat-icon:hover{
+  cursor: pointer;
+}
+
 header .nav-header ul li a{
     text-decoration: none;
     color: inherit;
 }
 header .nav-header ul li{
     list-style: none;
+    font-size: 1.03em;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 header .nav-header ul {
@@ -41,7 +66,7 @@ header .nav-header .btn-login-nav{
     align-items: center;
 }
 header .nav-header .btn-login-nav .btn-login, .btn-sign-up{
-    
+
     background-color: #272D2D;
     padding: 15px 22px;
     border-radius: 14px;
@@ -59,11 +84,13 @@ header .user-informations{
     display: flex;
     align-items: center;
     width: 70px;
+    margin-bottom: 5px;
 }
 
 header .user-informations img{
     border-radius: 50%;
     width: 100%;
+    padding: 5px;
 }
 
 header .btn-to-show-menu-user{

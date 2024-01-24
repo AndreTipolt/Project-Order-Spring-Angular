@@ -52,6 +52,7 @@ public class ProductService implements Serializable{
         ProductModel productModel =  productMapper.convertToProductModel(newProduct);
 
         productRepository.save(productModel);
+
     }
 
     public void updateProduct(ProductDTO productDTO, String productId) {
@@ -61,6 +62,14 @@ public class ProductService implements Serializable{
         ProductModel productModel = this.update(productDTO, product);
 
         productRepository.save(productModel);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProductModel> searchProduct(String nameProduct){
+
+        List<ProductModel> searchedProducts = productRepository.findAllByNameStartsWithIgnoreCase(nameProduct);
+
+        return searchedProducts;
     }
 
     private ProductModel update(ProductDTO productDTO, ProductModel product) {

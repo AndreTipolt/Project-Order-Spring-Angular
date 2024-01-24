@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   currentUser!: UserResponse
 
   componentConfig!: ShowComponentUser
-  
+
   constructor(private title: Title,
               private userService: UserService,
               private router: Router,
@@ -54,6 +54,9 @@ export class ProfileComponent implements OnInit {
     }
     else if(component === "/my-profile/my-adresses/add"){
       return this.componentConfig.showAddAdressesUserComponent;
+    }
+    else if(component === "/my-profile/my-informations"){
+      return this.componentConfig.showMyInformationsUserComponent;
     }
 
     return false;

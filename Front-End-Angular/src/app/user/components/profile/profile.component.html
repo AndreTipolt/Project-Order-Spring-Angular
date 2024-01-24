@@ -24,6 +24,7 @@
             <app-orders-user [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-orders')"></app-orders-user>
             <app-show-adresses [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses')"></app-show-adresses>
             <app-add-adress [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-adresses/add')"></app-add-adress>
+            <app-my-informations [currentUser]="currentUser" *ngIf="showComponent('/my-profile/my-informations')"></app-my-informations>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

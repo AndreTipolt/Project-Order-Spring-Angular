@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, first } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Category } from '../types/Category.interface';
+import { Category } from '../../category/types/Category.interface';
 import { Product } from '../types/Product.interface';
 import { Response } from '../types/Response.interface';
 
@@ -22,10 +22,17 @@ export class ProductService {
     return this.httpClient.get<Response>(APIURL).pipe(first());
   }
 
-  getProductById(productId: string): Observable<Product>{
+  getProductById(productId: string): Observable<Product> {
 
     const APIURL = `${this.baseAPIURL}/products/${productId}`;
 
     return this.httpClient.get<Product>(APIURL);
+  }
+
+  searchProductByName(productName: string) {
+
+    const APIURL = `${this.baseAPIURL}/products/search?q=${productName}`;
+
+    return this.httpClient.get<Product[]>(APIURL);
   }
 }

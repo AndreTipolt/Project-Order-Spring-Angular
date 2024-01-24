@@ -1,5 +1,7 @@
 package tipolt.andre.spring.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,17 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.validation.Valid;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
 import tipolt.andre.spring.dtos.ProductDTO;
 import tipolt.andre.spring.models.ProductModel;
 import tipolt.andre.spring.services.ProductService;
+
 
 @RestController
 @RequestMapping(value = "/products")
@@ -73,4 +76,13 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 
     }
+
+    @GetMapping(value = "/search")
+    public ResponseEntity<List<ProductModel>> getMethodName(@RequestParam String q) {
+        
+        List<ProductModel> listProduct = productService.searchProduct(q);
+
+        return ResponseEntity.ok().body(listProduct);
+    }
+    
 }

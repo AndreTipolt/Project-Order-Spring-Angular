@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } },
   { path: 'my-orders', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } },
   { path: 'my-adresses', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } },
-  { path: 'my-adresses/add', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } }
+  { path: 'my-adresses/add', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } },
+  { path: 'my-informations', component: ProfileComponent, resolve: { user: AuthResolver, routing: RoutingResolver } },
 ];
 
 @NgModule({
