@@ -1,0 +1,25 @@
+.template-product-not-found{
+  padding: 50px 0;
+}
+
+.product-not-found {
+  width: 40%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:rgb(0, 0, 0, 0.03);
+  margin: auto;
+  gap: 30px;
+  border-radius: 14px;
+}
+
+.product-not-found .icon-search-not-found {
+  transform: scale(3);
+}
+
+.product-not-found .title-search-not-found {
+
+  text-align: center;
+}

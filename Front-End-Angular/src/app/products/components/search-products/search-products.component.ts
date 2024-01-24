@@ -17,8 +17,7 @@ export class SearchProductsComponent implements OnInit {
 
   constructor(private title: Title,
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 

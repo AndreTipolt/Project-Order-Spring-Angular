@@ -5,7 +5,7 @@
   </div>
   <div class="input-search">
     <form method="get" action="/products/search">
-      <input type="search" placeholder="Pesquisar pelo Produto..." (input)="search($event)" name="q">
+      <input type="search" placeholder="Pesquisar pelo Produto..." (input)="search($event)" name="q" value="{{ searchInput }}">
     </form>
 
     <!-- <div class="product-results">

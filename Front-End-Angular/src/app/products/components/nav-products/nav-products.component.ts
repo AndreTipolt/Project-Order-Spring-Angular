@@ -11,6 +11,8 @@ export class NavProductsComponent implements OnInit {
 
   @Input() products!: Product[];
 
+  @Input() searchInput!: string;
+
   @Output() clickCategory = new EventEmitter<string>();
   constructor() { }
 
