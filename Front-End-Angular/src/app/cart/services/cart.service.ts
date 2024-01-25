@@ -29,13 +29,22 @@ export class CartService {
       return [];
     }
 
-    return itemsCartInLocalStorage.split('/');
+    return itemsCartInLocalStorage.split('/').filter((productId) => { return productId != "" });
   }
 
-  deleteItemInCart(productId: string){
+  deleteItemInCart(productId: string) {
 
     const allItensCart = localStorage.getItem('cart_products')
 
-    // allItensCart?.split('/').filter((product))
+    if (allItensCart === null) {
+      return;
+    }
+
+    const newCartItens = allItensCart?.split('/').filter((productIdLocalStorage) => { return productId != productIdLocalStorage && productIdLocalStorage != "" }).join('/').toString()
+
+
+    localStorage.setItem('cart_products', newCartItens);
+
+
   }
 }

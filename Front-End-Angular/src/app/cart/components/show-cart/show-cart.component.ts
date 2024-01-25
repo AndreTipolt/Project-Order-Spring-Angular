@@ -37,14 +37,18 @@ export class ShowCartComponent implements OnInit {
 
   findProductsToShowInCart(listIdProducts: string[]) {
     listIdProducts.forEach((productId) => {
+
       this.productService.getProductById(productId).subscribe({
+
         next: (res) => {
           this.products.push(res);
           this.calculateResumeMenuValues(); // Atualize os valores quando um novo produto é adicionado
         },
+
         error: (error: HttpErrorResponse) => {
           console.log(error);
         }
+
       });
     });
   }
