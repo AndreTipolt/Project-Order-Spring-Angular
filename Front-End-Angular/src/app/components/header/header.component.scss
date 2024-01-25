@@ -87,6 +87,11 @@ header .user-informations{
     margin-bottom: 5px;
 }
 
+header .user-informations:hover{
+
+  cursor: pointer;
+}
+
 header .user-informations img{
     border-radius: 50%;
     width: 100%;
