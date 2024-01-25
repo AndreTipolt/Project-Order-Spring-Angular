@@ -64,4 +64,12 @@ export class ShowCartComponent implements OnInit {
     this.menuSubTotalData.totalOrder = this.menuSubTotalData.valueDelivery + this.menuSubTotalData.valueTotalOfProducts;
   }
 
+  onDeleteItemCart(productId: string){
+    
+    this.products = this.products.filter((product: Product) => product.id != productId)
+
+    this.cartService.deleteItemInCart(productId);
+
+  }
+
 }

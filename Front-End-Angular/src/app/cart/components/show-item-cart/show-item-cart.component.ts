@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/products/types/Product.interface';
 
 @Component({
@@ -10,9 +10,16 @@ export class ShowItemCartComponent implements OnInit {
 
   @Input() product!: Product;
 
+  @Output() deleteItemCart = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDeleteItemCart(productId: string){
+    // if(productId != undefined) return;
+    return this.deleteItemCart.emit(productId);
   }
 
 }

@@ -1,6 +1,6 @@
 export interface Product{
 
-    id?: string;
+    id: string;
     name: string;
     fowardPrice: number;
     spotPrice: number;

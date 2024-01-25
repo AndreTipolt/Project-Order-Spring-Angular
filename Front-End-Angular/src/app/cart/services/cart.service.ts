@@ -31,4 +31,11 @@ export class CartService {
 
     return itemsCartInLocalStorage.split('/');
   }
+
+  deleteItemInCart(productId: string){
+
+    const allItensCart = localStorage.getItem('cart_products')
+
+    // allItensCart?.split('/').filter((product))
+  }
 }

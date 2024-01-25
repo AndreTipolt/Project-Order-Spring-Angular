@@ -2,7 +2,7 @@
 
   <div class="itens-cart">
 
-    <app-show-item-cart [product]="product" class="content-container item-cart" *ngFor="let product of products"></app-show-item-cart>
+    <app-show-item-cart [product]="product" class="content-container item-cart" *ngFor="let product of products" (deleteItemCart)="onDeleteItemCart($event)"></app-show-item-cart>
 
   </div>
 
