@@ -1,6 +1,7 @@
 import { CartService } from 'src/app/cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Product } from 'src/app/products/types/Product.interface';
 
 @Component({
   selector: 'app-show-cart',
@@ -9,6 +10,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class ShowCartComponent implements OnInit {
 
+  product!: Product
+
   constructor(private title: Title,
               private cartService: CartService) { }
 
@@ -16,7 +19,8 @@ export class ShowCartComponent implements OnInit {
 
     this.title.setTitle('Spring - Carrinho')
 
-    this.cartService
+    this.product = this.cartService.getAllProductsInCart()
+
   }
 
 }

@@ -10,13 +10,25 @@ export class CartService {
   constructor(private httClient: HttpClient) { }
 
 
-  addProductInCart(product: Product){
+  addProductInCart(product: Product) {
 
     const cart_products = localStorage.getItem('cart_products')
 
-    if(cart_products === null){
+    if (cart_products === null) {
       localStorage.setItem('cart_products', JSON.stringify(product))
     }
 
+  }
+
+  getAllProductsInCart() {
+
+    const itemsCartInLocalStorage = localStorage.getItem('cart_products')
+
+    if (itemsCartInLocalStorage === null) {
+
+      return false;
+    }
+    console.log(JSON.parse(itemsCartInLocalStorage))
+    return JSON.parse(itemsCartInLocalStorage)
   }
 }
