@@ -2,7 +2,7 @@
 
   <div class="itens-cart">
 
-    <div class="content-container item-cart">
+    <div class="content-container item-cart" *ngFor="let product of products">
 
       <div class="image-item-cart">
         <img src="{{ product.imageURL }}" alt="">

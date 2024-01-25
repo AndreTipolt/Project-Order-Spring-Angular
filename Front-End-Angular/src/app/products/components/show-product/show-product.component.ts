@@ -40,7 +40,9 @@ export class ShowProductComponent implements OnInit {
 
   addCart(){
 
-    this.cartService.addProductInCart(this.product);
+    if(this.product.id === undefined) return;
+
+    this.cartService.addProductInCart(this.product.id);
   }
 
 }

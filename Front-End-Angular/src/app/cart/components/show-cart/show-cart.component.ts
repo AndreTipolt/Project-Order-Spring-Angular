@@ -2,6 +2,8 @@ import { CartService } from 'src/app/cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Product } from 'src/app/products/types/Product.interface';
+import { ProductService } from 'src/app/products/services/product.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-show-cart',
@@ -10,16 +12,33 @@ import { Product } from 'src/app/products/types/Product.interface';
 })
 export class ShowCartComponent implements OnInit {
 
-  product!: Product
+  products: Product[] = []
 
   constructor(private title: Title,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private productService: ProductService) { }
 
   ngOnInit(): void {
 
     this.title.setTitle('Spring - Carrinho')
 
-    this.product = this.cartService.getAllProductsInCart()
+    const listIdProducts = this.cartService.getAllProductsInCart()
+
+    listIdProducts.map((productId) => {
+
+      this.productService.getProductById(productId).subscribe({
+
+        next: (res) => {
+          console.log(this.products)
+          this.products.push(res)
+        },
+
+        error: (error: HttpErrorResponse) => {
+          console.log(error)
+        }
+
+      })
+    })
 
   }
 

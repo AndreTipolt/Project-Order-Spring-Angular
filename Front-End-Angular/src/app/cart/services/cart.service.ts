@@ -10,25 +10,25 @@ export class CartService {
   constructor(private httClient: HttpClient) { }
 
 
-  addProductInCart(product: Product) {
+  addProductInCart(productId: string) {
 
     const cart_products = localStorage.getItem('cart_products')
 
-    if (cart_products === null) {
-      localStorage.setItem('cart_products', JSON.stringify(product))
-    }
+    if (cart_products === null) return localStorage.setItem('cart_products', productId);
 
+    localStorage.setItem('cart_products', cart_products + "/" + productId)
+    return;
   }
 
-  getAllProductsInCart() {
+  getAllProductsInCart(): string[] {
 
     const itemsCartInLocalStorage = localStorage.getItem('cart_products')
 
     if (itemsCartInLocalStorage === null) {
 
-      return false;
+      return [];
     }
-    console.log(JSON.parse(itemsCartInLocalStorage))
-    return JSON.parse(itemsCartInLocalStorage)
+
+    return itemsCartInLocalStorage.split('/');
   }
 }
