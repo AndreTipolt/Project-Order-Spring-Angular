@@ -1,0 +1,51 @@
+<main class="main-content">
+
+  <div class="itens-cart">
+
+    <div class="content-container item-cart">
+
+      <div class="image-item-cart">
+        <img src="https://saude.abril.com.br/wp-content/uploads/2017/07/abacate3.jpg?quality=85&strip=info&w=680&resize=1200,800" alt="">
+      </div>
+      <div class="name-item-cart">
+        <span class="name-product">Abacate 24 quilates</span>
+      </div>
+      <div class="quantity-item-cart">
+
+        <div class="menu-increase-decrease-quantity">
+
+          <button class="decrease-button">
+            <mat-icon class="mat-18">remove</mat-icon>
+          </button>
+
+          <div class="quantity">
+            <span>1</span>
+          </div>
+
+          <button class="increase-button">
+            <mat-icon class="mat-18">add</mat-icon>
+          </button>
+        </div>
+
+      </div>
+      <div class="price-item-cart">
+        <span>{{ 99.99 | currency: 'BRL' }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content-container menu-subtotal">
+
+    <div class="title-menu-cart">
+      <h2>Resumo da compra</h2>
+      <hr>
+    </div>
+
+    <div class="sub-total-products">
+      <span class="quantity-products">Produtos(1)</span>
+      <span class="sub-total">{{ 259.99 | currency: 'BRL' }}</span>
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,115 @@
+.content-container {
+  background-color: #fff;
+  margin: 20px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px 0px;
+}
+
+.menu-subtotal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.menu-subtotal .title-menu-cart{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu-subtotal h2 {
+  padding: 0 20px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
+
+.menu-cart hr {
+  border-color: #ffffff;
+}
+
+.main-content {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 50px;
+}
+
+.main-content .itens-cart{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-content .item-cart{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  gap: 8px;
+  padding: 20px;
+  align-items: center;
+}
+
+.main-content .item-cart .image-item-cart{
+  height: 80px;
+}
+
+.main-content .item-cart .image-item-cart img{
+  height: 100%;
+}
+
+.main-content .item-cart .name-item-cart{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+
+.main-content .item-cart .name-item-cart .name-product{
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.main-content .item-cart .quantity-item-cart .menu-increase-decrease-quantity{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  width: 80px;
+  border-radius: 4px;
+  border: 1px solid rgb(0, 0, 0, 0.05);
+}
+
+.main-content .item-cart .quantity-item-cart .menu-increase-decrease-quantity span{
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.main-content .item-cart .quantity-item-cart .menu-increase-decrease-quantity .increase-button, .decrease-button{
+  border: none;
+}
+
+.main-content .item-cart .price-item-cart{
+  display: flex;
+  justify-content: end;
+  padding-right: 8px;
+}
+
+.main-content .item-cart .price-item-cart span{
+  font-size: 1.2em;
+  font-weight: 500;
+}
+// .main-content .item-cart .image-item-cart{
+//   background-color: red;
+// }
+
+// .main-content .item-cart .name-item-cart{
+//   background-color: blue;
+// }
+
+// .main-content .item-cart .quantity-item-cart{
+//   background-color: green;
+// }
+
+// .main-content .item-cart .price-item-cart{
+//   background-color: yellow;
+// }

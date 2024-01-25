@@ -10,7 +10,7 @@
       <a href="/my-profile/my-orders">Compras</a>
       <a href="">Favoritos</a>
       <div class="cart-section icon-header">
-        <mat-icon matBadge="" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon matBadge="" matBadgeColor="warn" [routerLink]="['/cart']">shopping_cart</mat-icon>
       </div>
 
       <div class="notification-section icon-header">
@@ -29,7 +29,7 @@
                     fontIcon="person"></mat-icon> <span>Minha Conta</span></button></a>
               <a class="link-user-menu" routerLink="/my-profile/my-orders"><button mat-menu-item><mat-icon
                     fontIcon="shopping_bag"></mat-icon><span>Meus Pedidos</span></button></a>
-              <a class="link-user-menu"><button mat-menu-item><mat-icon fontIcon="shopping_cart"></mat-icon><span>Meu
+              <a class="link-user-menu" [routerLink]="['/cart']"><button mat-menu-item><mat-icon fontIcon="shopping_cart"></mat-icon><span>Meu
                     Carrinho</span></button></a>
               <a class="link-user-menu" (click)="logout()"><button mat-menu-item><mat-icon
                     fontIcon="logout"></mat-icon><span>Sair</span></button></a>
