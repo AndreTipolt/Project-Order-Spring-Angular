@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../types/Product.interface';
+import { CartService } from 'src/app/cart/services/cart.service';
 
 @Component({
   selector: 'app-show-product',
@@ -16,7 +17,8 @@ export class ShowProductComponent implements OnInit {
   constructor(private title: Title,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -33,7 +35,12 @@ export class ShowProductComponent implements OnInit {
         this.router.navigate(['/'])
       }
     })
-    
+
+  }
+
+  addCart(){
+
+    this.cartService.addProductInCart(this.product);
   }
 
 }

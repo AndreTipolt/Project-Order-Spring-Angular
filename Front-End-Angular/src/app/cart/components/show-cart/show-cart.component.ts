@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/cart/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -8,11 +9,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class ShowCartComponent implements OnInit {
 
-  constructor(private title: Title) { }
+  constructor(private title: Title,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
 
     this.title.setTitle('Spring - Carrinho')
+
+    this.cartService
   }
 
 }
