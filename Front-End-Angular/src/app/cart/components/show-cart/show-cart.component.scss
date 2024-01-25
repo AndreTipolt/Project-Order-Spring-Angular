@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  height: 200px;
 }
 
 .menu-subtotal .title-menu-cart{
@@ -22,6 +23,22 @@
   font-weight: 400;
   margin: 0;
   text-align: center;
+}
+
+.menu-subtotal .sub-total-item{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.menu-subtotal .total-menu-subtotal span{
+  margin: 8px 0;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+
+.menu-subtotal .sub-total-item .value-sub-total-delivery{
+  color: #00a650;
 }
 
 .menu-cart hr {
