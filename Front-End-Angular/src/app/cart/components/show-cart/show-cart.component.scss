@@ -13,39 +13,6 @@
   height: 190px;
 }
 
-.menu-subtotal .title-menu-cart {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.menu-subtotal h2 {
-  padding: 0 20px;
-  font-weight: 400;
-  margin: 0;
-  text-align: center;
-}
-
-.menu-subtotal .sub-total-item {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.menu-subtotal .total-menu-subtotal span {
-  margin: 8px 0;
-  font-size: 1.15em;
-  font-weight: 600;
-}
-
-.menu-subtotal .sub-total-item .value-sub-total-delivery {
-  color: #00a650;
-}
-
-.menu-cart hr {
-  border-color: #ffffff;
-}
-
 .main-content {
   width: 80%;
   margin: auto;

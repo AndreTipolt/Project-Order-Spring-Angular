@@ -15,8 +15,6 @@ export class ShowCartComponent implements OnInit {
 
   products: Product[] = []
 
-  menuSubTotalData!: MenuSubTotalData;
-
   constructor(private title: Title,
               private cartService: CartService,
               private productService: ProductService) { }
@@ -28,15 +26,13 @@ export class ShowCartComponent implements OnInit {
     const listIdProducts = this.cartService.getAllProductsInCart();
 
     this.findProductsToShowInCart(listIdProducts);
-
-    this.calculateResumeMenuValues()
   }
 
   findProductsToShowInCart(listIdProducts: string[]){
 
-    listIdProducts.map(async (productId) => {
+    listIdProducts.map((productId) => {
 
-      await this.productService.getProductById(productId).subscribe({
+      this.productService.getProductById(productId).subscribe({
 
         next: (res) => {
 
@@ -52,18 +48,4 @@ export class ShowCartComponent implements OnInit {
     })
   }
 
-  calculateResumeMenuValues(){
-
-    this.menuSubTotalData.numberOfProducts = this.products.length;
-
-    this.menuSubTotalData.valueDelivery = 0;
-
-    this.products.map((product) => {
-
-      this.menuSubTotalData.valueTotalOfProducts += product.spotPrice
-    })
-
-    this.menuSubTotalData.totalOrder = this.menuSubTotalData.valueDelivery + this.menuSubTotalData.valueTotalOfProducts
-
-  }
 }

@@ -4,10 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../shared/shared.module';
 import { CartRoutingModule } from './cart-routing.module';
 import { ShowCartComponent } from './components/show-cart/show-cart.component';
+import { MenuSubTotalCartComponent } from './components/menu-sub-total-cart/menu-sub-total-cart.component';
 
 @NgModule({
   declarations: [
-    ShowCartComponent
+    ShowCartComponent,
+    MenuSubTotalCartComponent
   ],
   imports: [
     CommonModule,
