@@ -1,0 +1,27 @@
+<div class="image-item-cart">
+  <img src="{{ product.imageURL }}" alt="">
+</div>
+<div class="name-item-cart">
+  <span class="name-product">{{ product.name }}</span>
+</div>
+<div class="quantity-item-cart">
+
+  <div class="menu-increase-decrease-quantity">
+
+    <button class="decrease-button">
+      <mat-icon class="mat-18">remove</mat-icon>
+    </button>
+
+    <div class="quantity">
+      <span>1</span>
+    </div>
+
+    <button class="increase-button">
+      <mat-icon class="mat-18">add</mat-icon>
+    </button>
+  </div>
+
+</div>
+<div class="price-item-cart">
+  <span>{{ product.spotPrice| currency: 'BRL' }}</span>
+</div>
