@@ -1,4 +1,4 @@
-<main class="main-content" *ngIf="products != null; else emptyCart">
+<main class="main-content" *ngIf="products.length != 0; else emptyCart">
 
   <div class="itens-cart">
 
@@ -16,6 +16,8 @@
 
 <ng-template #emptyCart>
 
-  Não existe itens no carrinho <!--Implements-->
+  <div class="">
+
+  </div>
 </ng-template>
 

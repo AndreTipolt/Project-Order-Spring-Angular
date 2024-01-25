@@ -45,6 +45,16 @@ export class CartService {
 
     localStorage.setItem('cart_products', newCartItens);
 
+  }
 
+  countNumberOfProductsInCart(): number {
+
+    let cartProducts = localStorage.getItem('cart_products')?.split('/')
+
+    if (cartProducts === undefined) {
+      return 0;
+    }
+
+    return cartProducts.filter((productId) => productId != "").length
   }
 }
