@@ -9,29 +9,12 @@ import { Product } from 'src/app/products/types/Product.interface';
 })
 export class MenuSubTotalCartComponent implements OnInit {
 
-  @Input() products!: Product[];
 
-  menuSubTotalData!: MenuSubTotalData;
+  @Input() menuSubTotalData!: MenuSubTotalData;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.calculateResumeMenuValues()
-  }
-
-  calculateResumeMenuValues(){
-
-    this.menuSubTotalData.numberOfProducts = this.products.length;
-
-    this.menuSubTotalData.valueDelivery = 0;
-
-    this.products.map((product) => {
-
-      this.menuSubTotalData.valueTotalOfProducts += product.spotPrice
-    })
-
-    this.menuSubTotalData.totalOrder = this.menuSubTotalData.valueDelivery + this.menuSubTotalData.valueTotalOfProducts
-
   }
 
 }

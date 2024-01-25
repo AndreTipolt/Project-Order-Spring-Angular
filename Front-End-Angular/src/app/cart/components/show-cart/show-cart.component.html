@@ -1,4 +1,4 @@
-<main class="main-content">
+<main class="main-content" *ngIf="products != null; else emptyCart">
 
   <div class="itens-cart">
 
@@ -8,8 +8,14 @@
 
   <div class="content-container menu-subtotal">
 
-    <app-menu-sub-total-cart [products]="products"></app-menu-sub-total-cart>
+    <app-menu-sub-total-cart [menuSubTotalData]="menuSubTotalData"></app-menu-sub-total-cart>
 
   </div>
 
 </main>
+
+<ng-template #emptyCart>
+
+  Não existe itens no carrinho <!--Implements-->
+</ng-template>
+

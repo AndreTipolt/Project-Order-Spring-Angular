@@ -13,14 +13,21 @@ import { MenuSubTotalData } from '../../types/MenuSubTotalData.interface';
 })
 export class ShowCartComponent implements OnInit {
 
-  products: Product[] = []
+  products: Product[] = [];
+  menuSubTotalData: MenuSubTotalData = {
+    numberOfProducts: 0,
+    valueDelivery: 0,
+    valueTotalOfProducts: 0,
+    totalOrder: 0
+  };
 
-  constructor(private title: Title,
-              private cartService: CartService,
-              private productService: ProductService) { }
+  constructor(
+    private title: Title,
+    private cartService: CartService,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
-
     this.title.setTitle('Spring - Carrinho');
 
     const listIdProducts = this.cartService.getAllProductsInCart();
@@ -28,24 +35,33 @@ export class ShowCartComponent implements OnInit {
     this.findProductsToShowInCart(listIdProducts);
   }
 
-  findProductsToShowInCart(listIdProducts: string[]){
-
-    listIdProducts.map((productId) => {
-
+  findProductsToShowInCart(listIdProducts: string[]) {
+    listIdProducts.forEach((productId) => {
       this.productService.getProductById(productId).subscribe({
-
         next: (res) => {
-
           this.products.push(res);
+          this.calculateResumeMenuValues(); // Atualize os valores quando um novo produto é adicionado
         },
-
         error: (error: HttpErrorResponse) => {
           console.log(error);
         }
+      });
+    });
+  }
 
-      })
+  calculateResumeMenuValues() {
+    
+    this.menuSubTotalData.numberOfProducts = this.products.length;
+    this.menuSubTotalData.valueDelivery = 0;
 
-    })
+    // Resetar o valor total antes de recalcular
+    this.menuSubTotalData.valueTotalOfProducts = 0;
+
+    this.products.forEach((product: any) => {
+      this.menuSubTotalData.valueTotalOfProducts += product.spotPrice;
+    });
+
+    this.menuSubTotalData.totalOrder = this.menuSubTotalData.valueDelivery + this.menuSubTotalData.valueTotalOfProducts;
   }
 
 }
