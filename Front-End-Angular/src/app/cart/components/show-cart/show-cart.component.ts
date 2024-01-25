@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Product } from 'src/app/products/types/Product.interface';
 import { ProductService } from 'src/app/products/services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MenuSubTotalData } from '../../types/MenuSubTotalData.interface';
 
 @Component({
   selector: 'app-show-cart',
@@ -14,32 +15,55 @@ export class ShowCartComponent implements OnInit {
 
   products: Product[] = []
 
+  menuSubTotalData!: MenuSubTotalData;
+
   constructor(private title: Title,
               private cartService: CartService,
               private productService: ProductService) { }
 
   ngOnInit(): void {
 
-    this.title.setTitle('Spring - Carrinho')
+    this.title.setTitle('Spring - Carrinho');
 
-    const listIdProducts = this.cartService.getAllProductsInCart()
+    const listIdProducts = this.cartService.getAllProductsInCart();
 
-    listIdProducts.map((productId) => {
+    this.findProductsToShowInCart(listIdProducts);
 
-      this.productService.getProductById(productId).subscribe({
+    this.calculateResumeMenuValues()
+  }
+
+  findProductsToShowInCart(listIdProducts: string[]){
+
+    listIdProducts.map(async (productId) => {
+
+      await this.productService.getProductById(productId).subscribe({
 
         next: (res) => {
-          console.log(this.products)
-          this.products.push(res)
+
+          this.products.push(res);
         },
 
         error: (error: HttpErrorResponse) => {
-          console.log(error)
+          console.log(error);
         }
 
       })
-    })
 
+    })
   }
 
+  calculateResumeMenuValues(){
+
+    this.menuSubTotalData.numberOfProducts = this.products.length;
+
+    this.menuSubTotalData.valueDelivery = 0;
+
+    this.products.map((product) => {
+
+      this.menuSubTotalData.valueTotalOfProducts += product.spotPrice
+    })
+
+    this.menuSubTotalData.totalOrder = this.menuSubTotalData.valueDelivery + this.menuSubTotalData.valueTotalOfProducts
+
+  }
 }
