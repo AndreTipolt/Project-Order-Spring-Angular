@@ -50,7 +50,7 @@ export class ShowCartComponent implements OnInit {
   }
 
   calculateResumeMenuValues() {
-    
+
     this.menuSubTotalData.numberOfProducts = this.products.length;
     this.menuSubTotalData.valueDelivery = 0;
 
@@ -65,11 +65,12 @@ export class ShowCartComponent implements OnInit {
   }
 
   onDeleteItemCart(productId: string){
-    
+
     this.products = this.products.filter((product: Product) => product.id != productId)
 
     this.cartService.deleteItemInCart(productId);
 
+    this.calculateResumeMenuValues()
   }
 
 }
