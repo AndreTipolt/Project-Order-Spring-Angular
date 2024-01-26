@@ -11,13 +11,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

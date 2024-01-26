@@ -35,9 +35,13 @@ export class AuthService {
     return this.cookieService.get("acess_token")
   }
 
-  async logout() {
+  logout() {
 
-    await this.cookieService.delete("acess_token")
+    this.cookieService.delete("acess_token")
+
+    if (this.cookieService.check("acess_token")) {
+      this.cookieService.delete("acess_token")
+    }
     return;
   }
 
