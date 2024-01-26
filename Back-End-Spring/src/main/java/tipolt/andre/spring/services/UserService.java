@@ -34,7 +34,8 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public UserModel findDataUser(UserModel userModel) {
-        return userRepository.findById(userModel.getId()).orElseThrow(() -> new ObjectNotFoundException("User doesn't exists"));
+        return userRepository.findById(userModel.getId())
+                .orElseThrow(() -> new ObjectNotFoundException("User doesn't exists"));
     }
 
     public void saveUser(UserInsertDTO userDTO) {
@@ -53,7 +54,7 @@ public class UserService {
         UserModel createdUser = userRepository.save(newUser);
 
         RoleModel commomRole = userRoleService.getRoleUser();
-        
+
         userRoleService.insertManyUserRoles(List.of(commomRole), createdUser); // Only operator user yet
     }
 
@@ -82,13 +83,19 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public DataHeaderDTO getDataHeader(){
-        
+    public DataHeaderDTO getDataHeader() {
+
         List<NotificationModel> listNotifications = notificationService.findAllNotificationsByUser();
 
         String imageUrl = ""; // Implements
 
-
         return new DataHeaderDTO(listNotifications, imageUrl);
+    }
+
+    @Transactional(readOnly = true)
+    public UserModel findUserByEmail(String email) {
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ObjectNotFoundException("Email that not exists in database"));
     }
 }

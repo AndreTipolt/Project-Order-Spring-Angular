@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,7 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
   })
 
   constructor(private formBuilder: FormBuilder,
-              private title: Title) { }
+              private title: Title,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -27,6 +30,20 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(){
 
+    if (this.formForgotPassword.invalid) return;
+
+    this.showSpinnerLoading = true
+
+    this.authService.forgotPassword(this.formForgotPassword.value).subscribe({
+      error: (error: HttpErrorResponse) => {
+
+        console.log(error)
+      },
+
+      next: (res) => {
+        console.log(res)
+      }
+    })
   }
 
   getErrorMessage(fieldName: string){

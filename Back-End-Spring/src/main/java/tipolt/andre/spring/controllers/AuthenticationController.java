@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import tipolt.andre.spring.dtos.AuthenticationDTO;
-import tipolt.andre.spring.dtos.LoginResponseDTO;
+import tipolt.andre.spring.dtos.ForgotPasswordDTO;
+import tipolt.andre.spring.dtos.TokenResponse;
 import tipolt.andre.spring.exceptions.BadCredentialsException;
 import tipolt.andre.spring.models.UserModel;
+import tipolt.andre.spring.services.AuthService;
 import tipolt.andre.spring.services.TokenService;
 
 @RestController
@@ -35,10 +37,13 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private AuthService authService;
+
     private final String TOKEN_PREFIX = "Bearer";
 
     @PostMapping(value = "/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) {
+    public ResponseEntity<TokenResponse> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) {
 
         UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(
                 authenticationDTO.getEmail(),
@@ -49,7 +54,7 @@ public class AuthenticationController {
             Authentication auth = this.authenticationManager.authenticate(usernamePassword); // Do the authentication
             String acessToken = tokenService.generateToken((UserModel) auth.getPrincipal());
 
-            LoginResponseDTO loginResponseDTO = new LoginResponseDTO();
+            TokenResponse loginResponseDTO = new TokenResponse();
 
             Instant dateExpires = LocalDateTime.now().plusSeconds(duration).toInstant(ZoneOffset.of("-03:00"));
 
@@ -63,5 +68,21 @@ public class AuthenticationController {
             throw new BadCredentialsException("Bad Credentials");
         }
 
+    }
+
+    @PostMapping(value = "/forgot-password")
+    public ResponseEntity<TokenResponse> forgotPassword(
+            @RequestBody @Valid ForgotPasswordDTO forgotPasswordDTO) {
+
+        String token = authService.forgotPassword(forgotPasswordDTO);
+        
+        Instant dateExpires = LocalDateTime.now().plusSeconds(duration).toInstant(ZoneOffset.of("-03:00"));
+        TokenResponse responseToken = new TokenResponse();
+
+        responseToken.setAcessToken(token);
+        responseToken.setPrefixToken(this.TOKEN_PREFIX);
+        responseToken.setExpires(dateExpires);
+
+        return ResponseEntity.ok().body(responseToken);
     }
 }

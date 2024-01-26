@@ -45,4 +45,12 @@ export class AuthService {
     return;
   }
 
+  forgotPassword(dataForm: { email: string }){
+
+    console.log(dataForm)
+    const apiURL = `${this.baseAPIURL}/auth/forgot-password`;
+
+    return this.httpClient.post<TokenSucessLogin>(apiURL, dataForm);
+  }
+
 }
