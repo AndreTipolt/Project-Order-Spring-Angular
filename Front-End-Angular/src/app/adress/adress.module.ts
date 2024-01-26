@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,7 +19,6 @@ import { TypeAdressIconPipe } from './pipes/type-adress-icon.pipe';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,

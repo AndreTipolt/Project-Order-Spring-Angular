@@ -1,0 +1,28 @@
+<main class="main-content" *ngIf="products.length != 0; else emptyCart">
+
+  <div class="itens-cart">
+
+    <app-show-item-cart [product]="product" class="content-container item-cart" *ngFor="let product of products"
+      (deleteItemCart)="onDeleteItemCart($event)"></app-show-item-cart>
+
+  </div>
+
+  <div class="content-container menu-subtotal">
+
+    <app-menu-sub-total-cart [menuSubTotalData]="menuSubTotalData"></app-menu-sub-total-cart>
+
+  </div>
+
+</main>
+
+<ng-template #emptyCart>
+
+  <div class="empty-cart">
+    <mat-icon class="mat-18">shopping_cart</mat-icon>
+    <div class="text-empty-cart">
+      <span class="make-cart-title">Monte seu carrinho de compras</span>
+      <span>Adicione itens no seu carrinho</span>
+    </div>
+    <button class="btn btn-make-your-cart" [routerLink]="['/']">Conferir Produtos</button>
+  </div>
+</ng-template>
