@@ -15,8 +15,11 @@
 
             <mat-form-field class="full-width input-password">
                 <input matInput placeholder="Senha" formControlName="password" #password type="password" [type]="'password'">
-                <mat-error *ngIf="formLogin.get('password')?.invalid">{{ getErrorMessage("password") }}</mat-error>
+                <mat-error *ngIf="formLogin.get('password')?.invalid">{{ getErrorMessage("password") }}</mat-error> 
             </mat-form-field>
+
+            <span class="forgot-my-password"><a href="/auth/forgot-my-password">Esqueci minha senha</a></span>
+
             <button class="login-button" (click)="onSubmit()">Login</button>
         </form>
 
@@ -24,7 +27,7 @@
     <div class="spinner-loader" *ngIf="showSpinnerLoading">
         <app-spinner-loading [diameter]="getDiameterSpinnerLoading()"></app-spinner-loading>
     </div>
-    <div class="sign-up-link">
-        Não possui conta ainda? <a href="" routerLink="/auth/register">Registrar-se</a>
+    <div class="links-form">
+        <span class="sign-up-link">Não possui conta ainda? <a href="" routerLink="/auth/register">Registrar-se</a></span>
     </div>
 </section>
