@@ -49,6 +49,9 @@ public class UserModel implements UserDetails{
     @OneToMany(mappedBy = "user")
     private List<AdressModel> listAdress = new ArrayList<>();
 
+    @OneToMany(mappedBy = "id.user")
+    private List<NotificationUserModel> listNotifications = new ArrayList<>(); 
+
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
