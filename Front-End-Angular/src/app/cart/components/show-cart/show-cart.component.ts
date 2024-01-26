@@ -46,7 +46,6 @@ export class ShowCartComponent implements OnInit {
         },
 
         error: (error: HttpErrorResponse) => {
-          console.log(error);
         }
 
       });
