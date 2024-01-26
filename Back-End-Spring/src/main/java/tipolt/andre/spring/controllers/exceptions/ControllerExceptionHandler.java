@@ -11,6 +11,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import tipolt.andre.spring.exceptions.AcessDeniedException;
 import tipolt.andre.spring.exceptions.BadCredentialsException;
+import tipolt.andre.spring.exceptions.EmailNotSentException;
 import tipolt.andre.spring.exceptions.ErrorSaveDataInRedisException;
 import tipolt.andre.spring.exceptions.InvalidJWTException;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
@@ -116,6 +117,15 @@ public class ControllerExceptionHandler {
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
         StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Error Redis", e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(httpStatus).body(err);
+    }
+
+    @ExceptionHandler(EmailNotSentException.class)
+    public ResponseEntity<StandardError> emailNotSent(EmailNotSentException e, HttpServletRequest request){
+        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+
+        StandardError err = new StandardError(System.currentTimeMillis(), httpStatus.value(), "Email Error", e.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(httpStatus).body(err);
     }
