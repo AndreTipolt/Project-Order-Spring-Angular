@@ -29,9 +29,6 @@ public class NotificationModel {
     @Column(nullable = false)
     private String body;
 
-    @Column(nullable = false)
-    private Boolean read;
-
     @JsonIgnore
     @OneToMany(mappedBy = "id.notification")
     private List<NotificationUserModel> user = new ArrayList<>(); 

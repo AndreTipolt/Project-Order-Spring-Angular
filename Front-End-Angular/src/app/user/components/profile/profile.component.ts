@@ -36,6 +36,8 @@ export class ProfileComponent implements OnInit {
       },
       next: (res) => {
         this.currentUser = res;
+
+        console.log(res)
       }
     })
   }

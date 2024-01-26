@@ -7,5 +7,6 @@ export interface UserResponse{
     email: string,
     listOrders?: OrderResponse[],
     listAdress?: Adress[],
-    phone?: string
+    phone?: string,
+    listNotifications: Notification[]
 }

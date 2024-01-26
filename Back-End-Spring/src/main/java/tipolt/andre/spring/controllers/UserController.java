@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.validation.Valid;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
-import tipolt.andre.spring.dtos.GetImageAccountDTO;
+import tipolt.andre.spring.dtos.DataHeaderDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
@@ -68,14 +67,12 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/imageAccount")
-    public ResponseEntity<GetImageAccountDTO> getImageAccount() {
+    @GetMapping(value = "/header")
+    public ResponseEntity<DataHeaderDTO> getDataHeader() {
         
-        this.userService.getImageAccount();
+        DataHeaderDTO dataHeaderDTO = this.userService.getDataHeader();
 
-        GetImageAccountDTO imageAccountDTO = new GetImageAccountDTO("");
-
-        return ResponseEntity.ok().body(imageAccountDTO);
+        return ResponseEntity.ok().body(dataHeaderDTO);
     }
     
 }
