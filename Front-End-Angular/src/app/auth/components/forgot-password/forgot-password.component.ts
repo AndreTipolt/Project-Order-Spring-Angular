@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { TokenSucessLogin } from '../../types/TokenSucessLogin.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SucessDialogComponent } from 'src/app/shared/components/sucess-dialog/sucess-dialog.component';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-forgot-password',
@@ -32,7 +33,6 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
 
     this.title.setTitle("Spring - Esqueci minha senha")
-    this.onSucess("Uma mensagem foi enviada para seu email", "Mensagem Enviada")
 
   }
 
@@ -41,16 +41,21 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.formForgotPassword.invalid) return;
 
     this.showSpinnerLoading = true
+    this.messageForm = ""
 
     this.authService.forgotPassword(this.formForgotPassword.value).subscribe({
       error: (error: HttpErrorResponse) => {
 
         this.messageForm = "Email inválido"
         this.showSpinnerLoading = false
+
+        this.onError("Erro ao tentar enviar email. Tente mais tarde.")
       },
 
-      next: (res: TokenSucessLogin) => {
+      next: (res) => {
+        console.log('deu certo')
         this.showSpinnerLoading = false
+        this.messageForm = ""
 
         this.onSucess("Uma mensagem foi enviada para seu email", "Mensagem Enviada")
         return;
@@ -80,6 +85,12 @@ export class ForgotPasswordComponent implements OnInit {
     
     return this.dialog.open(SucessDialogComponent, {
       data: { message: message, title: title }
+    })
+  }
+
+  onError(message: string){
+    return this.dialog.open(ErrorDialogComponent, {
+      data: message
     })
   }
 }

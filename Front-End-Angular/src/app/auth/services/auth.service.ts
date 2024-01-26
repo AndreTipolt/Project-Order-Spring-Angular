@@ -49,7 +49,7 @@ export class AuthService {
 
     const apiURL = `${this.baseAPIURL}/auth/forgot-password`;
 
-    return this.httpClient.post<TokenSucessLogin>(apiURL, dataForm);
+    return this.httpClient.post(apiURL, dataForm);
   }
 
 }
