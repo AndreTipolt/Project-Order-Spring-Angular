@@ -1,5 +1,6 @@
 import { OrderResponse } from "src/app/order/types/OrderResponse.interface";
 import { Adress } from "../../adress/types/Adress.interface";
+import { Notification } from "./Notification.interface";
 
 export interface UserResponse{
     id: string,

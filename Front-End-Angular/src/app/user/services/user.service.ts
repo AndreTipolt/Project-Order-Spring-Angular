@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { GetImageAccount } from '../types/GetImageAccount.interface';
 import { UserResponse } from '../types/UserResponse.interface';
+import { DataHeader } from '../types/DataHeader.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,13 @@ export class UserService {
   constructor(private httpClient: HttpClient,
     private authService: AuthService) { }
 
-  getImageAccount() {
+  getDataHeader() {
 
-    const apiURL = `${this.baseAPIURL}/user/imageAccount`
+    const apiURL = `${this.baseAPIURL}/user/header`
 
     let headers: HttpHeaders = this.createHeaderWithAcessToken();
 
-    return this.httpClient.get<GetImageAccount>(apiURL, { headers })
+    return this.httpClient.get<DataHeader>(apiURL, { headers })
 
   }
 

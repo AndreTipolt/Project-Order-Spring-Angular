@@ -1,4 +1,4 @@
-export interface Notifications {
+export interface Notification {
   notification: {
     id: string,
     title: string,

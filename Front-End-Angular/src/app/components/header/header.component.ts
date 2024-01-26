@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { UserService } from 'src/app/user/services/user.service';
+import { DataHeader } from 'src/app/user/types/DataHeader.interface';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,8 @@ export class HeaderComponent implements OnInit {
 
   numberOfProductsInCart!: number;
 
+  dataHeader!: DataHeader;
+
   constructor(private userService: UserService,
     private dialog: MatDialog,
     private router: Router,
@@ -24,14 +27,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userService.getImageAccount().subscribe({
+    this.userService.getDataHeader().subscribe({
 
       error: (responseError: HttpErrorResponse) => {
 
         this.isLogged = false;
       },
-      next: (response) => {
+      next: (response: DataHeader) => {
 
+        this.dataHeader = response;
         this.isLogged = true;
       }
     })
