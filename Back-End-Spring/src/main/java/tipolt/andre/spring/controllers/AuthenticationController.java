@@ -71,18 +71,12 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/forgot-password")
-    public ResponseEntity<TokenResponse> forgotPassword(
+    public ResponseEntity<Void> forgotPassword(
             @RequestBody @Valid ForgotPasswordDTO forgotPasswordDTO) {
 
-        String token = authService.forgotPassword(forgotPasswordDTO);
+        authService.forgotPassword(forgotPasswordDTO);
         
-        Instant dateExpires = LocalDateTime.now().plusSeconds(duration).toInstant(ZoneOffset.of("-03:00"));
-        TokenResponse responseToken = new TokenResponse();
 
-        responseToken.setAcessToken(token);
-        responseToken.setPrefixToken(this.TOKEN_PREFIX);
-        responseToken.setExpires(dateExpires);
-
-        return ResponseEntity.ok().body(responseToken);
+        return ResponseEntity.noContent().build();
     }
 }
