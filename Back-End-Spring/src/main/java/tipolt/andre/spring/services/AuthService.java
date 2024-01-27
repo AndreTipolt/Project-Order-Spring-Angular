@@ -41,7 +41,7 @@ public class AuthService {
         emailModel.setEmailTo(user.getEmail());
         emailModel.setEmailFrom(this.emailFrom);
         emailModel.setOwnerRef(this.emailFrom);
-        emailModel.setText("Clique no link para alterar a sua senha");
+        emailModel.setText(emailService.getBodyEmail(token));
         emailModel.setSubject("Alteração de Senha");
 
         emailService.sendEmail(emailModel);
