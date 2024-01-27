@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { UserResponse } from '../types/UserResponse.interface';
 import { DataHeader } from '../types/DataHeader.interface';
+import { UserResponse } from '../types/UserResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,12 @@ export class UserService {
     headers = headers.append("Authorization", this.authService.getAcessToken())
 
     return this.httpClient.get<UserResponse>(apiURL, { headers })
+  }
+
+  changePassword(newPassword: string, token: string){
+
+    const apiURL = `${this.baseAPIURL}/user/change-password?token=${token}`;
+
+    return this.httpClient.put(apiURL, newPassword);
   }
 }

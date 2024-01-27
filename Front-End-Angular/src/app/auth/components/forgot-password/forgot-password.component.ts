@@ -53,7 +53,7 @@ export class ForgotPasswordComponent implements OnInit {
       },
 
       next: (res) => {
-        console.log('deu certo')
+        
         this.showSpinnerLoading = false
         this.messageForm = ""
 

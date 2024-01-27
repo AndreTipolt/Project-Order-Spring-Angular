@@ -98,4 +98,18 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new ObjectNotFoundException("Email that not exists in database"));
     }
+
+    public void changePassword(String newPassword, String userId){
+
+        UserModel currentUser = this.findUserById(userId);
+
+        String passwordEncoded = passwordEncoder.encode(newPassword);
+
+        currentUser.setPassword(passwordEncoded);
+
+        userRepository.save(currentUser);
+
+        return;
+
+    }
 }

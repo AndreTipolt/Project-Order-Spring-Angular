@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,8 +22,8 @@ import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.services.AuthService;
+import tipolt.andre.spring.services.TokenService;
 import tipolt.andre.spring.services.UserService;
-
 
 @RestController
 @RequestMapping(value = "/user")
@@ -37,19 +38,24 @@ public class UserController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @GetMapping
     public ResponseEntity<? extends Object> findDataUser() throws JsonMappingException, JsonProcessingException {
 
-        // JsonNode usersFindAllCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
+        // JsonNode usersFindAllCached =
+        // objectMapperUtils.getRedisKeyAndConvertToJsonNode("users_findAll");
 
         // if (usersFindAllCached != null) {
-        //     return ResponseEntity.ok().body(usersFindAllCached);
+        // return ResponseEntity.ok().body(usersFindAllCached);
         // }
 
         UserModel userInAuthentication = authService.getUserInAuthentication();
 
         UserModel userData = userService.findDataUser(userInAuthentication);
-        // objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll", userData);
+        // objectMapperUtils.convertObjectToStringAndSaveInRedis("users_findAll",
+        // userData);
 
         return ResponseEntity.ok().body(userData);
     }
@@ -69,10 +75,21 @@ public class UserController {
 
     @GetMapping(value = "/header")
     public ResponseEntity<DataHeaderDTO> getDataHeader() {
-        
+
         DataHeaderDTO dataHeaderDTO = this.userService.getDataHeader();
 
         return ResponseEntity.ok().body(dataHeaderDTO);
     }
-    
+
+    @PutMapping(value = "/change-password")
+    public ResponseEntity<Void> changePassword(@RequestBody String newPassword, @RequestParam String token) {
+
+        System.out.println(newPassword);
+        String userId = this.tokenService.validateToken(token);
+
+        this.userService.changePassword(newPassword, userId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
