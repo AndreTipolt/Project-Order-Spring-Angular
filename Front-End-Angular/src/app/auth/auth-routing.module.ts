@@ -5,13 +5,14 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NoLoggedResolver } from './guards/no-logged.resolver';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'forgot-password/change-password', component: ChangePasswordComponent},
-  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'forgot-password/change-password', component: ChangePasswordComponent, resolve: { NoLoggedResolver }},
+  { path: 'forgot-password', component: ForgotPasswordComponent, resolve: { NoLoggedResolver }},
 ];
 
 @NgModule({
