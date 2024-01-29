@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
 
         const expiresDate: Date = new Date(res.expires);
 
-        this.cookieService.set("acess_token", acessToken, expiresDate);
+        this.authService.setToken("acess_token", acessToken, expiresDate);
 
         this.router.navigate(['/']).then(() => {
           window.location.reload()

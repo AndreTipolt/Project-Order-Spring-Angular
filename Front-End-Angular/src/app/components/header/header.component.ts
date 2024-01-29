@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { UserService } from 'src/app/user/services/user.service';
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService,
     private dialog: MatDialog,
     private router: Router,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
 
@@ -50,7 +52,8 @@ export class HeaderComponent implements OnInit {
       next: (result) => {
 
         if (result) {
-          this.router.navigate(["/auth/logout"])
+          this.authService.logout();
+          window.location.reload()
         }
 
       }
