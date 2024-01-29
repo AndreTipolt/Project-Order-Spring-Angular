@@ -46,9 +46,11 @@ export class UserService {
   }
 
   changePassword(newPassword: string, token: string){
-
+    console.log(newPassword)
     const apiURL = `${this.baseAPIURL}/user/change-password?token=${token}`;
 
-    return this.httpClient.put(apiURL, newPassword);
+    return this.httpClient.put(apiURL, {
+      newPassword
+    });
   }
 }

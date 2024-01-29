@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TokenSucessLogin } from '../../types/TokenSucessLogin.interface';
 import { MatDialog } from '@angular/material/dialog';
@@ -46,9 +46,15 @@ export class ForgotPasswordComponent implements OnInit {
     this.authService.forgotPassword(this.formForgotPassword.value).subscribe({
       error: (error: HttpErrorResponse) => {
 
-        this.messageForm = "Email inválido"
-        this.showSpinnerLoading = false
+        if(error.error.status === HttpStatusCode.NotFound || error.error.status === HttpStatusCode.UnprocessableEntity){
 
+          this.messageForm = "Email inválido"
+          this.showSpinnerLoading = false
+          return;
+        }
+
+        this.messageForm = ""
+        this.showSpinnerLoading = false
         this.onError("Erro ao tentar enviar email. Tente mais tarde.")
       },
 

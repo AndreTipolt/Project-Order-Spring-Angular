@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tipolt.andre.spring.dtos.ChangePasswordDTO;
 import tipolt.andre.spring.dtos.DataHeaderDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
@@ -99,11 +100,11 @@ public class UserService {
                 .orElseThrow(() -> new ObjectNotFoundException("Email that not exists in database"));
     }
 
-    public void changePassword(String newPassword, String userId){
+    public void changePassword(ChangePasswordDTO changePasswordDTO, String userId){
 
         UserModel currentUser = this.findUserById(userId);
 
-        String passwordEncoded = passwordEncoder.encode(newPassword);
+        String passwordEncoded = passwordEncoder.encode(changePasswordDTO.getNewPassword());
 
         currentUser.setPassword(passwordEncoded);
 

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { SucessDialogComponent } from 'src/app/shared/components/sucess-dialog/sucess-dialog.component';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -51,7 +52,7 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
-    const newPassword = this.formChangePassword.get('newPassoword')?.value
+    const newPassword = this.formChangePassword.get('newPassword')?.value
     const token = this.token
 
     if (newPassword === null || token === null) {
@@ -64,13 +65,15 @@ export class ChangePasswordComponent implements OnInit {
     this.userService.changePassword(newPassword, token).subscribe({
       error: (error: HttpErrorResponse) => {
 
-        // this.onError("Erro ao alterar a senha.")
+        this.onError("Erro ao alterar a senha.")
 
         return;
       },
       next: (res) => {
 
+        this.onSucess("Senha foi alterada com sucesso", "Senha alterada")
         this.router.navigate(['/auth/login'])
+        return;
       }
     })
   }
@@ -98,6 +101,15 @@ export class ChangePasswordComponent implements OnInit {
 
     return this.dialog.open(ErrorDialogComponent, {
       data: message
+    })
+  }
+
+  onSucess(message: string, title: string){
+    return this.dialog.open(SucessDialogComponent, {
+      data: {
+        title: title,
+        message: message
+      }
     })
   }
 

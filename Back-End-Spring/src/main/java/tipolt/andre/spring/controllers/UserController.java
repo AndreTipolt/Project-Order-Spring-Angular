@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 import jakarta.validation.Valid;
 import tipolt.andre.spring.controllers.utils.ObjectMapperUtils;
+import tipolt.andre.spring.dtos.ChangePasswordDTO;
 import tipolt.andre.spring.dtos.DataHeaderDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
@@ -66,12 +67,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping(value = "/{userId}")
-    public ResponseEntity<Void> updateUser(@RequestBody @Valid UserUpdateDTO userUpdateDTO,
-            @PathVariable String userId) {
-        userService.updateUser(userId, userUpdateDTO);
-        return ResponseEntity.noContent().build();
-    }
+    // @PutMapping(value = "/{userId}")
+    // public ResponseEntity<Void> updateUser(@RequestBody @Valid UserUpdateDTO userUpdateDTO,
+    //         @PathVariable String userId) {
+    //     userService.updateUser(userId, userUpdateDTO);
+    //     return ResponseEntity.noContent().build();
+    // }
 
     @GetMapping(value = "/header")
     public ResponseEntity<DataHeaderDTO> getDataHeader() {
@@ -82,13 +83,13 @@ public class UserController {
     }
 
     @PutMapping(value = "/change-password")
-    public ResponseEntity<Void> changePassword(@RequestBody String newPassword, @RequestParam String token) {
+    public ResponseEntity<Void> changePassword(@RequestBody @Valid ChangePasswordDTO changePasswordDTO, @RequestParam String token) {
 
         String userId = this.tokenService.validateToken(token, true);
 
         System.out.println();
 
-        this.userService.changePassword(newPassword, userId);
+        this.userService.changePassword(changePasswordDTO, userId);
 
         return ResponseEntity.noContent().build();
     }
