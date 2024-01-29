@@ -5,34 +5,43 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import org.springframework.stereotype.Service;
-
 import tipolt.andre.spring.models.UserModel;
 
 @Service
 public class TokenService {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    @Value("${jwt.secret.acess}")
+    private String secretAcess;
+
+    @Value("${jwt.secret.forgotpassword}")
+    private String secretForgotPassword;
 
     @Value("${jwt.duration}")
     private Long duration;
 
-    public String generateToken(UserModel userModel) {
+    public String generateToken(UserModel userModel, boolean forgotPassword) {
 
+        Algorithm algorithm = Algorithm.HMAC256(secretAcess);
         try {
-            Algorithm algorithm = Algorithm.HMAC256(secret);
+
+            if (forgotPassword) {
+                algorithm = Algorithm.HMAC256(secretForgotPassword);
+            } else {
+                algorithm = Algorithm.HMAC256(secretAcess);
+            }
+
             String token = JWT.create()
                     .withIssuer("order-spring")
                     .withSubject(userModel.getId().toString())
                     .withClaim("email", userModel.getEmail())
-                    .withExpiresAt(genExpirarionDate())
+                    .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
 
             return token;
@@ -42,10 +51,17 @@ public class TokenService {
         }
     }
 
-    public String validateToken(String acessToken) {
+    public String validateToken(String acessToken, boolean forgotPassword) {
+
+        Algorithm algorithm = null;
 
         try {
-            Algorithm algorithm = Algorithm.HMAC256(secret);
+
+            if (forgotPassword) {
+                algorithm = Algorithm.HMAC256(secretForgotPassword);
+            } else {
+                algorithm = Algorithm.HMAC256(secretAcess);
+            }
 
             String userId = JWT.require(algorithm)
                     .withIssuer("order-spring")
@@ -61,7 +77,8 @@ public class TokenService {
         }
     }
 
-    private Instant genExpirarionDate() {
+    private Instant genExpirationDate() {
         return LocalDateTime.now().plusSeconds(duration).toInstant(ZoneOffset.of("-03:00"));
     }
+
 }

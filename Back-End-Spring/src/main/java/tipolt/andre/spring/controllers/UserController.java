@@ -84,8 +84,9 @@ public class UserController {
     @PutMapping(value = "/change-password")
     public ResponseEntity<Void> changePassword(@RequestBody String newPassword, @RequestParam String token) {
 
-        System.out.println(newPassword);
-        String userId = this.tokenService.validateToken(token);
+        String userId = this.tokenService.validateToken(token, true);
+
+        System.out.println();
 
         this.userService.changePassword(newPassword, userId);
 

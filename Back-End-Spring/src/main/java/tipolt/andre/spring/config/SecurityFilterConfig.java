@@ -43,7 +43,7 @@ public class SecurityFilterConfig extends OncePerRequestFilter {
         if (tokenAuthHeader != null) {
 
             try {
-                String userId = tokenService.validateToken(tokenAuthHeader);
+                String userId = tokenService.validateToken(tokenAuthHeader, false);
 
                 if (userId == null) { // Invalid token
                     throw new InvalidJWTException("Invalid Token");

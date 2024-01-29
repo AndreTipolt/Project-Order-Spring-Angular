@@ -52,7 +52,7 @@ public class AuthenticationController {
         try {
 
             Authentication auth = this.authenticationManager.authenticate(usernamePassword); // Do the authentication
-            String acessToken = tokenService.generateToken((UserModel) auth.getPrincipal());
+            String acessToken = tokenService.generateToken((UserModel) auth.getPrincipal(), false);
 
             TokenResponse loginResponseDTO = new TokenResponse();
 
@@ -75,7 +75,6 @@ public class AuthenticationController {
             @RequestBody @Valid ForgotPasswordDTO forgotPasswordDTO) {
 
         authService.forgotPassword(forgotPasswordDTO);
-        
 
         return ResponseEntity.noContent().build();
     }

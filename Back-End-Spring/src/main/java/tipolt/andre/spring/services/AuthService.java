@@ -33,8 +33,7 @@ public class AuthService {
 
         UserModel user = userService.findUserByEmail(forgotPasswordDTO.getEmail());
 
-        String token = tokenService.generateToken(user);
-
+        String token = tokenService.generateToken(user, true);
 
         EmailModel emailModel = new EmailModel();
 
