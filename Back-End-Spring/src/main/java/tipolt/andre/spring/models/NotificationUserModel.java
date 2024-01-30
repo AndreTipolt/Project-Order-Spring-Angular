@@ -5,6 +5,7 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import tipolt.andre.spring.models.pk.NotificationUserPK;
 
@@ -20,16 +21,12 @@ public class NotificationUserModel {
     @Column(nullable = false)
     private Boolean read;
 
-    public NotificationModel getNotification() {
 
+    public NotificationModel getNotification(){
         return id.getNotification();
     }
 
-    public Boolean getRead() {
+    public Boolean getRead(){
         return read;
-    }
-
-    public void setRead(Boolean read) {
-        this.read = read;
     }
 }
