@@ -2,7 +2,6 @@ INSERT INTO tb_user(id, name, email, password) VALUES ('1','André Tipolt Lopes'
 INSERT INTO tb_user(id, name, email, password) VALUES ('2','Luana Rodrigues', 'luanarodrigues@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
 -- INSERT INTO tb_user(id, name, email, password) VALUES ('3','Daniela Figueiredo', 'danielafigueiredo@gmail.com', '$2a$10$VaFKWo1BkCRJNuK73at3v.3kiY1iRfrcYvr13f1BtegGj5fwlQiui');
 
-
 INSERT INTO tb_role(id, authority) VALUES ('59bd2375-dd0c-4570-af65-f36a138efc94', 'ROLE_USER');
 INSERT INTO tb_role(id, authority) VALUES ('3d041437-412f-4466-aa3b-72da1e19e52a', 'ROLE_ADMIN');
 
@@ -22,3 +21,10 @@ INSERT INTO tb_order(id, moment, client_id, status) VALUES ('1','2023-06-02 15:3
 
 INSERT INTO tb_order_item(product_id, order_id, quantity) VALUES ('2', '1', 2);
 INSERT INTO tb_order_item(product_id, order_id, quantity) VALUES ('3', '1', 2);
+
+
+INSERT INTO tb_notification(id, title, body) VALUES ('1', 'O gerente ficou maluco !', 'Produtos com até 50% de desconto')
+INSERT INTO tb_notification(id, title, body) VALUES ('2', 'Seu produto saiu para a entrega', 'Seu produto já saiu para a entrega')
+
+INSERT INTO tb_notification_user(user_id, notification_id, read) VALUES ('1', '1', 0)
+INSERT INTO tb_notification_user(user_id, notification_id, read) VALUES ('1', '2', 0)

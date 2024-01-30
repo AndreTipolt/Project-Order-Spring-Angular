@@ -47,6 +47,7 @@ public class ResourceServerConfig {
                                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/user/save").permitAll()
+                                .requestMatchers(HttpMethod.PUT, "/user/change-password").permitAll()
                                 .anyRequest().authenticated())
                 .exceptionHandling(handling -> handling.authenticationEntryPoint(accessDeniedHandler()))
                 .addFilterBefore(securityFilterConfig, UsernamePasswordAuthenticationFilter.class)

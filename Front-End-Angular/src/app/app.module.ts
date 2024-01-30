@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CartPipe } from './components/pipes/cart.pipe';
+import { NotificationPipe } from './components/pipes/notification.pipe';
 
 registerLocaleData(ptBr);
 
@@ -22,7 +23,8 @@ registerLocaleData(ptBr);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CartPipe
+    CartPipe,
+    NotificationPipe
   ],
   imports: [
     BrowserModule,

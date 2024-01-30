@@ -1,15 +1,13 @@
 package tipolt.andre.spring.dtos;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetImageAccountDTO {
+public class ResponseTokenForgotPasswordDTO {
     
-    private String image;
+    private String token;
 }

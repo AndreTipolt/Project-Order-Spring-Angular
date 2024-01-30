@@ -35,10 +35,21 @@ export class AuthService {
     return this.cookieService.get("acess_token")
   }
 
-  async logout() {
+  logout() {
 
-    await this.cookieService.delete("acess_token")
-    return;
+    this.cookieService.delete("acess_token", "/")
+  }
+
+  forgotPassword(dataForm: { email: string }){
+
+    const apiURL = `${this.baseAPIURL}/auth/forgot-password`;
+
+    return this.httpClient.post(apiURL, dataForm);
+  }
+
+  setToken(name: string, token: string, expires: Date){
+
+    return this.cookieService.set(name, token, expires, "/")
   }
 
 }

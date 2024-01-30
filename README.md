@@ -2,7 +2,7 @@
 
 O projeto se trata de uma loja virtual onde os clientes conseguem se cadastrar, fazer login, acessar os produtos, filtrar pelas categorias e muito mais. 
 
-- O Back-End foi realizado em Spring na versão 3.4.4;
+- O Back-End foi realizado em Spring na versão 3.2.0;
 
 - O Front-End foi feito em Angular na versão 14;
 

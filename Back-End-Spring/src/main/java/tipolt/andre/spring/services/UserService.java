@@ -7,10 +7,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tipolt.andre.spring.dtos.ChangePasswordDTO;
+import tipolt.andre.spring.dtos.DataHeaderDTO;
 import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
+import tipolt.andre.spring.models.NotificationModel;
 import tipolt.andre.spring.models.RoleModel;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
@@ -27,9 +30,13 @@ public class UserService {
     @Autowired
     private UserRoleService userRoleService;
 
+    @Autowired
+    private NotificationService notificationService;
+
     @Transactional(readOnly = true)
     public UserModel findDataUser(UserModel userModel) {
-        return userRepository.findById(userModel.getId()).orElseThrow(() -> new ObjectNotFoundException("User doesn't exists"));
+        return userRepository.findById(userModel.getId())
+                .orElseThrow(() -> new ObjectNotFoundException("User doesn't exists"));
     }
 
     public void saveUser(UserInsertDTO userDTO) {
@@ -48,7 +55,7 @@ public class UserService {
         UserModel createdUser = userRepository.save(newUser);
 
         RoleModel commomRole = userRoleService.getRoleUser();
-        
+
         userRoleService.insertManyUserRoles(List.of(commomRole), createdUser); // Only operator user yet
     }
 
@@ -77,8 +84,33 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public String getImageAccount(){
-        
-        return "ImageAccount.jpg";
+    public DataHeaderDTO getDataHeader() {
+
+        List<NotificationModel> listNotifications = notificationService.findAllNotificationsByUser();
+
+        String imageUrl = ""; // Implements
+
+        return new DataHeaderDTO(listNotifications, imageUrl);
+    }
+
+    @Transactional(readOnly = true)
+    public UserModel findUserByEmail(String email) {
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ObjectNotFoundException("Email that not exists in database"));
+    }
+
+    public void changePassword(ChangePasswordDTO changePasswordDTO, String userId){
+
+        UserModel currentUser = this.findUserById(userId);
+
+        String passwordEncoded = passwordEncoder.encode(changePasswordDTO.getNewPassword());
+
+        currentUser.setPassword(passwordEncoded);
+
+        userRepository.save(currentUser);
+
+        return;
+
     }
 }

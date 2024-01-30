@@ -9,12 +9,28 @@
 
       <a href="/my-profile/my-orders">Compras</a>
       <a href="">Favoritos</a>
+      
       <div class="cart-section icon-header">
         <mat-icon matBadge="{{ numberOfProductsInCart | cart}}" matBadgeColor="warn" [routerLink]="['/cart']">shopping_cart</mat-icon>
       </div>
 
       <div class="notification-section icon-header">
-        <mat-icon matBadge="1" matBadgeColor="warn">notifications</mat-icon>
+        <mat-icon mat-button [matMenuTriggerFor]="menuNotifications" matBadge="{{ dataHeader.listNotifications| notification }}" matBadgeColor="warn">notifications</mat-icon>
+
+        <mat-menu #menuNotifications="matMenu" [xPosition]="'before'">
+          <div class="notifications-menu-header">
+
+            <div class="notification-menu-header" *ngFor="let notification of dataHeader.listNotifications" id="notification-{{ notification.id }}">
+
+              <span class="title-notification">{{ notification.title }}</span>
+              <div class="text-notification">
+                  {{notification.body }}
+              </div>
+
+            </div>
+          </div>
+          
+        </mat-menu>
       </div>
 
 
