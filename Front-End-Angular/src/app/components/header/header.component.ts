@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { isEmpty } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
@@ -75,7 +76,7 @@ export class HeaderComponent implements OnInit {
 
   onShowNotifications(){
 
-    let listIdNotifications: string[] = []
+    let listIdNotifications: string[] = [];
 
     this.dataHeader.listNotifications.map((notificationUser: NotificationUser) => {
       
@@ -84,15 +85,9 @@ export class HeaderComponent implements OnInit {
       return;
     })
 
-    this.userService.changeToReadNotifications(listIdNotifications).subscribe({
-      error: (error: HttpErrorResponse) => {
-        console.log('erro')
-      },
-      next: (res) => {
-        console.log('tudo certo');
-      }
-    });
+    if(listIdNotifications.length <= 0) return;
 
+    this.userService.changeToReadNotifications(listIdNotifications).subscribe();
 
   }
 

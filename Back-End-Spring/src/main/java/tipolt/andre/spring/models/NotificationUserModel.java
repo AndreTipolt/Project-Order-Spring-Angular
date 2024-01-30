@@ -5,7 +5,6 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import tipolt.andre.spring.models.pk.NotificationUserPK;
 
@@ -28,5 +27,11 @@ public class NotificationUserModel {
 
     public Boolean getRead(){
         return read;
+    }
+
+    public void setRead(boolean read){
+
+        this.read = read;
+        return;
     }
 }
