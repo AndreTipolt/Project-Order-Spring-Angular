@@ -15,9 +15,9 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllProducts(): Observable<Response> {
+  getAllProducts(page: number, size: number): Observable<Response> {
 
-    const APIURL = `${this.baseAPIURL}/products`;
+    const APIURL = `${this.baseAPIURL}/products?size=${size}&page=${page}`;
 
     return this.httpClient.get<Response>(APIURL).pipe(first());
   }

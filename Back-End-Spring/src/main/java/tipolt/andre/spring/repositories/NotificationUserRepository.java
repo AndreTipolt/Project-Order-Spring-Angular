@@ -13,6 +13,6 @@ import tipolt.andre.spring.models.pk.NotificationUserPK;
 @Repository
 public interface NotificationUserRepository extends JpaRepository<NotificationUserModel, NotificationUserPK>{
     
-    // @Query(nativeQuery = true, value = "SELECT * from tb_notification_user notification_user WHERE notification_user.user_id  = :userId AND notification_user.read = false")
-    // Optional<List<NotificationUserModel>> findAllByUser(String userId);
+    @Query(nativeQuery = true, value = "SELECT * from tb_notification_user notification_user WHERE notification_user.user_id  = :userId")
+    Optional<List<NotificationUserModel>> findAllNotificationsByUser(String userId);
 }

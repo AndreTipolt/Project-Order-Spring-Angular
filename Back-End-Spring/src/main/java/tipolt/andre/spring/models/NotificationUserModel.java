@@ -20,16 +20,18 @@ public class NotificationUserModel {
     @Column(nullable = false)
     private Boolean read;
 
-    public NotificationModel getNotification() {
 
+    public NotificationModel getNotification(){
         return id.getNotification();
     }
 
-    public Boolean getRead() {
+    public Boolean getRead(){
         return read;
     }
 
-    public void setRead(Boolean read) {
+    public void setRead(boolean read){
+
         this.read = read;
+        return;
     }
 }

@@ -30,3 +30,19 @@ h2 {
 .menu-cart hr {
   border-color: #ffffff;
 }
+
+.button-finish-order {
+  background-color: #272D2D;
+  color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 14px;
+  border: 0;
+  font-size: 1.1em;
+  padding: 10px 40px;
+  margin-top: 10px;
+}
+
+.button-finish-order:hover{
+  cursor: pointer;
+}

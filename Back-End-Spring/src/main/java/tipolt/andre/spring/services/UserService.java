@@ -13,7 +13,7 @@ import tipolt.andre.spring.dtos.UserInsertDTO;
 import tipolt.andre.spring.dtos.UserUpdateDTO;
 import tipolt.andre.spring.exceptions.ObjectNotFoundException;
 import tipolt.andre.spring.exceptions.PasswordNotCoincideException;
-import tipolt.andre.spring.models.NotificationModel;
+import tipolt.andre.spring.models.NotificationUserModel;
 import tipolt.andre.spring.models.RoleModel;
 import tipolt.andre.spring.models.UserModel;
 import tipolt.andre.spring.repositories.UserRepository;
@@ -86,7 +86,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public DataHeaderDTO getDataHeader() {
 
-        List<NotificationModel> listNotifications = notificationService.findAllNotificationsByUser();
+        List<NotificationUserModel> listNotifications = notificationService.findAllNotificationsByUser();
 
         String imageUrl = ""; // Implements
 

@@ -13,8 +13,13 @@ import { Product } from '../../types/Product.interface';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products!: Product[];
+
+  products: Product[] = [];
   categories!: Category[];
+
+  size: number = 1;
+  page: number = 0;
+  finishSearchMoreItems: boolean = false
 
   constructor(private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -30,7 +35,10 @@ export class ProductsComponent implements OnInit {
   }
 
   refreshProducts() {
-    this.productService.getAllProducts().subscribe({
+
+    if(this.finishSearchMoreItems) return;
+
+    this.productService.getAllProducts(this.page, this.size).subscribe({
       next: (res) => {
         // this.products = res.content.map((product) => {
 
@@ -39,7 +47,14 @@ export class ProductsComponent implements OnInit {
         //   product.valueInstallment = valueInstallent
         //   return product;
         // });
-        this.products = res.content;
+        if (res.content.length <= 0) {
+          this.finishSearchMoreItems = true
+          return;
+        }
+
+        res.content.forEach((value: Product) => {
+          this.products.push(value)
+        });
       },
       error: (err) => {
         this.onError("Erro ao tentar carregar produtos")
@@ -59,4 +74,17 @@ export class ProductsComponent implements OnInit {
     return 100;
   }
 
+
+  onSearchMoreProducts() {
+
+    this.page++;
+    // for(let i = 0; i < 10; i++ ){
+    //   console.log()
+    //   this.products.push(this.products[Math.floor(Math.random() * 4)])
+    // }
+
+    this.refreshProducts()
+
+    return;
+  }
 }
