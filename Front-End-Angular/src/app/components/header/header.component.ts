@@ -7,6 +7,8 @@ import { CartService } from 'src/app/cart/services/cart.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { UserService } from 'src/app/user/services/user.service';
 import { DataHeader } from 'src/app/user/types/DataHeader.interface';
+import { Notification } from 'src/app/user/types/Notification.interface';
+import { NotificationUser } from 'src/app/user/types/NotificationUser.interface';
 
 @Component({
   selector: 'app-header',
@@ -69,6 +71,29 @@ export class HeaderComponent implements OnInit {
     })
 
     return dialogReg;
+  }
+
+  onShowNotifications(){
+
+    let listIdNotifications: string[] = []
+
+    this.dataHeader.listNotifications.map((notificationUser: NotificationUser) => {
+      
+      if (!notificationUser.read) listIdNotifications.push(notificationUser.notification.id);
+
+      return;
+    })
+
+    this.userService.changeToReadNotifications(listIdNotifications).subscribe({
+      error: (error: HttpErrorResponse) => {
+        console.log('erro')
+      },
+      next: (res) => {
+        console.log('tudo certo');
+      }
+    });
+
+
   }
 
 }

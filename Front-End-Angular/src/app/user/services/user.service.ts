@@ -53,4 +53,16 @@ export class UserService {
       newPassword
     });
   }
+
+  changeToReadNotifications(listIdNotifications: string[]){
+
+    const apiURL = `${this.baseAPIURL}/notifications/read`
+
+    let headers = new HttpHeaders()
+
+    headers = headers.append("Authorization", this.authService.getAcessToken())
+
+    return this.httpClient.put(apiURL, listIdNotifications, { headers })
+
+  }
 }

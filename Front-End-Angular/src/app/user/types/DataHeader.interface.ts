@@ -1,8 +1,7 @@
-import { Notification } from "./Notification.interface";
+import { NotificationUser } from "./NotificationUser.interface";
 
 export interface DataHeader{
 
-    listNotifications: Notification[]
-    
+    listNotifications: NotificationUser[]
     imageUser: string;
 }
