@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../types/Product.interface';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SucessDialogComponent } from 'src/app/shared/components/sucess-dialog/sucess-dialog.component';
 
 @Component({
   selector: 'app-show-product',
@@ -18,7 +20,8 @@ export class ShowProductComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -43,6 +46,18 @@ export class ShowProductComponent implements OnInit {
     if(this.product.id === undefined) return;
 
     this.cartService.addProductInCart(this.product.id);
+
+    this.onSucess("Tudo certo!", "Produto adicionado no carrinho")
+  }
+
+  onSucess(title: string, message: string){
+
+    return this.dialog.open(SucessDialogComponent, {
+      data: {
+        title,
+        message
+      }
+    })
   }
 
 }
