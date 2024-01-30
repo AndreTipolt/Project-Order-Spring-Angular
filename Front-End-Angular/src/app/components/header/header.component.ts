@@ -24,6 +24,8 @@ export class HeaderComponent implements OnInit {
 
   dataHeader!: DataHeader;
 
+  numberOfNotificationsNotReaded: number = 0;
+
   constructor(private userService: UserService,
     private dialog: MatDialog,
     private router: Router,
@@ -41,6 +43,9 @@ export class HeaderComponent implements OnInit {
       next: (response: DataHeader) => {
 
         this.dataHeader = response;
+
+        this.calculateNumberOfNotificationsNotReaded()
+
         this.isLogged = true;
       }
     })
@@ -76,6 +81,7 @@ export class HeaderComponent implements OnInit {
 
   onShowNotifications(){
 
+    this.numberOfNotificationsNotReaded = 0
     let listIdNotifications: string[] = [];
 
     this.dataHeader.listNotifications.map((notificationUser: NotificationUser) => {
@@ -89,6 +95,16 @@ export class HeaderComponent implements OnInit {
 
     this.userService.changeToReadNotifications(listIdNotifications).subscribe();
 
+  }
+
+  calculateNumberOfNotificationsNotReaded(){
+
+    this.dataHeader.listNotifications.map((notificationUser: NotificationUser) => {
+
+      if (!notificationUser.read) this.numberOfNotificationsNotReaded++;
+      
+    });
+  
   }
 
 }

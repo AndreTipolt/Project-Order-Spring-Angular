@@ -14,8 +14,8 @@
         <mat-icon matBadge="{{ numberOfProductsInCart | cart}}" matBadgeColor="warn" [routerLink]="['/cart']">shopping_cart</mat-icon>
       </div>
 
-      <div class="notification-section icon-header" (click)="onShowNotifications()"> <!--{{ dataHeader.listNotifications| notification }}-->
-        <mat-icon mat-button [matMenuTriggerFor]="menuNotifications" matBadge="" matBadgeColor="warn">notifications</mat-icon>
+      <div class="notification-section icon-header" (click)="onShowNotifications()"> 
+        <mat-icon mat-button [matMenuTriggerFor]="menuNotifications" matBadge="{{ numberOfNotificationsNotReaded | notification }}" matBadgeColor="warn">notifications</mat-icon>
 
         <mat-menu #menuNotifications="matMenu" [xPosition]="'before'">
           <div class="notifications-menu-header">
