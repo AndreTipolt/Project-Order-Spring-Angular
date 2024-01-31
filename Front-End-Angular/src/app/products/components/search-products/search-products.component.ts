@@ -37,11 +37,9 @@ export class SearchProductsComponent implements OnInit {
 
     this.productService.searchProductByName(productName).subscribe({
       error: (error: HttpErrorResponse) => {
-        console.log(error)
       },
       next: (res: Product[]) => {
 
-        console.log(res)
         this.products = res
 
       }

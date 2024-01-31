@@ -66,8 +66,7 @@ public class ProductService implements Serializable{
 
     @Transactional(readOnly = true)
     public List<ProductModel> searchProduct(String nameProduct){
-
-        List<ProductModel> searchedProducts = productRepository.findAllByNameStartsWithIgnoreCase(nameProduct);
+        List<ProductModel> searchedProducts = productRepository.searchProduct(nameProduct);
 
         return searchedProducts;
     }
