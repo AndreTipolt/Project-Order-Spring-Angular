@@ -6,6 +6,8 @@ export const environment = {
   production: false,
 
   baseAPIURL: "http://localhost:8080",
+
+  phoneOrder: "+5511991820977"
 };
 
 /*
