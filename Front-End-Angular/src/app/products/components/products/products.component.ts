@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit {
 
   refreshProducts() {
 
-    if(this.finishSearchMoreItems) return;
+    // if(this.finishSearchMoreItems) return;
 
     this.productService.getAllProducts(this.page, this.size).subscribe({
       next: (res) => {
@@ -47,14 +47,16 @@ export class ProductsComponent implements OnInit {
         //   product.valueInstallment = valueInstallent
         //   return product;
         // });
-        if (res.content.length <= 0) {
-          this.finishSearchMoreItems = true
-          return;
-        }
+        // if (res.content.length <= 0) {
+        //   this.finishSearchMoreItems = true
+        //   return;
+        // }
 
-        res.content.forEach((value: Product) => {
-          this.products.push(value)
-        });
+        // res.forEach((value: Product) => {
+        //   this.products.push(value)
+        // });
+
+        this.products = res
       },
       error: (err) => {
         this.onError("Erro ao tentar carregar produtos")
@@ -77,13 +79,13 @@ export class ProductsComponent implements OnInit {
 
   onSearchMoreProducts() {
 
-    this.page++;
+    // this.page++;
     // for(let i = 0; i < 10; i++ ){
     //   console.log()
     //   this.products.push(this.products[Math.floor(Math.random() * 4)])
     // }
 
-    this.refreshProducts()
+    // this.refreshProducts()
 
     return;
   }

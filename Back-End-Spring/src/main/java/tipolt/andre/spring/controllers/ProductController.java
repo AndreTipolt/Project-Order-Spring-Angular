@@ -3,8 +3,6 @@ package tipolt.andre.spring.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +35,7 @@ public class ProductController {
     private ObjectMapperUtils objectMapperUtils;
 
     @GetMapping
-    public ResponseEntity<? extends Object> findAll(Pageable pageable)
+    public ResponseEntity<? extends Object> findAll()
             throws JsonMappingException, JsonProcessingException {
 
         // JsonNode findAllProductCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("products_findAll");
@@ -45,12 +43,27 @@ public class ProductController {
         //     return ResponseEntity.ok().body(findAllProductCached);
         // }
 
-        Page<ProductModel> listProducts = productService.findAllPaged(pageable);
+        List<ProductModel> listProducts = productService.findAll();
 
         // objectMapperUtils.convertObjectToStringAndSaveInRedis("products_findAll", listProducts);
 
         return ResponseEntity.ok().body(listProducts);
     }
+    // @GetMapping
+    // public ResponseEntity<? extends Object> findAll(Pageable pageable)
+    //         throws JsonMappingException, JsonProcessingException {
+
+    //     // JsonNode findAllProductCached = objectMapperUtils.getRedisKeyAndConvertToJsonNode("products_findAll");
+    //     // if (findAllProductCached != null) {
+    //     //     return ResponseEntity.ok().body(findAllProductCached);
+    //     // }
+
+    //     Page<ProductModel> listProducts = productService.findAllPaged(pageable);
+
+    //     // objectMapperUtils.convertObjectToStringAndSaveInRedis("products_findAll", listProducts);
+
+    //     return ResponseEntity.ok().body(listProducts);
+    // }
 
     @GetMapping(value = "/{productId}")
     public ResponseEntity<ProductModel> findProductById(@PathVariable String productId) {

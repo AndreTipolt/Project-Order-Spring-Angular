@@ -5,6 +5,7 @@ import { Product } from 'src/app/products/types/Product.interface';
 import { ProductService } from 'src/app/products/services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MenuSubTotalData } from '../../types/MenuSubTotalData.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-show-cart',
@@ -13,7 +14,10 @@ import { MenuSubTotalData } from '../../types/MenuSubTotalData.interface';
 })
 export class ShowCartComponent implements OnInit {
 
+  private readonly phoneOrder = environment.phoneOrder
+
   products: Product[] = [];
+
   menuSubTotalData: MenuSubTotalData = {
     numberOfProducts: 0,
     valueDelivery: 0,
@@ -74,6 +78,22 @@ export class ShowCartComponent implements OnInit {
     this.cartService.deleteItemInCart(productId);
 
     this.calculateResumeMenuValues()
+  }
+
+  onFinishOrder(){
+    window.open(`https://wa.me/${this.phoneOrder}?text=${this.getTextMessage()}`, '_blank');
+  }
+
+  getTextMessage(): string{
+
+    let productsNames = ""
+
+    this.products.forEach((product: Product) => {
+      productsNames += `- 1 unid. ${product.name} \n`;
+    })
+
+    return `Olá, Gostaria de fazer um pedido: \n
+    ${productsNames}`;
   }
 
 }
